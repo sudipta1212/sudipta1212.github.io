@@ -1018,3 +1018,387 @@ footer {
     }
 
 }
+
+/* =========================================
+   EXTRA CURRICULAR ACTIVITIES
+   ========================================= */
+
+#activities {
+    padding: 100px 0;
+}
+
+
+/* INTRO */
+
+.activities-intro {
+    max-width: 850px;
+    margin: 0 auto 55px;
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* SECTION SUB HEADING */
+
+.interest-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+    color: #f8fafc;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.interest-heading span {
+    color: #38bdf8;
+    font-size: 25px;
+}
+
+
+/* =========================================
+   INTEREST GRID
+   ========================================= */
+
+.interest-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 75px;
+}
+
+
+/* INTEREST CARD */
+
+.interest-card {
+    position: relative;
+
+    padding: 25px 20px;
+
+    background: rgba(17, 24, 39, 0.92);
+
+    border: 1px solid rgba(56, 189, 248, 0.16);
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    transition: all 0.35s ease;
+
+    overflow: hidden;
+}
+
+
+/* TOP GLOW LINE */
+
+.interest-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 0;
+    height: 2px;
+
+    background: #38bdf8;
+
+    transform: translateX(-50%);
+
+    transition: width 0.35s ease;
+}
+
+
+.interest-card:hover::before {
+    width: 70%;
+}
+
+
+/* HOVER */
+
+.interest-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(56, 189, 248, 0.55);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+
+/* ICON */
+
+.interest-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(56, 189, 248, 0.1);
+
+    border: 1px solid rgba(56, 189, 248, 0.2);
+
+    font-size: 25px;
+
+    transition: 0.3s ease;
+}
+
+
+.interest-card:hover .interest-icon {
+    transform: scale(1.08) rotate(3deg);
+
+    background: rgba(56, 189, 248, 0.18);
+}
+
+
+/* TITLE */
+
+.interest-card h3 {
+    margin: 0 0 8px;
+
+    color: #f8fafc;
+
+    font-size: 17px;
+}
+
+
+/* DESCRIPTION */
+
+.interest-card p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   LEADERSHIP TIMELINE
+   ========================================= */
+
+.leadership-heading {
+    margin-top: 20px;
+}
+
+
+.activity-timeline {
+    position: relative;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding-left: 35px;
+}
+
+
+/* TIMELINE LINE */
+
+.activity-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 11px;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background: linear-gradient(
+        to bottom,
+        #38bdf8,
+        rgba(56, 189, 248, 0.08)
+    );
+}
+
+
+/* ITEM */
+
+.activity-item {
+    position: relative;
+
+    display: flex;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+
+/* DOT */
+
+.activity-dot {
+    position: absolute;
+
+    left: -35px;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0b1120;
+
+    border: 2px solid #38bdf8;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    z-index: 2;
+}
+
+
+/* CONTENT */
+
+.activity-content {
+    width: 100%;
+
+    padding: 25px;
+
+    background: rgba(17, 24, 39, 0.92);
+
+    border: 1px solid rgba(56, 189, 248, 0.16);
+
+    border-radius: 16px;
+
+    transition: all 0.35s ease;
+}
+
+
+.activity-content:hover {
+    transform: translateX(6px);
+
+    border-color: rgba(56, 189, 248, 0.55);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* TOP AREA */
+
+.activity-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+}
+
+
+/* TITLE */
+
+.activity-content h3 {
+    margin: 0 0 6px;
+
+    color: #f8fafc;
+
+    font-size: 20px;
+}
+
+
+/* ROLE */
+
+.activity-role {
+    color: #38bdf8;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* DATE */
+
+.activity-date {
+    white-space: nowrap;
+
+    padding: 6px 12px;
+
+    background: rgba(56, 189, 248, 0.08);
+
+    border: 1px solid rgba(56, 189, 248, 0.2);
+
+    border-radius: 20px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* DESCRIPTION */
+
+.activity-content p {
+    margin: 15px 0 0;
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .interest-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    #activities {
+        padding: 70px 0;
+    }
+
+    .interest-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-top {
+        flex-direction: column;
+    }
+
+    .activity-date {
+        align-self: flex-start;
+    }
+
+    .activity-content {
+        padding: 20px;
+    }
+
+}
