@@ -2251,3 +2251,66 @@ section.personal-section .personal-row:hover {
         font-size: 17px !important;
     }
 }
+
+/* ===== Personal Information - Left & Right Layout ===== */
+
+section.personal-section .personal-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 22px 0 !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
+}
+
+section.personal-section .personal-label {
+    display: block !important;
+    flex: 0 0 50% !important;
+    text-align: left !important;
+    color: #38bdf8 !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+}
+
+section.personal-section .personal-value {
+    display: block !important;
+    flex: 0 0 50% !important;
+    text-align: right !important;
+    color: #e5e7eb !important;
+    font-size: 21px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+/* Address */
+section.personal-section .personal-row.address {
+    align-items: flex-start !important;
+}
+
+section.personal-section .personal-row.address .personal-value {
+    text-align: right !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    section.personal-section .personal-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+
+    section.personal-section .personal-label {
+        flex: none !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    section.personal-section .personal-value {
+        flex: none !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+}
