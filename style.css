@@ -871,3 +871,150 @@ footer {
     }
 
 }
+
+/* ===== ADDITIONAL PORTFOLIO SECTIONS ===== */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.info-card,
+.certificate-card,
+.personal-card {
+    background: rgba(17, 24, 39, 0.95);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 18px;
+    padding: 30px;
+    transition: 0.35s ease;
+}
+
+.info-card:hover,
+.certificate-card:hover,
+.personal-card:hover {
+    transform: translateY(-7px);
+    border-color: #38bdf8;
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.12);
+}
+
+.info-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.info-card h3,
+.certificate-card h3 {
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.info-card p,
+.certificate-card p {
+    color: #94a3b8;
+    line-height: 1.7;
+}
+
+
+/* Certifications */
+
+.certification-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.certificate-card {
+    text-align: center;
+}
+
+.certificate-card span {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+/* Languages */
+
+.language-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.language-item {
+    margin-bottom: 25px;
+}
+
+.language-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+}
+
+.language-bar {
+    height: 10px;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.language-progress {
+    height: 100%;
+    background: #38bdf8;
+    border-radius: 10px;
+}
+
+.native {
+    width: 100%;
+}
+
+.english {
+    width: 85%;
+}
+
+
+/* Personal Information */
+
+.personal-card {
+    max-width: 800px;
+    margin: auto;
+}
+
+.personal-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #1e293b;
+}
+
+.personal-item:last-child {
+    border-bottom: none;
+}
+
+.personal-item strong {
+    color: #38bdf8;
+}
+
+.personal-item span {
+    color: #cbd5e1;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .info-grid,
+    .certification-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
