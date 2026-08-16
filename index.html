@@ -3338,31 +3338,52 @@ document.addEventListener("keydown", function(e) {
 });
 </script>
 
-    <!-- ===== CONTENT COPYRIGHT WATERMARK ===== -->
-<div class="content-watermark">
-    © Sudipta Das • All Rights Reserved
+<!-- ===== COPYRIGHT WATERMARK ===== -->
+<div class="copyright-watermark">
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
+    <span>© Sudipta Das</span>
+    <span>All Rights Reserved</span>
 </div>
 
 <style>
-.content-watermark {
+.copyright-watermark {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    inset: 0;
+    z-index: 999999;
 
-    transform: translate(-50%, -50%) rotate(-25deg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: 2px;
-
-    opacity: 0.08;
+    align-items: center;
+    justify-items: center;
 
     pointer-events: none;
     user-select: none;
 
-    white-space: nowrap;
+    overflow: hidden;
+}
 
-    z-index: 9999;
+.copyright-watermark span {
+    transform: rotate(-25deg);
+
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    color: #000;
+    opacity: 0.10;
+
+    white-space: nowrap;
 }
 </style>
     
