@@ -2133,3 +2133,121 @@ footer {
     }
 
 }
+
+/* =========================================
+   PERSONAL INFORMATION - NEW DESIGN
+========================================= */
+
+section.personal-section {
+    width: 100% !important;
+    padding: 80px 5% 100px !important;
+    background: #0b1120 !important;
+    box-sizing: border-box !important;
+}
+
+section.personal-section h2 {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 52px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 80px 0 !important;
+    padding: 0 !important;
+    color: #38bdf8 !important;
+}
+
+section.personal-section .personal-card {
+    display: block !important;
+    width: 90% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 30px 45px !important;
+    background: #111827 !important;
+    border: 1px solid #1e5675 !important;
+    border-radius: 28px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35) !important;
+}
+
+section.personal-section .personal-row {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 70px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 40px !important;
+    padding: 22px 0 !important;
+    border-bottom: 1px solid rgba(148,163,184,0.15) !important;
+    box-sizing: border-box !important;
+}
+
+section.personal-section .personal-row:last-child {
+    border-bottom: none !important;
+}
+
+section.personal-section .personal-label {
+    flex: 0 0 280px !important;
+    color: #38bdf8 !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+}
+
+section.personal-section .personal-value {
+    flex: 1 !important;
+    color: #e5e7eb !important;
+    font-size: 21px !important;
+    font-weight: 400 !important;
+    text-align: right !important;
+    line-height: 1.6 !important;
+}
+
+section.personal-section .personal-row.address {
+    align-items: flex-start !important;
+}
+
+section.personal-section .personal-row:hover {
+    background: rgba(56,189,248,0.025) !important;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    section.personal-section {
+        padding: 60px 15px 80px !important;
+    }
+
+    section.personal-section h2 {
+        font-size: 38px !important;
+        margin-bottom: 45px !important;
+    }
+
+    section.personal-section .personal-card {
+        width: 100% !important;
+        padding: 20px 22px !important;
+        border-radius: 20px !important;
+    }
+
+    section.personal-section .personal-row {
+        display: block !important;
+        padding: 18px 0 !important;
+    }
+
+    section.personal-section .personal-label {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 7px !important;
+        font-size: 18px !important;
+    }
+
+    section.personal-section .personal-value {
+        display: block !important;
+        width: 100% !important;
+        text-align: left !important;
+        font-size: 17px !important;
+    }
+}
