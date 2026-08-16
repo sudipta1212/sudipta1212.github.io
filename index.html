@@ -3339,53 +3339,34 @@ document.addEventListener("keydown", function(e) {
 </script>
 
 <!-- ===== COPYRIGHT WATERMARK ===== -->
-<div class="copyright-watermark">
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
-    <span>© Sudipta Das</span>
-    <span>All Rights Reserved</span>
+<div id="copyright-watermark">
+    © Sudipta Das • All Rights Reserved
 </div>
 
 <style>
-.copyright-watermark {
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
+#copyright-watermark {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-25deg) !important;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    z-index: 2147483647 !important;
 
-    align-items: center;
-    justify-items: center;
+    display: block !important;
+    width: max-content !important;
 
-    pointer-events: none;
-    user-select: none;
+    font-family: Arial, sans-serif !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+    letter-spacing: 2px !important;
 
-    overflow: hidden;
-}
+    color: #000000 !important;
+    opacity: 0.18 !important;
 
-.copyright-watermark span {
-    transform: rotate(-25deg);
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
 
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-
-    color: #000;
-    opacity: 0.10;
-
-    white-space: nowrap;
+    white-space: nowrap !important;
 }
 </style>
-    
-</body>
-</html>
