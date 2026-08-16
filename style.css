@@ -665,3 +665,209 @@ footer {
     }
 
 }
+
+/* ============================= */
+/*       SMART SKILLS DESIGN     */
+/* ============================= */
+
+#skills {
+    padding: 100px 0;
+}
+
+#skills .skills-subtitle {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 50px;
+    color: #94a3b8;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* SKILLS GRID */
+
+.smart-skills-grid {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* CARD */
+
+.smart-skill-card {
+    position: relative;
+    display: flex !important;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding: 28px;
+
+    background: rgba(17, 24, 39, 0.95);
+
+    border: 1px solid rgba(56, 189, 248, 0.25);
+
+    border-radius: 18px;
+
+    box-sizing: border-box;
+
+    transition: all 0.35s ease;
+
+    overflow: hidden;
+}
+
+
+/* LEFT BLUE LINE */
+
+.smart-skill-card::before {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background: #38bdf8;
+
+    opacity: 0.8;
+}
+
+
+/* CARD HOVER */
+
+.smart-skill-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(56, 189, 248, 0.12);
+}
+
+
+/* ICON */
+
+.skill-icon {
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(56, 189, 248, 0.12);
+
+    border: 1px solid rgba(56, 189, 248, 0.3);
+
+    border-radius: 14px;
+
+    color: #38bdf8;
+
+    font-size: 22px;
+}
+
+
+/* CARD CONTENT */
+
+.skill-info {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.skill-info h3 {
+    margin: 0 0 8px;
+
+    color: #f8fafc;
+
+    font-size: 20px;
+}
+
+
+.skill-info p {
+    margin: 0 0 16px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* SKILL BADGES */
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.skill-tags span {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    background: rgba(56, 189, 248, 0.08);
+
+    border: 1px solid rgba(56, 189, 248, 0.2);
+
+    border-radius: 20px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    transition: all 0.25s ease;
+}
+
+
+.skill-tags span:hover {
+    background: #38bdf8;
+
+    color: #0b1120;
+
+    border-color: #38bdf8;
+
+    transform: translateY(-2px);
+}
+
+
+/* LAST CARD FULL WIDTH */
+
+.smart-skill-card:last-child {
+    grid-column: 1 / -1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .smart-skills-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .smart-skill-card:last-child {
+        grid-column: auto;
+    }
+
+    .smart-skill-card {
+        padding: 22px;
+    }
+
+    .skill-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .skill-info h3 {
+        font-size: 18px;
+    }
+
+}
