@@ -2742,14 +2742,14 @@ section.personal-section .personal-row.address .personal-value {
 
 .contact-bar {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     gap: 20px;
 }
 
 .contact-item {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 10px;
 }
 
@@ -2781,7 +2781,7 @@ section.personal-section .personal-row.address .personal-value {
 
 .social-links {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 12px;
 }
 
@@ -2825,7 +2825,7 @@ section.personal-section .personal-row.address .personal-value {
 
     .contact-bar {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: left;
     }
 
 }
@@ -2850,7 +2850,7 @@ section.personal-section .personal-row.address .personal-value {
     }
 
     .social-links {
-        justify-content: center;
+        justify-content: left;
         flex-wrap: wrap;
     }
 
