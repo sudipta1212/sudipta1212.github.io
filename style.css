@@ -2722,3 +2722,10 @@ section.personal-section .personal-row.address .personal-value {
 }
 
 
+#about p {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#about p:hover {
+    transform: translateY(-3px);
+}
