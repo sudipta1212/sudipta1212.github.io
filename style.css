@@ -2445,3 +2445,223 @@ section.personal-section .personal-row.address .personal-value {
         transform: scale(0.75);
     }
 }
+
+/* ===== PROFESSIONAL HERO TEXT ANIMATION ===== */
+
+.hero-text {
+    animation: heroTextReveal 1.1s ease-out both;
+}
+
+.intro {
+    animation: fadeUp 0.8s ease-out 0.1s both;
+}
+
+.hero-text h1 {
+    animation: fadeUp 0.9s ease-out 0.25s both;
+}
+
+.hero-text h2 {
+    animation: fadeUp 0.9s ease-out 0.4s both;
+}
+
+.msc-badge {
+    animation: fadeUp 0.9s ease-out 0.55s both;
+}
+
+.hero-description {
+    animation: fadeUp 0.9s ease-out 0.7s both;
+}
+
+.hero-buttons {
+    animation: fadeUp 0.9s ease-out 0.85s both;
+}
+
+
+/* Main reveal */
+@keyframes heroTextReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Individual elements */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== SUBTLE CONTINUOUS BADGE MOVEMENT ===== */
+
+.msc-badge {
+    animation:
+        fadeUp 0.9s ease-out 0.55s both,
+        badgeFloat 4s ease-in-out 1.5s infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* ===== BUTTON HOVER ===== */
+
+.hero-buttons .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ===== PROFILE IMAGE ===== */
+
+.hero-image {
+    animation: imageReveal 1.2s ease-out 0.3s both;
+}
+
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+
+
+/* ===== PROFESSIONAL HERO TEXT ANIMATION ===== */
+
+.hero-text {
+    animation: heroTextReveal 1.1s ease-out both;
+}
+
+.intro {
+    animation: fadeUp 0.8s ease-out 0.1s both;
+}
+
+.hero-text h1 {
+    animation: fadeUp 0.9s ease-out 0.25s both;
+}
+
+.hero-text h2 {
+    animation: fadeUp 0.9s ease-out 0.4s both;
+}
+
+.msc-badge {
+    animation: fadeUp 0.9s ease-out 0.55s both;
+}
+
+.hero-description {
+    animation: fadeUp 0.9s ease-out 0.7s both;
+}
+
+.hero-buttons {
+    animation: fadeUp 0.9s ease-out 0.85s both;
+}
+
+
+/* Main reveal */
+@keyframes heroTextReveal {
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Individual elements */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== SUBTLE CONTINUOUS BADGE MOVEMENT ===== */
+
+.msc-badge {
+    animation:
+        fadeUp 0.9s ease-out 0.55s both,
+        badgeFloat 4s ease-in-out 1.5s infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* ===== BUTTON HOVER ===== */
+
+.hero-buttons .btn {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ===== PROFILE IMAGE ===== */
+
+.hero-image {
+    animation: imageReveal 1.2s ease-out 0.3s both;
+}
+
+@keyframes imageReveal {
+    from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
