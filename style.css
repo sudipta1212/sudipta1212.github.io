@@ -2382,3 +2382,25 @@ section.personal-section .personal-row.address .personal-value {
         text-align: left !important;
     }
 }
+
+.nuclear-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 14px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 30px;
+    background: rgba(56, 189, 248, 0.08);
+    color: #cbd5e1;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+}
