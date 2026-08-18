@@ -1171,13 +1171,16 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="script.js"></script>
 
 <script>
+// Open Modal
 function openProject(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
-        modal.style.display = "block";
+        modal.style.display = "flex";
         document.body.style.overflow = "hidden";
     }
 }
+
+// Close Modal
 function closeProject(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
@@ -1185,9 +1188,22 @@ function closeProject(modalId) {
         document.body.style.overflow = "auto";
     }
 }
+
+// Close when clicking outside
 window.addEventListener("click", function(event) {
     if (event.target.classList.contains("project-modal")) {
         event.target.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+});
+
+// Close when pressing ESC key
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        const modals = document.querySelectorAll(".project-modal");
+        modals.forEach(function(modal) {
+            modal.style.display = "none";
+        });
         document.body.style.overflow = "auto";
     }
 });
