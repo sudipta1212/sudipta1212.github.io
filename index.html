@@ -1081,6 +1081,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 
+<!-- ===== CERTIFICATIONS & WORKSHOPS ===== -->
+<section id="certifications">
+    <div class="container">
+        <div class="cert-header">
+            <span class="cert-badge"><i class="fas fa-certificate"></i> CREDENTIALS & ACHIEVEMENTS</span>
+            <h2 class="section-title">Certifications & <span>Workshops</span></h2>
+            <div class="cert-count-badge">Total Certifications: <span id="certTotalDisplay">0</span></div>
+        </div>
+
+        <!-- Controls: Search & Filters -->
+        <div class="cert-controls">
+            <!-- Search Bar -->
+            <div class="cert-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="certSearch" placeholder="Search by title, organization, topic or skill...">
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="cert-filters" id="certFilterButtons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="ieee">IEEE</button>
+                <button class="filter-btn" data-category="engineering">Engineering</button>
+                <button class="filter-btn" data-category="programming">Programming / AI</button>
+                <button class="filter-btn" data-category="cybersecurity">Cybersecurity</button>
+                <button class="filter-btn" data-category="workshop">Workshops</button>
+                <button class="filter-btn" data-category="english">English & Soft Skills</button>
+                <button class="filter-btn" data-category="other">Other</button>
+            </div>
+
+            <!-- Year Filter Dropdown -->
+            <div class="cert-year-filter">
+                <select id="certYearSelect">
+                    <option value="all">All Years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Dynamic Certifications Grid -->
+        <div class="cert-grid" id="certGrid">
+            <!-- JavaScript এর মাধ্যমে অটোমেটিক সব কার্ড লোড হবে -->
+        </div>
+    </div>
+</section>
+
+<!-- ===== FULLSCREEN CERTIFICATE PREVIEW MODAL ===== -->
+<div id="certPreviewModal" class="cert-modal-backdrop">
+    <div class="cert-modal-box">
+        <button class="cert-modal-close" onclick="closeCertModal()">×</button>
+        <h3 id="modalCertTitle">Certificate Title</h3>
+        <p id="modalCertOrg" class="modal-cert-org">Organization</p>
+        <p id="modalCertDate" class="modal-cert-date">Date</p>
+        <div class="cert-modal-img-wrapper" id="modalImgContainer">
+            <img id="modalCertImg" src="" alt="Certificate Preview">
+        </div>
+        <div class="cert-modal-actions">
+            <a id="downloadCertBtn" href="#" download="certificate.jpg" class="cert-action-btn"><i class="fas fa-download"></i> Download Image</a>
+            <a id="viewFullBtn" href="#" target="_blank" class="cert-action-btn view-btn"><i class="fas fa-external-link-alt"></i> View Full Screen</a>
+        </div>
+    </div>
+</div>
+
 <!-- ===== CONTACT ===== -->
 <section id="contact">
 
