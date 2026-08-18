@@ -1063,133 +1063,140 @@ footer {
 }
 
 
-/* =========================================
-   INTEREST GRID
-   ========================================= */
+/* =====================================================
+   ULTRA-MODERN RADAR/NEON ROTATING BORDER CARDS
+   ===================================================== */
 
 .interest-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
-    gap: 18px;
-
+    gap: 24px;
     margin-bottom: 75px;
 }
 
-
-/* INTEREST CARD */
-
 .interest-card {
     position: relative;
-
-    padding: 25px 20px;
-
-    background: rgba(17, 24, 39, 0.92);
-
-    border: 1px solid rgba(56, 189, 248, 0.16);
-
-    border-radius: 16px;
-
+    padding: 32px 22px;
+    background: #0d1527;
+    border-radius: 20px;
     text-align: center;
-
-    transition: all 0.35s ease;
-
     overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
-
-/* TOP GLOW LINE */
-
+/* 360 Degree Spinning Light Beam */
 .interest-card::before {
     content: "";
-
     position: absolute;
-
-    top: 0;
-    left: 50%;
-
-    width: 0;
-    height: 2px;
-
-    background: #38bdf8;
-
-    transform: translateX(-50%);
-
-    transition: width 0.35s ease;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent,
+        transparent,
+        transparent,
+        #38bdf8
+    );
+    animation: rotateBorder 4s linear infinite;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
+/* Inner Background */
+.interest-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #0f172a;
+    border-radius: 18px;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover State */
+.interest-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.2);
+}
 
 .interest-card:hover::before {
-    width: 70%;
+    opacity: 1;
 }
 
-
-/* HOVER */
-
-.interest-card:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(56, 189, 248, 0.55);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.3),
-        0 0 25px rgba(56, 189, 248, 0.08);
+.interest-card:hover::after {
+    background: #111e38;
 }
 
-
-/* ICON */
-
+/* Floating & Glowing Icon Badge */
 .interest-icon {
-    width: 55px;
-    height: 55px;
-
-    margin: 0 auto 15px;
-
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 14px;
-
-    background: rgba(56, 189, 248, 0.1);
-
-    border: 1px solid rgba(56, 189, 248, 0.2);
-
-    font-size: 25px;
-
-    transition: 0.3s ease;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    font-size: 26px;
+    transition: all 0.4s ease;
 }
-
 
 .interest-card:hover .interest-icon {
-    transform: scale(1.08) rotate(3deg);
-
-    background: rgba(56, 189, 248, 0.18);
+    transform: scale(1.15);
+    border-color: #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+    animation: iconFloat 1.8s ease-in-out infinite alternate;
 }
 
+@keyframes iconFloat {
+    0% {
+        transform: translateY(0) scale(1.15);
+    }
+    100% {
+        transform: translateY(-8px) scale(1.18);
+    }
+}
 
-/* TITLE */
-
+/* Typography */
 .interest-card h3 {
-    margin: 0 0 8px;
-
+    margin: 0 0 10px;
     color: #f8fafc;
-
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
-
-/* DESCRIPTION */
+.interest-card:hover h3 {
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
 
 .interest-card p {
     margin: 0;
-
     color: #94a3b8;
-
-    font-size: 13px;
-
+    font-size: 13.5px;
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.interest-card:hover p {
+    color: #e2e8f0;
 }
 
 
