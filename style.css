@@ -2730,3 +2730,456 @@ section.personal-section .personal-row.address .personal-value {
     opacity: 1;
     transform: translateY(0);
 }
+
+```css
+/* =========================================
+   PREMIUM CONTACT SECTION
+========================================= */
+
+#contact {
+    position: relative;
+    padding: 100px 20px;
+    overflow: hidden;
+}
+
+
+/* Background glow */
+
+#contact::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(0, 191, 255, 0.08);
+    filter: blur(80px);
+    top: 10%;
+    left: 5%;
+    animation: contactGlow 6s ease-in-out infinite alternate;
+}
+
+#contact::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(120, 70, 255, 0.08);
+    filter: blur(80px);
+    bottom: 5%;
+    right: 5%;
+    animation: contactGlow 7s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes contactGlow {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(40px, -30px) scale(1.2);
+    }
+
+}
+
+
+/* Main container */
+
+.contact-section {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+
+/* Heading */
+
+.contact-heading {
+    margin-bottom: 55px;
+}
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 1px solid rgba(0, 191, 255, 0.4);
+    border-radius: 30px;
+    color: #00bfff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+.contact-subtitle {
+    max-width: 750px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   CONTACT CARDS
+========================================= */
+
+.contact-cards {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.contact-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 18px;
+    text-decoration: none;
+    color: inherit;
+
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+    overflow: hidden;
+}
+
+
+/* Card shine animation */
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.10),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: 0.7s;
+}
+
+
+.contact-card:hover::before {
+    left: 130%;
+}
+
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 191, 255, 0.55);
+    box-shadow: 0 15px 40px rgba(0, 191, 255, 0.10);
+}
+
+
+/* Contact Icons */
+
+.contact-icon {
+    min-width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 21px;
+
+    transition: 0.4s ease;
+}
+
+
+.contact-card:hover .contact-icon {
+    transform: rotate(8deg) scale(1.12);
+}
+
+
+.email-icon {
+    background: rgba(0, 191, 255, 0.12);
+    color: #00bfff;
+}
+
+.phone-icon {
+    background: rgba(255, 180, 0, 0.12);
+    color: #ffb400;
+}
+
+.whatsapp-icon {
+    background: rgba(37, 211, 102, 0.12);
+    color: #25d366;
+}
+
+
+/* Contact Text */
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 0;
+}
+
+
+.contact-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    opacity: 0.55;
+    margin-bottom: 5px;
+}
+
+
+.contact-value {
+    font-size: 13px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+
+/* Arrow */
+
+.contact-arrow {
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: 0.3s ease;
+}
+
+
+.contact-card:hover .contact-arrow {
+    opacity: 0.8;
+    transform: translateX(0);
+}
+
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+.social-section {
+    margin-top: 60px;
+}
+
+
+.social-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 22px;
+}
+
+
+.social-title i {
+    margin-right: 7px;
+}
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+
+.social-btn {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 145px;
+    padding: 13px 22px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+
+    text-decoration: none;
+    color: inherit;
+
+    background: rgba(255,255,255,0.035);
+
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+
+.social-btn i {
+    font-size: 18px;
+    transition: 0.4s ease;
+}
+
+
+.social-btn:hover {
+    transform: translateY(-7px) scale(1.03);
+}
+
+
+.social-btn:hover i {
+    transform: rotate(360deg) scale(1.2);
+}
+
+
+/* LinkedIn */
+
+.social-btn.linkedin:hover {
+    color: #0a66c2;
+    border-color: #0a66c2;
+    box-shadow: 0 10px 30px rgba(10,102,194,0.20);
+}
+
+
+/* Facebook */
+
+.social-btn.facebook:hover {
+    color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: 0 10px 30px rgba(24,119,242,0.20);
+}
+
+
+/* Instagram */
+
+.social-btn.instagram:hover {
+    color: #e1306c;
+    border-color: #e1306c;
+    box-shadow: 0 10px 30px rgba(225,48,108,0.20);
+}
+
+
+/* =========================================
+   FOOTER MESSAGE
+========================================= */
+
+.contact-footer {
+    margin-top: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 13px;
+    opacity: 0.55;
+}
+
+
+.contact-footer i {
+    color: #00bfff;
+    animation: boltPulse 1.5s ease-in-out infinite;
+}
+
+
+@keyframes boltPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    #contact {
+        padding: 70px 15px;
+    }
+
+    .contact-heading {
+        margin-bottom: 40px;
+    }
+
+    .contact-subtitle {
+        font-size: 14px;
+    }
+
+    .contact-cards {
+        gap: 14px;
+    }
+
+    .contact-card {
+        padding: 18px 15px;
+    }
+
+    .contact-value {
+        font-size: 12px;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .social-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .contact-footer {
+        font-size: 12px;
+        text-align: center;
+    }
+
+}
+```
