@@ -412,30 +412,609 @@
     </div>
 </section>
 
-<!-- ===== AWARDS ===== -->
-<section id="awards" style="padding: 80px 20px; background: #0b1120;">
-    <h2 style="text-align: center; color: #38bdf8; font-size: 48px; margin-bottom: 20px;">Awards & Competitions</h2>
-    <div style="max-width: 1150px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
-        <div style="background: #111827; border: 1px solid rgba(56,189,248,0.25); border-radius: 20px; padding: 30px;">
-            <div style="font-size: 28px; margin-bottom: 20px;">🏆</div>
-            <h3 style="color: #f8fafc; font-size: 21px;">Best Presenter Award</h3>
-            <h4 style="color: #cbd5e1; font-size: 15px;">“PROJECT DAY 2023”</h4>
-            <p style="color: #94a3b8; font-size: 13px;">Organized by Premier University.</p>
+
+<!-- ===== PREMIUM AWARDS & COMPETITIONS ===== -->
+
+<section id="awards">
+
+    <div class="awards-bg-glow"></div>
+
+    <h2 class="awards-title">Awards & Competitions</h2>
+
+    <div class="awards-grid">
+
+        <!-- Award 1 -->
+        <div class="award-card">
+
+            <div class="award-icon">🏆</div>
+
+            <h3>Best Presenter Award</h3>
+
+            <h4>“PROJECT DAY 2023”</h4>
+
+            <p>Organized by Premier University.</p>
+
         </div>
-        <div style="background: #111827; border: 1px solid rgba(56,189,248,0.25); border-radius: 20px; padding: 30px;">
-            <div style="font-size: 28px; margin-bottom: 20px;">🤖</div>
-            <h3 style="color: #f8fafc; font-size: 21px;">Line Follower Robot Race</h3>
-            <h4 style="color: #cbd5e1; font-size: 15px;">Bangabandhu Innovation Fair 2024</h4>
-            <p style="color: #94a3b8; font-size: 13px;">Certificate of Participation, Premier University.</p>
+
+
+        <!-- Award 2 -->
+        <div class="award-card">
+
+            <div class="award-icon">🤖</div>
+
+            <h3>Line Follower Robot Race</h3>
+
+            <h4>Bangabandhu Innovation Fair 2024</h4>
+
+            <p>Certificate of Participation, Premier University.</p>
+
         </div>
-        <div style="background: #111827; border: 1px solid rgba(56,189,248,0.25); border-radius: 20px; padding: 30px;">
-            <div style="font-size: 28px; margin-bottom: 20px;">📊</div>
-            <h3 style="color: #f8fafc; font-size: 21px;">Poster Presentation</h3>
-            <h4 style="color: #cbd5e1; font-size: 15px;">Bangabandhu Innovation Fair 2024</h4>
-            <p style="color: #94a3b8; font-size: 13px;">Certificate of Participation, Premier University.</p>
+
+
+        <!-- Award 3 -->
+        <div class="award-card">
+
+            <div class="award-icon">📊</div>
+
+            <h3>Poster Presentation</h3>
+
+            <h4>Bangabandhu Innovation Fair 2024</h4>
+
+            <p>Certificate of Participation, Premier University.</p>
+
         </div>
+
     </div>
+
 </section>
+
+
+<style>
+
+/* =====================================================
+   PREMIUM AWARDS SECTION
+   ===================================================== */
+
+#awards {
+
+    position: relative;
+
+    padding: 90px 20px;
+
+    background: #0b1120;
+
+    overflow: hidden;
+
+}
+
+
+/* Background Glow */
+
+.awards-bg-glow {
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 40%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(56,189,248,0.12),
+        transparent 70%
+    );
+
+    filter: blur(20px);
+
+    animation: awardsGlow 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes awardsGlow {
+
+    0% {
+
+        transform: translate(-50%, -50%) scale(0.8);
+
+        opacity: 0.4;
+
+    }
+
+    100% {
+
+        transform: translate(-50%, -50%) scale(1.25);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* ===== TITLE ===== */
+
+.awards-title {
+
+    position: relative;
+
+    text-align: center;
+
+    color: #38bdf8;
+
+    font-size: 48px;
+
+    margin-bottom: 60px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    animation: titleAppear 1s ease forwards;
+
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-40px);
+
+        filter: blur(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+/* ===== GRID ===== */
+
+.awards-grid {
+
+    position: relative;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 28px;
+
+}
+
+
+/* ===== CARD ===== */
+
+.award-card {
+
+    position: relative;
+
+    padding: 32px;
+
+    min-height: 260px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(17,24,39,0.95),
+        rgba(15,23,42,0.85)
+    );
+
+    border: 1px solid rgba(56,189,248,0.25);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform:
+        translateY(80px)
+        scale(0.92);
+
+    transition:
+
+        opacity 0.8s ease,
+
+        transform 0.8s cubic-bezier(.2,.8,.2,1),
+
+        box-shadow 0.4s ease,
+
+        border-color 0.4s ease;
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+/* Visible cards */
+
+.award-card.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* Stagger */
+
+.award-card:nth-child(1) {
+
+    transition-delay: 0.1s;
+
+}
+
+
+.award-card:nth-child(2) {
+
+    transition-delay: 0.25s;
+
+}
+
+
+.award-card:nth-child(3) {
+
+    transition-delay: 0.4s;
+
+}
+
+
+/* ===== MOVING SHINE ===== */
+
+.award-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 160%;
+
+    top: -30%;
+
+    left: -150px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+
+    transform: rotate(25deg);
+
+    transition: 0.9s ease;
+
+}
+
+
+/* Shine on hover */
+
+.award-card:hover::before {
+
+    left: 120%;
+
+}
+
+
+/* ===== TOP GLOW ===== */
+
+.award-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 2px;
+
+    top: 0;
+
+    left: 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #38bdf8,
+        transparent
+    );
+
+    opacity: 0;
+
+    transition: 0.4s ease;
+
+}
+
+
+.award-card:hover::after {
+
+    opacity: 1;
+
+}
+
+
+/* ===== HOVER ===== */
+
+.award-card:hover {
+
+    transform:
+        translateY(-15px)
+        scale(1.025);
+
+    border-color: rgba(56,189,248,0.8);
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,0.45),
+
+        0 0 30px rgba(56,189,248,0.12);
+
+}
+
+
+/* ===== ICON ===== */
+
+.award-icon {
+
+    position: relative;
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 34px;
+
+    margin-bottom: 22px;
+
+    border-radius: 16px;
+
+    background: rgba(56,189,248,0.08);
+
+    border: 1px solid rgba(56,189,248,0.18);
+
+    transition: 0.5s ease;
+
+}
+
+
+/* Icon hover */
+
+.award-card:hover .award-icon {
+
+    transform:
+
+        translateY(-8px)
+
+        scale(1.12)
+
+        rotate(5deg);
+
+    box-shadow:
+
+        0 0 25px rgba(56,189,248,0.25);
+
+    animation: iconFloat 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes iconFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(-8px)
+            scale(1.12)
+            rotate(5deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-14px)
+            scale(1.16)
+            rotate(-5deg);
+
+    }
+
+}
+
+
+/* ===== CARD TEXT ===== */
+
+.award-card h3 {
+
+    color: #f8fafc;
+
+    font-size: 21px;
+
+    margin: 0 0 10px;
+
+    transition: 0.3s ease;
+
+}
+
+
+.award-card:hover h3 {
+
+    color: #38bdf8;
+
+}
+
+
+.award-card h4 {
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+
+    margin: 0 0 12px;
+
+    line-height: 1.5;
+
+}
+
+
+.award-card p {
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin: 0;
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .awards-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .awards-title {
+
+        font-size: 40px;
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    #awards {
+
+        padding: 70px 18px;
+
+    }
+
+    .awards-title {
+
+        font-size: 32px;
+
+        margin-bottom: 40px;
+
+    }
+
+    .awards-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+    .award-card {
+
+        min-height: auto;
+
+        padding: 26px;
+
+    }
+
+    .award-card:hover {
+
+        transform:
+            translateY(-7px)
+            scale(1.01);
+
+    }
+
+}
+
+</style>
+
+
+<!-- ===== AWARDS SCROLL ANIMATION ===== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cards =
+        document.querySelectorAll(".award-card");
+
+
+    const observer =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.15
+            }
+
+        );
+
+
+    cards.forEach(function (card) {
+
+        observer.observe(card);
+
+    });
+
+});
+
+</script>
 
 <!-- ===== CONTACT ===== -->
 <section id="contact">
