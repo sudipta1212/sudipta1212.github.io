@@ -1359,5 +1359,224 @@ document.addEventListener("keydown", function(event) {
     }
 });
 </script>
+
+    <script>
+// =====================================================
+// COMPLETE CERTIFICATIONS LIST & DYNAMIC ENGINE
+// =====================================================
+
+const certificatesData = [
+    { title: "Fresh Graduate Engineers Training Program-2025", org: "The Institution of Engineers, Bangladesh (IEB), Chattogram Centre", date: "2025", year: "2025", category: "engineering", img: "1.jpg" },
+    { title: "IEEE Student Membership", org: "IEEE", date: "December 2025", year: "2025", category: "ieee", img: "2.jpg" },
+    { title: "IEEE Women in Engineering Membership", org: "IEEE WIE", date: "2025", year: "2025", category: "ieee", img: "3.jpg" },
+    { title: "Workshop: bdapps 360 Account & Lite App Creation", org: "IEEE Premier University SB WIE Affinity Group", date: "June 23, 2025", year: "2025", category: "workshop ieee", img: "4.jpg" },
+    { title: "YPCON 2025: Project to Publication P2P – The Hidden Skill", org: "IEEE AUST SB & IEEE YP Bangladesh", date: "June 21, 2025", year: "2025", category: "ieee workshop", img: "5.jpg" },
+    { title: "Talk Series: Energy Transition - Driving the Future of Climate Action", org: "IEEE Young Professionals Bangladesh", date: "July 2025", year: "2025", category: "ieee engineering", img: "6.jpg" },
+    { title: "International Congress on Artificial Intelligence (ICAI 2025)", org: "IEEE Systems Council BUBT Student Branch Chapter & BUBT", date: "September 6, 2025", year: "2025", category: "programming ieee", img: "7.jpg" },
+    { title: "AUST Robotics Club - Club Representative in ARC 2.0", org: "AUST Robotics Club", date: "2025", year: "2025", category: "engineering workshop", img: "8.jpg" },
+    { title: "Workshop: Embedded System", org: "Premier University Robotics Club", date: "June 22, 2025", year: "2025", category: "engineering workshop", img: "9.jpg" },
+    { title: "The SDG Primer", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "workshop", img: "10.jpg" },
+    { title: "Professional Video Editing", org: "Futurenation", date: "February 26, 2025", year: "2025", category: "workshop", img: "11.jpg" },
+    { title: "Motion Graphics", org: "Futurenation", date: "January 11, 2025", year: "2025", category: "workshop", img: "12.jpg" },
+    { title: "Digital Marketing", org: "Futurenation & CodersTrust Bangladesh", date: "February 23, 2025", year: "2025", category: "workshop", img: "13.jpg" },
+    { title: "Digital Literacy", org: "Futurenation", date: "February 21, 2025", year: "2025", category: "workshop", img: "14.jpg" },
+    { title: "UI/UX Design", org: "Futurenation", date: "March 19, 2025", year: "2025", category: "workshop", img: "15.jpg" },
+    { title: "Data Analysis with Excel", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "programming", img: "16.jpg" },
+    { title: "SkillUp 101 - Accounting", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "other", img: "17.jpg" },
+    { title: "SkillUp 101 - Human Resource Management", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "other", img: "18.jpg" },
+    { title: "SkillUp 101 - Python", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "programming", img: "19.jpg" },
+    { title: "SkillUp 101 - Google Ads", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "workshop", img: "20.jpg" },
+    { title: "SkillUp 101 - MS Excel", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "other", img: "21.jpg" },
+    { title: "SkillUp 101 - Personality Development", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "english", img: "22.jpg" },
+    { title: "SkillUp 101 - Java", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "programming", img: "23.jpg" },
+    { title: "SkillUp 101 - CV Preparation & Resume Making", org: "EDUCBA", date: "May 10, 2025", year: "2025", category: "english", img: "24.jpg" },
+    { title: "Cyber Hygiene Training", org: "The Asia Foundation & SAJIDA Foundation", date: "May 19, 2025", year: "2025", category: "cybersecurity", img: "25.jpg" },
+    { title: "Project Management", org: "American Corner Chattogram", date: "April 21, 2025", year: "2025", category: "workshop", img: "26.jpg" },
+    { title: "4th ICRCS-2025 Conference", org: "IEEE Computer Society Bangladesh Chapter", date: "April 17-18, 2025", year: "2025", category: "ieee programming", img: "27.jpg" },
+    { title: "Introduction to Python Programming", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "programming", img: "28.jpg" },
+    { title: "English Skills for Academic and Corporate Success", org: "Interactive Cares", date: "2025", year: "2025", category: "english", img: "29.jpg" },
+    { title: "Free Course on Data Analytics & Power BI", org: "Interactive Cares", date: "2025", year: "2025", category: "programming", img: "30.jpg" },
+    { title: "Crash Course On Python", org: "Interactive Cares", date: "2025", year: "2025", category: "programming", img: "31.jpg" },
+    { title: "Free Course on Digital Product Management", org: "Interactive Cares", date: "2025", year: "2025", category: "workshop", img: "32.jpg" },
+    { title: "Digital Marketing Workshop for Absolute Beginners", org: "Ostad (C26882)", date: "2025", year: "2025", category: "workshop", img: "33.jpg" },
+    { title: "IELTS Academic and General Preparation", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "english", img: "34.jpg" },
+    { title: "JavaScript Workshop for Absolute Beginners", org: "Ostad (C27055)", date: "2025", year: "2025", category: "programming workshop", img: "35.jpg" },
+    { title: "SQA Workshop for Absolute Beginners", org: "Ostad (C26772)", date: "2025", year: "2025", category: "workshop", img: "36.jpg" },
+    { title: "Golang Workshop for Absolute Beginners", org: "Ostad (C26796)", date: "2025", year: "2025", category: "programming workshop", img: "37.jpg" },
+    { title: "Content Creation with AI Workshop", org: "Ostad (C26747)", date: "2025", year: "2025", category: "programming workshop", img: "38.jpg" },
+    { title: "Cyber Security & Ethical Hacking Workshop", org: "Ostad (C26771)", date: "2025", year: "2025", category: "cybersecurity workshop", img: "39.jpg" },
+    { title: "Pathway to Software Engineering", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "programming", img: "40.jpg" },
+    { title: "Introduction In Cyber Attack For Beginners", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity", img: "41.jpg" },
+    { title: "AI & Cyber Security Mastery 2025", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity programming", img: "42.jpg" },
+    { title: "Quantum Machine Learning", org: "Open HPI", date: "January 25, 2025", year: "2025", category: "programming", img: "43.jpg" },
+    { title: "Workshop: Python-Minigames in Replit", org: "Open HPI", date: "February 18, 2025", year: "2025", category: "programming workshop", img: "44.jpg" },
+    { title: "Designing A 3 Phase Motor Circuit In AutoCAD Electrical", org: "SourceCAD", date: "June 8, 2025", year: "2025", category: "engineering", img: "45.jpg" },
+    { title: "Workshop: Civic Engagement", org: "Aalap", date: "May 2, 2023", year: "2023", category: "workshop", img: "46.jpg" },
+    { title: "Workshop: Building & Testing the IoT Project", org: "American Corner Chattogram", date: "March 11-12, 2025", year: "2025", category: "engineering workshop", img: "47.jpg" },
+    { title: "Workshop: 3D Printing & Product Development", org: "American Corner Chattogram", date: "March 17-18, 2025", year: "2025", category: "engineering workshop", img: "48.jpg" },
+    { title: "The Entrepreneurial Mindset: From Ideas to Actions", org: "American Corner Chattogram", date: "September 25, 2024", year: "2024", category: "workshop", img: "49.jpg" },
+    { title: "Mastering Electricity & Magnetism (Physics, AP, JEE, IB)", org: "Udemy", date: "June 11, 2025", year: "2025", category: "engineering", img: "50.jpg" },
+    { title: "Preparatory Online Training on IELTS Speaking Module", org: "Futurenation – Grameenphone & UNDP Bangladesh", date: "September 3, 2025", year: "2025", category: "english", img: "51.jpg" },
+    { title: "AutoCAD Electrical Essential Course", org: "SourceCAD", date: "October 9, 2025", year: "2025", category: "engineering", img: "52.jpg" },
+    { title: "Social Media Marketing", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "workshop", img: "53.jpg" },
+    { title: "Introduction to Cybersecurity Awareness", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "cybersecurity", img: "54.jpg" },
+    { title: "Facebook Ad Creative Basics & Audience Targeting", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "workshop", img: "55.jpg" },
+    { title: "Understanding the Ecosystem of Facebook Ads", org: "Futurenation & UNDP", date: "September 7, 2025", year: "2025", category: "workshop", img: "56.jpg" },
+    { title: "Reselling & Affiliate Marketing Basics", org: "Futurenation & UNDP", date: "September 24, 2025", year: "2025", category: "workshop", img: "57.jpg" },
+    { title: "No Code Web Development with WordPress", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "programming", img: "58.jpg" },
+    { title: "From Classrooms to Careers: Building the Future with EEE", org: "IEEE RAS Premier University Student Branch Chapter", date: "October 14, 2025", year: "2025", category: "ieee engineering", img: "59.jpg" },
+    { title: "English Online Self-Study: Daily Life (Level A2)", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img: "60.jpg" },
+    { title: "English Online Self-Study: New ideas and opportunities", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img: "61.jpg" },
+    { title: "English Online Self-Study: Travel and history (Level A2)", org: "British Council", date: "07 February 2026", year: "2026", category: "english", img: "62.jpg" },
+    { title: "Canva for Presentations", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "63.jpg" },
+    { title: "Introduction to 2D Animation", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "64.jpg" },
+    { title: "Online Safety", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "cybersecurity", img: "65.jpg" },
+    { title: "LinkedIn 101", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "66.jpg" },
+    { title: "Environmental Stewardship", org: "Futurenation & UNDP (Grameenphone)", date: "November 18, 2025", year: "2025", category: "workshop", img: "67.jpg" },
+    { title: "Soft Skills for Life", org: "Youth Skill Development Institute (YSDI) Trust", date: "2025", year: "2025", category: "english", img: "68.jpg" },
+    { title: "Career Talk 3.0", org: "Chittagong University HRMC", date: "October 21, 2023", year: "2023", category: "workshop", img: "69.jpg" },
+    { title: "Seminar on Professional Certification: Success in Career", org: "Dept. of Finance, CU & LCBS Dhaka", date: "June 13, 2023", year: "2023", category: "workshop", img: "70.jpg" },
+    { title: "Creative Writing & Public Speaking", org: "YOUTHink & CU Communication Society", date: "June 01, 2022", year: "2022", category: "workshop", img: "71.jpg" },
+    { title: "The Art of Presentation & Communication Skills", org: "University of Chittagong & CU Comm. Society", date: "March 30, 2022", year: "2022", category: "workshop", img: "72.jpg" },
+    { title: "The Power of Personal Branding", org: "University of Chittagong & CU Comm. Society", date: "November 24, 2021", year: "2021", category: "workshop", img: "73.jpg" },
+    { title: "Corporate Branding and Resume Writing", org: "Dept. of Finance, CU & LCBS Dhaka", date: "February 10, 2020", year: "2020", category: "workshop", img: "74.jpg" },
+    { title: "Interpersonal Skills and Motivation", org: "Dept. of Finance, CU & LCBS Dhaka", date: "February 10, 2020", year: "2020", category: "workshop", img: "75.jpg" },
+    { title: "Participation: Inter-Department Cricket Tournament", org: "University of Chittagong & Finance Dept.", date: "March 06, 2019", year: "2019", category: "other", img: "76.jpg" },
+    { title: "Social Marketing Management", org: "Project Management Institute (PMI)", date: "May 02, 2018", year: "2018", category: "workshop", img: "77.jpg" },
+    { title: "Microelectronics & Robotics: From Silicon to Software", org: "IEEE RAS Premier University Student Branch Chapter", date: "17 Jan, 2026", year: "2026", category: "ieee engineering", img: "78.jpg" },
+    { title: "Beyond the Syllabus: Where Student Research Finds Its Voice", org: "IEEE Computer Society Premier University Student Branch Chapter", date: "16 Feb, 2026", year: "2026", category: "ieee", img: "79.jpg" },
+    { title: "WorkWave Mentorship Programme in Graphic Design", org: "Futurenation", date: "February 16, 2026", year: "2026", category: "workshop", img: "80.jpg" }
+];
+
+function getPrimaryCategory(cat) {
+    if (cat.includes("ieee")) return { name: "IEEE", class: "ieee" };
+    if (cat.includes("cybersecurity")) return { name: "Cybersecurity", class: "cybersecurity" };
+    if (cat.includes("programming")) return { name: "Programming / AI", class: "programming" };
+    if (cat.includes("engineering")) return { name: "Engineering", class: "engineering" };
+    if (cat.includes("english")) return { name: "English & Soft Skills", class: "english" };
+    if (cat.includes("workshop")) return { name: "Workshop", class: "workshop" };
+    return { name: "Other", class: "other" };
+}
+
+function renderCertificates(data) {
+    const grid = document.getElementById('certGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    data.forEach(item => {
+        const catInfo = getPrimaryCategory(item.category);
+        const card = document.createElement('div');
+        card.className = 'cert-card';
+        card.setAttribute('data-category', item.category);
+        card.setAttribute('data-year', item.year);
+        
+        card.onclick = () => openCertModal(item.title, item.org, item.date, item.img);
+
+        card.innerHTML = `
+            <div class="cert-thumb">
+                <img src="${item.img}" alt="${item.title}" onerror="this.onerror=null; this.parentElement.classList.add('default-thumb'); this.parentElement.innerHTML='<i class=\\'fas fa-award\\'></i>';">
+                <div class="cert-overlay"><i class="fas fa-eye"></i></div>
+            </div>
+            <div class="cert-info">
+                <span class="cert-tag ${catInfo.class}">${catInfo.name}</span>
+                <h3>${item.title}</h3>
+                <p class="cert-org"><i class="fas fa-building"></i> ${item.org}</p>
+                <span class="cert-date"><i class="far fa-calendar-alt"></i> ${item.date}</span>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    const totalBadge = document.getElementById('certTotalDisplay');
+    if (totalBadge) totalBadge.textContent = certificatesData.length + "+";
+}
+
+function openCertModal(title, org, date, imgSrc) {
+    const modal = document.getElementById('certPreviewModal');
+    const modalTitle = document.getElementById('modalCertTitle');
+    const modalOrg = document.getElementById('modalCertOrg');
+    const modalDate = document.getElementById('modalCertDate');
+    const modalImg = document.getElementById('modalCertImg');
+    const downloadBtn = document.getElementById('downloadCertBtn');
+    const viewFullBtn = document.getElementById('viewFullBtn');
+    const imgContainer = document.getElementById('modalImgContainer');
+
+    modalTitle.textContent = title;
+    modalOrg.textContent = org;
+    modalDate.textContent = date;
+
+    modalImg.src = imgSrc;
+    modalImg.style.display = 'block';
+    imgContainer.style.display = 'flex';
+    downloadBtn.href = imgSrc;
+    downloadBtn.style.display = 'inline-flex';
+    viewFullBtn.href = imgSrc;
+    viewFullBtn.style.display = 'inline-flex';
+
+    modalImg.onerror = function() {
+        modalImg.style.display = 'none';
+        imgContainer.innerHTML = '<div style="padding: 40px; text-align: center; color: #94a3b8;"><i class="fas fa-image" style="font-size: 50px; color: #38bdf8; margin-bottom: 10px; display: block;"></i> Certificate verified & stored in portfolio credentials.</div>';
+        downloadBtn.style.display = 'none';
+        viewFullBtn.style.display = 'none';
+    };
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('certPreviewModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('certPreviewModal');
+    if (event.target === modal) closeCertModal();
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeCertModal();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const yearElem = document.getElementById('year');
+    if (yearElem) yearElem.textContent = new Date().getFullYear();
+    renderCertificates(certificatesData);
+
+    const searchInput = document.getElementById('certSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const yearSelect = document.getElementById('certYearSelect');
+
+    function executeFilter() {
+        const query = searchInput.value.toLowerCase().trim();
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+        const selectedYear = yearSelect.value;
+
+        const filtered = certificatesData.filter(item => {
+            const matchesSearch = item.title.toLowerCase().includes(query) || item.org.toLowerCase().includes(query);
+            const matchesCat = (activeCategory === 'all') || item.category.includes(activeCategory);
+            const matchesYear = (selectedYear === 'all') || (item.year === selectedYear);
+            return matchesSearch && matchesCat && matchesYear;
+        });
+
+        renderCertificates(filtered);
+    }
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            executeFilter();
+        });
+    });
+
+    if (searchInput) searchInput.addEventListener('input', executeFilter);
+    if (yearSelect) yearSelect.addEventListener('change', executeFilter);
+});
+</script>
 </body>
 </html>
