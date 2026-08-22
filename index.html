@@ -33,6 +33,37 @@
 </head>
 <body>
 
+<!-- ===== NAVBAR WITH CLOCK ===== -->
+<header>
+    <div class="container navbar">
+        <div class="logo-clock-group">
+            <div class="logo">SD.</div>
+            
+            <!-- Dynamic Left Clock -->
+            <div class="nav-clock">
+                <i class="fas fa-clock"></i>
+                <span id="clockTime">00:00:00</span>
+                <span id="clockPeriod">AM</span>
+                <span id="clockDate"></span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<!-- ===== HOME ===== -->
+<section id="home" class="hero">
 <!-- ===== HOME ===== -->
 <section id="home" class="hero">
     <div class="container hero-wrapper">
@@ -1572,6 +1603,35 @@ document.addEventListener('DOMContentLoaded', function () {
     if (searchInput) searchInput.addEventListener('input', executeFilter);
     if (yearSelect) yearSelect.addEventListener('change', executeFilter);
 });
+</script>
+    function startClock() {
+    const timeElem = document.getElementById('clockTime');
+    const periodElem = document.getElementById('clockPeriod');
+    const dateElem = document.getElementById('clockDate');
+
+    if (!timeElem || !periodElem) return;
+
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const period = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const formattedHours = String(hours).padStart(2, '0');
+
+    timeElem.textContent = `${formattedHours}:${minutes}:${seconds}`;
+    periodElem.textContent = period;
+
+    if (dateElem) {
+        const options = { weekday: 'short', day: '2-digit', month: 'short' };
+        dateElem.textContent = `| ${now.toLocaleDateString('en-US', options)}`;
+    }
+}
+
+setInterval(startClock, 1000);
+startClock();
 </script>
 </body>
 </html>
