@@ -4224,3 +4224,35 @@ section.personal-section .personal-row.address .personal-value {
         display: none; /* মোবাইল/ট্যাবলেটে স্ক্রিন স্পেস বাঁচাতে হাইড রাখা ভালো */
     }
 }
+/* ===== NAVBAR CLOCK STYLE ===== */
+.navbar-clock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    font-size: 13px;
+    color: #f8fafc;
+    backdrop-filter: blur(8px);
+}
+
+#clockTime {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+#clockPeriod {
+    font-size: 10px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+/* ছোট স্ক্রিন বা মোবাইলে ঘড়িটি লুকিয়ে রাখতে চাইলে */
+@media (max-width: 768px) {
+    .navbar-clock {
+        display: none;
+    }
+}
