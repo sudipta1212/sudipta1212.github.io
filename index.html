@@ -45,7 +45,18 @@
 <!-- ===== NAVBAR ===== -->
 <header>
     <div class="container navbar">
-        <div class="logo">SD.</div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="logo">SD.</div>
+            
+            <!-- Navbar Clock -->
+            <div class="navbar-clock">
+                <i class="fas fa-clock" style="color: #38bdf8; font-size: 12px;"></i>
+                <span id="clockTime">00:00:00</span>
+                <span id="clockPeriod">AM</span>
+                <span id="clockDate" style="color: #94a3b8; font-size: 11px; margin-left: 4px;"></span>
+            </div>
+        </div>
+
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
