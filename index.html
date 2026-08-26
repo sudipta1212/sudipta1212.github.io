@@ -46,6 +46,8 @@
 <li><a href="#activities">Activities</a></li>
 <li><a href="#awards">Awards</a></li>
 <li><a href="#certifications">Certifications</a></li>
+    <!-- নতুন CV অপশন -->
+<li><a href="javascript:void(0)" onclick="openCvNotice()" class="nav-cv-btn">🔒 CV</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </div>
@@ -1309,10 +1311,53 @@ document.addEventListener("DOMContentLoaded", function () {
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
 </footer>
+   
+    <!-- ===== CV NOTICE MODAL ===== -->
+<div id="cvModal" class="modal-overlay">
+  <div class="modal-card">
+    <div class="lock-icon">🔒</div>
+    <h3>Password Protected Resume</h3>
+    <p class="modal-subtitle">
+      এই CV টি সুরক্ষার জন্য পাসওয়ার্ড দিয়ে লক করা। ফাইলটি ওপেন করার পাসওয়ার্ডের জন্য অনুগ্রহ করে আমার সাথে যোগাযোগ করুন।
+    </p>
+    
+    <div class="modal-actions">
+      <!-- ফাইলটির সঠিক নাম অনুযায়ী পাথ -->
+      <a href="Sudipta%20CV2026_protected.pdf" target="_blank" class="btn-download" onclick="closeCvNotice()">Open / Download PDF</a>
+      <a href="#contact" class="btn-contact" onclick="closeCvNotice()">Contact Authority</a>
+    </div>
+    
+    <button class="btn-close" onclick="closeCvNotice()">✕</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
-
 <script>
+    // ⬇️ ঠিক এইখানে কোডটি বসাবেন ⬇️
+function openCvNotice() {
+    const modal = document.getElementById("cvModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeCvNotice() {
+    const modal = document.getElementById("cvModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+// Open Modal (আপনার আগের কোড)
+function openProject(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
 // Open Modal
 function openProject(modalId) {
     const modal = document.getElementById(modalId);
