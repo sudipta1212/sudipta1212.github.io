@@ -1673,6 +1673,47 @@ document.addEventListener('DOMContentLoaded', function () {
     if (searchInput) searchInput.addEventListener('input', executeFilter);
     if (yearSelect) yearSelect.addEventListener('change', executeFilter);
 });
+        // ===== ABOUT IMAGE AUTO-SLIDER ENGINE =====
+let currentSlideIndex = 0;
+let slideTimer;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll(".about-slide");
+    const dots = document.querySelectorAll(".about-slider-dots .dot");
+    
+    if (!slides.length) return;
+
+    if (index >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (index < 0) {
+        currentSlideIndex = slides.length - 1;
+    } else {
+        currentSlideIndex = index;
+    }
+
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    slides[currentSlideIndex].classList.add("active");
+    if (dots[currentSlideIndex]) {
+        dots[currentSlideIndex].classList.add("active");
+    }
+}
+
+function nextSlide() {
+    showSlide(currentSlideIndex + 1);
+}
+
+function setSlide(index) {
+    clearInterval(slideTimer);
+    showSlide(index);
+    slideTimer = setInterval(nextSlide, 3500); // প্রতি ৩.৫ সেকেন্ডে অটো বদলাবে
+}
+
+// পেজ লোড হলে স্বয়ংক্রিয়ভাবে স্লাইড শুরু হবে
+document.addEventListener("DOMContentLoaded", function () {
+    slideTimer = setInterval(nextSlide, 3500);
+});
 </script>
 </body>
 </html>
