@@ -221,13 +221,28 @@
     <div class="container">
         <h2 class="section-title">My Projects</h2>
 
-        <div class="projects-container">
-            <div class="project-card clickable-card" onclick="openProject('thesisModal')">
+        <!-- ===== THESIS & PRESENTATION VIDEO ===== -->
+        <div class="thesis-highlight-wrapper">
+            <!-- বামপাশ: থিসিস বিবরণ -->
+            <div class="thesis-info-box">
                 <div class="project-icon">🎓</div>
                 <span class="project-type">THESIS</span>
                 <h3>Automated Detection of Diabetic Retinopathy</h3>
-                <p>Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images.</p>
-                <span class="view-details">View Thesis Details →</span>
+                <p class="thesis-desc">
+                    Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images using MobileNetV3, EfficientNet B0, and Vision Transformers.
+                </p>
+                <div class="thesis-action-btns">
+                    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
+                </div>
+            </div>
+
+            <!-- ডানপাশ: প্রেজেন্টেশন ভিডিও -->
+            <div class="thesis-video-box">
+                <!-- ভিডিও ফাইলের নাম যদি thesis_video.mp4 হয় -->
+                <video controls poster="profile.png" preload="metadata">
+                    <source src="thesis_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
