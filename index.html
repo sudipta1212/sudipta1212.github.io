@@ -222,75 +222,49 @@
         <h2 class="section-title">My Projects</h2>
 
         <!-- ===== THESIS & PRESENTATION VIDEO ===== -->
-        <div class="thesis-highlight-wrapper">
-            <!-- বামপাশ: থিসিস বিবরণ -->
-            <div class="thesis-info-box">
-                <div class="project-icon">🎓</div>
-                <span class="project-type">THESIS</span>
-                <h3>Automated Detection of Diabetic Retinopathy</h3>
-                <p class="thesis-desc">
-                    Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images using MobileNetV3, EfficientNet B0, and Vision Transformers.
-                </p>
-                <div class="thesis-action-btns">
-                    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
-                </div>
-            </div>
+<div class="thesis-highlight-wrapper">
+    <!-- বামপাশ: থিসিস বিবরণ -->
+    <div class="thesis-info-box">
+        <div class="project-icon">🎓</div>
+        <span class="project-type">THESIS & WEB APPLICATION</span>
+        <h3>Automated Detection of Diabetic Retinopathy</h3>
+        <p class="thesis-desc">
+            Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images using MobileNetV3, EfficientNet B0, and Vision Transformers.
+        </p>
+        <p class="thesis-sub-desc">
+            Also developed an interactive, full-stack Web Application for real-time model deployment and clinical fundus image diagnosis.
+        </p>
+        <div class="thesis-action-btns">
+            <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
+        </div>
+    </div>
 
-            <!-- ডানপাশ: প্রেজেন্টেশন ভিডিও -->
-            <div class="thesis-video-box">
-                <!-- ভিডিও ফাইলের নাম যদি thesis_video.mp4 হয় -->
-                <video controls poster="profile.png" preload="metadata">
+    <!-- ডানপাশ: দুইটি ভিডিও (একটির নিচে আরেকটি) -->
+    <div class="thesis-videos-column">
+        <!-- ভিডিও ১: প্রেজেন্টেশন -->
+        <div class="thesis-video-item">
+            <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation Video</span>
+            <div class="video-container">
+                <video controls preload="metadata">
                     <source src="thesis_video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </div>
 
-        <h3 class="project-category-title">Engineering Projects</h3>
-
-        <div class="projects-container">
-            <div class="project-card clickable-card" onclick="openProject('solarModal')">
-                <div class="project-icon">☀️</div>
-                <span class="project-type">EMBEDDED SYSTEM</span>
-                <h3>Arduino-Based Single-Axis Solar Tracking System</h3>
-                <p>An Arduino-based solar tracking system designed to optimize solar panel positioning.</p>
-                <span class="view-details">View Project Details →</span>
-            </div>
-
-            <div class="project-card clickable-card" onclick="openProject('streetLightModal')">
-                <div class="project-icon">💡</div>
-                <span class="project-type">RENEWABLE ENERGY</span>
-                <h3>Automatic Solar-Powered Street Light Controller</h3>
-                <p>An automated solar-powered lighting system for intelligent dusk-to-dawn operation.</p>
-                <span class="view-details">View Project Details →</span>
-            </div>
-
-            <div class="project-card clickable-card" onclick="openProject('trafficModal')">
-                <div class="project-icon">🚦</div>
-                <span class="project-type">PLC AUTOMATION</span>
-                <h3>PLC-Based Traffic Light Control System</h3>
-                <p>An automated traffic management system developed using industrial PLC modules.</p>
-                <span class="view-details">View Project Details →</span>
-            </div>
-
-            <div class="project-card clickable-card" onclick="openProject('lineFollowerModal')">
-                <div class="project-icon">🤖</div>
-                <span class="project-type">ROBOTICS</span>
-                <h3>Autonomous Line Follower Robot</h3>
-                <p>A microcontroller-based autonomous robot designed for real-time path tracking.</p>
-                <span class="view-details">View Project Details →</span>
-            </div>
-
-            <div class="project-card clickable-card" onclick="openProject('waterModal')">
-                <div class="project-icon">💧</div>
-                <span class="project-type">EMBEDDED SYSTEM</span>
-                <h3>Automated Water Level Indicator and Controller</h3>
-                <p>An embedded solution for water-level monitoring and automatic pump control.</p>
-                <span class="view-details">View Project Details →</span>
+        <!-- ভিডিও ২: ওয়েব অ্যাপ ডেমো -->
+        <div class="thesis-video-item">
+            <span class="video-label"><i class="fas fa-globe"></i> Web App Demo</span>
+            <div class="video-container">
+                <!-- আপনার অ্যাপ ডেমো ভিডিওর ফাইলের নাম (যেমন: app_demo.mp4) বসিয়ে দিন -->
+                <video controls preload="metadata">
+                    <source src="app_demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- ===== THESIS MODAL ===== -->
 <div id="thesisModal" class="project-modal">
