@@ -221,52 +221,98 @@
     <div class="container">
         <h2 class="section-title">My Projects</h2>
 
-<!-- ===== THESIS & DUAL VIDEOS (SPLIT LAYOUT) ===== -->
-<div class="thesis-split-wrapper">
-    <!-- Left Side: Thesis Description -->
-    <div class="thesis-left-details">
-        <div class="project-icon">🎓</div>
-        <span class="project-type">THESIS & WEB APPLICATION</span>
-        <h3>Automated Detection of Diabetic Retinopathy</h3>
-        
-        <p class="thesis-desc">
-            Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images using MobileNetV3, EfficientNet B0, and Vision Transformers.
-        </p>
-        
-        <p class="thesis-sub-desc">
-            Also developed an interactive, full-stack Web Application for real-time model deployment and clinical fundus image diagnosis.
-        </p>
+        <!-- ===== THESIS & DUAL VIDEOS (SPLIT LAYOUT) ===== -->
+        <div class="thesis-split-wrapper">
+            <!-- Left Side: Thesis Description -->
+            <div class="thesis-left-details">
+                <div class="project-icon">🎓</div>
+                <span class="project-type">THESIS & WEB APPLICATION</span>
+                <h3>Automated Detection of Diabetic Retinopathy</h3>
+                
+                <p class="thesis-desc">
+                    Deep Learning based automated detection and classification of Diabetic Retinopathy from retinal fundus images using MobileNetV3, EfficientNet B0, and Vision Transformers.
+                </p>
+                
+                <p class="thesis-sub-desc">
+                    Also developed an interactive, full-stack Web Application for real-time model deployment and clinical fundus image diagnosis.
+                </p>
 
-        <div class="thesis-action-btns">
-            <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
-        </div>
-    </div>
+                <div class="thesis-action-btns">
+                    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
+                </div>
+            </div>
 
-    <!-- Right Side: 2 Videos Side-by-Side -->
-    <div class="thesis-right-videos">
-        <!-- Video 1: Presentation -->
-        <div class="thesis-video-box">
-            <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
-            <div class="video-frame">
-                <video controls preload="metadata">
-                    <source src="thesis_video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <!-- Right Side: 2 Videos Side-by-Side -->
+            <div class="thesis-right-videos">
+                <!-- Video 1: Presentation -->
+                <div class="thesis-video-box">
+                    <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
+                    <div class="video-frame">
+                        <video controls preload="metadata">
+                            <source src="thesis_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video 2: Web App Demo -->
+                <div class="thesis-video-box">
+                    <span class="video-label"><i class="fas fa-laptop-code"></i> App Demo</span>
+                    <div class="video-frame">
+                        <video controls preload="metadata">
+                            <source src="app_demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Video 2: Web App Demo -->
-        <div class="thesis-video-box">
-            <span class="video-label"><i class="fas fa-laptop-code"></i> App Demo</span>
-            <div class="video-frame">
-                <video controls preload="metadata">
-                    <source src="app_demo.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+        <h3 class="project-category-title">Engineering Projects</h3>
+
+        <div class="projects-container">
+            <div class="project-card clickable-card" onclick="openProject('solarModal')">
+                <div class="project-icon">☀️️</div>
+                <span class="project-type">EMBEDDED SYSTEM</span>
+                <h3>Arduino-Based Single-Axis Solar Tracking System</h3>
+                <p>An Arduino-based solar tracking system designed to optimize solar panel positioning.</p>
+                <span class="view-details">View Project Details →</span>
+            </div>
+
+            <div class="project-card clickable-card" onclick="openProject('streetLightModal')">
+                <div class="project-icon">💡</div>
+                <span class="project-type">RENEWABLE ENERGY</span>
+                <h3>Automatic Solar-Powered Street Light Controller</h3>
+                <p>An automated solar-powered lighting system for intelligent dusk-to-dawn operation.</p>
+                <span class="view-details">View Project Details →</span>
+            </div>
+
+            <div class="project-card clickable-card" onclick="openProject('trafficModal')">
+                <div class="project-icon">🚦</div>
+                <span class="project-type">PLC AUTOMATION</span>
+                <h3>PLC-Based Traffic Light Control System</h3>
+                <p>An automated traffic management system developed using industrial PLC modules.</p>
+                <span class="view-details">View Project Details →</span>
+            </div>
+
+            <div class="project-card clickable-card" onclick="openProject('lineFollowerModal')">
+                <div class="project-icon">🤖</div>
+                <span class="project-type">ROBOTICS</span>
+                <h3>Autonomous Line Follower Robot</h3>
+                <p>A microcontroller-based autonomous robot designed for real-time path tracking.</p>
+                <span class="view-details">View Project Details →</span>
+            </div>
+
+            <div class="project-card clickable-card" onclick="openProject('waterModal')">
+                <div class="project-icon">💧</div>
+                <span class="project-type">EMBEDDED SYSTEM</span>
+                <h3>Automated Water Level Indicator and Controller</h3>
+                <p>An embedded solution for water-level monitoring and automatic pump control.</p>
+                <span class="view-details">View Project Details →</span>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ===== THESIS MODAL ===== -->
 <div id="thesisModal" class="project-modal">
