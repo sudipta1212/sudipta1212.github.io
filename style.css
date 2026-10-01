@@ -4369,33 +4369,103 @@ section.personal-section .personal-row.address .personal-value {
         text-align: left;
     }
 }
-/* ডানপাশের দুটি ভিডিও রাখার কলাম */
-.thesis-videos-column {
-    flex: 1.25;
+/* ===== THESIS SPLIT LAYOUT (LEFT DETAILS + RIGHT 2 VIDEOS) ===== */
+.thesis-split-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.85));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 45px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.thesis-video-item {
+/* Left Side Content */
+.thesis-left-details {
+    flex: 1;
+}
+
+.thesis-left-details .project-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.thesis-left-details .project-type {
+    display: inline-block;
+    color: #38bdf8;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.thesis-left-details h3 {
+    color: #f8fafc;
+    font-size: 24px;
+    margin-bottom: 12px;
+    line-height: 1.35;
+}
+
+.thesis-desc {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.thesis-sub-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.btn-thesis-modal {
+    background: transparent;
+    border: 1.5px solid #38bdf8;
+    color: #38bdf8;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-thesis-modal:hover {
+    background: #38bdf8;
+    color: #0b1120;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Right Side: 2 Videos Side-by-Side */
+.thesis-right-videos {
+    flex: 1.4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+.thesis-video-box {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-/* প্রতিটি ভিডিওর ওপর ছোট লেবেল বা টাইটেল */
-.video-label {
+.thesis-video-box .video-label {
     color: #38bdf8;
     font-size: 13px;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 7px;
-    letter-spacing: 0.5px;
+    gap: 6px;
 }
 
-/* প্রতিটি ভিডিওর ফ্রেম */
-.video-container {
+.video-frame {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -4406,16 +4476,29 @@ section.personal-section .personal-row.address .personal-value {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-.video-container video {
+.video-frame video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.thesis-sub-desc {
-    color: #94a3b8;
-    font-size: 14.5px;
-    line-height: 1.6;
-    margin-bottom: 22px;
+/* Responsive for Tablet & Mobile */
+@media (max-width: 1100px) {
+    .thesis-split-wrapper {
+        flex-direction: column;
+        padding: 25px;
+        gap: 25px;
+    }
+
+    .thesis-right-videos {
+        flex: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .thesis-right-videos {
+        grid-template-columns: 1fr;
+    }
 }
