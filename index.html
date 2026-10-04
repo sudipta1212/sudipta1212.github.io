@@ -302,17 +302,17 @@
                     For 5-class severity grading, <strong>EfficientNet-B0</strong> achieved top performance with <strong>98.1% validation accuracy</strong> and <strong>98.3% test accuracy</strong>.
                 </div>
 
-                <!-- Action Buttons -->
+                <!-- Action Buttons: updated to .jpeg -->
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                     <a href="iCONEECT_presentation_slides.pdf" target="_blank" class="btn" style="text-decoration: none; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-file-powerpoint"></i> View Presentation Slides (PDF)
                     </a>
 
-                    <button onclick="openCertModal('Certificate of Presentation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '01.jpg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+                    <button onclick="openCertModal('Certificate of Presentation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '01.jpeg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-award"></i> Presentation Certificate
                     </button>
 
-                    <button onclick="openCertModal('Certificate of Appreciation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '02.jpg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+                    <button onclick="openCertModal('Certificate of Appreciation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '02.jpeg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-certificate"></i> Appreciation Certificate
                     </button>
                 </div>
@@ -511,7 +511,7 @@
         <div class="interest-heading"><span>✦</span> Personal Interests & Creative Pursuits</div>
         <div class="interest-grid">
             <div class="interest-card"><div class="interest-icon">📚</div><h3>Reading</h3><p>Exploring knowledge, ideas and different perspectives.</p></div>
-            <div class="interest-card"><div class="interest-icon">✍️️</div><h3>Writing</h3><p>Expressing thoughts and ideas through creative writing.</p></div>
+            <div class="interest-card"><div class="interest-icon">✍</div><h3>Writing</h3><p>Expressing thoughts and ideas through creative writing.</p></div>
             <div class="interest-card"><div class="interest-icon">📝</div><h3>Poetry</h3><p>Finding creativity and emotion through poetic expression.</p></div>
             <div class="interest-card"><div class="interest-icon">📷</div><h3>Nature Photography</h3><p>Capturing the beauty and details of the natural world.</p></div>
             <div class="interest-card"><div class="interest-icon">🏸</div><h3>Playing</h3><p>Maintaining an active lifestyle through recreational activities.</p></div>
@@ -946,14 +946,14 @@ document.addEventListener("keydown", function(event) {
 // =====================================================
 
 const certificatesData = [
-    // ⭐️ iCONEECT 2026 Conference Certificates
+    // ⭐️ iCONEECT 2026 Conference Certificates (Updated strictly to .jpeg)
     { 
         title: "Certificate of Presentation (Paper ID: 748) - iCONEECT 2026", 
         org: "IEEE Bangladesh Section & Premier University", 
         date: "September 25–26, 2026", 
         year: "2026", 
         category: "ieee programming", 
-        img: "01.jpg" 
+        img: "01.jpeg" 
     },
     { 
         title: "Certificate of Appreciation (Paper ID: 748) - iCONEECT 2026", 
@@ -961,10 +961,10 @@ const certificatesData = [
         date: "September 25–26, 2026", 
         year: "2026", 
         category: "ieee programming", 
-        img: "02.jpg" 
+        img: "02.jpeg" 
     },
 
-    // Verified Certificates
+    // Verified Credentials
     { title: "The SDG Primer", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "workshop", img: "1.jpg" },
     { title: "Professional Video Editing", org: "Futurenation", date: "February 26, 2025", year: "2025", category: "workshop", img: "2.jpg" },
     { title: "Motion Graphics", org: "Futurenation", date: "January 11, 2025", year: "2025", category: "workshop", img: "3.jpg" },
@@ -1109,12 +1109,12 @@ function renderCertificates(data) {
     if (totalBadge) totalBadge.textContent = certificatesData.length + "+";
 }
 
+// Robust openCertModal function that reconstructs the image element safely
 function openCertModal(title, org, date, imgSrc) {
     const modal = document.getElementById('certPreviewModal');
     const modalTitle = document.getElementById('modalCertTitle');
     const modalOrg = document.getElementById('modalCertOrg');
     const modalDate = document.getElementById('modalCertDate');
-    const modalImg = document.getElementById('modalCertImg');
     const downloadBtn = document.getElementById('downloadCertBtn');
     const viewFullBtn = document.getElementById('viewFullBtn');
     const imgContainer = document.getElementById('modalImgContainer');
@@ -1123,9 +1123,10 @@ function openCertModal(title, org, date, imgSrc) {
     modalOrg.textContent = org;
     modalDate.textContent = date;
 
-    modalImg.src = imgSrc;
-    modalImg.style.display = 'block';
-    imgContainer.style.display = 'flex';
+    // Reset container and create image cleanly
+    imgContainer.innerHTML = `<img id="modalCertImg" src="${imgSrc}" alt="${title}" style="max-width:100%; max-height:68vh; border-radius:8px; display:block; margin:auto;">`;
+    const modalImg = document.getElementById('modalCertImg');
+
     downloadBtn.href = imgSrc;
     downloadBtn.style.display = 'inline-flex';
     viewFullBtn.href = imgSrc;
