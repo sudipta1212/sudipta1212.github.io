@@ -8,11 +8,9 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 
-<!-- Font Awesome Icons -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMC370114Q"></script>
     <script>
@@ -35,22 +33,23 @@
 
 <!-- ===== NAVBAR ===== -->
 <header>
-<div class="container navbar">
-<div class="logo">SD.</div>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#activities">Activities</a></li>
-<li><a href="#awards">Awards</a></li>
-<li><a href="#certifications">Certifications</a></li>
-    <!-- নতুন CV অপশন -->
-<li><a href="javascript:void(0)" onclick="openCvNotice()" class="nav-cv-btn">🔒 CV</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
+    <div class="container navbar">
+        <div class="logo">SD.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <!-- CV Option -->
+            <li><a href="javascript:void(0)" onclick="openCvNotice()" class="nav-cv-btn">🔒 CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 </header>
 
 <!-- ===== HOME ===== -->
@@ -68,7 +67,7 @@
                 Passion for Engineering, IoT, Electronics, Programming and innovative technology solutions.
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn">Explore My Work</a>
+                <a href="#publications" class="btn">Explore My Work</a>
                 <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
@@ -100,7 +99,7 @@
                     <img src="about10.jpg" class="about-slide" alt="Sudipta Das Project Day">
                 </div>
 
-                <!-- নেভিগেশন ডট (১০টি ছবির জন্য) -->
+                <!-- নেভিগেশন ডট -->
                 <div class="about-slider-dots">
                     <span class="dot active" onclick="setSlide(0)"></span>
                     <span class="dot" onclick="setSlide(1)"></span>
@@ -115,7 +114,7 @@
                 </div>
             </div>
 
-            <!-- ডানপাশে আপনার বিবরণ -->
+            <!-- বিবরণ -->
             <div class="about-text-content">
                 <p>
                     I am Sudipta Das, an Electrical and Electronic Engineering graduate and currently pursuing my M.Sc. in Nuclear Engineering. I am driven by a passion for engineering, emerging technologies, innovation, and real-world problem solving.
@@ -216,14 +215,13 @@
     </div>
 </section>
 
-<!-- ===== PROJECTS & THESIS ===== -->
+<!-- ===== PROJECTS & PUBLICATIONS ===== -->
 <section id="projects">
     <div class="container">
-        <h2 class="section-title">My Projects</h2>
+        <h2 class="section-title">Research & Projects</h2>
 
-        <!-- ===== THESIS & DUAL VIDEOS (SPLIT LAYOUT) ===== -->
+        <!-- ===== 1. UNDERGRADUATE THESIS & DUAL VIDEOS ===== -->
         <div class="thesis-split-wrapper">
-            <!-- Left Side: Thesis Description -->
             <div class="thesis-left-details">
                 <div class="project-icon">🎓</div>
                 <span class="project-type">THESIS & WEB APPLICATION</span>
@@ -242,9 +240,7 @@
                 </div>
             </div>
 
-            <!-- Right Side: 2 Videos Side-by-Side -->
             <div class="thesis-right-videos">
-                <!-- Video 1: Presentation -->
                 <div class="thesis-video-box">
                     <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
                     <div class="video-frame">
@@ -255,7 +251,6 @@
                     </div>
                 </div>
 
-                <!-- Video 2: Web App Demo -->
                 <div class="thesis-video-box">
                     <span class="video-label"><i class="fas fa-laptop-code"></i> App Demo</span>
                     <div class="video-frame">
@@ -268,11 +263,68 @@
             </div>
         </div>
 
+        <!-- ===== 2. CONFERENCE PAPER & ORAL PRESENTATION (iCONEECT 2026) ===== -->
+        <div id="publications" class="conference-paper-wrapper" style="margin: 45px 0 40px 0;">
+            <div style="background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 20px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.35);">
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(56, 189, 248, 0.12); color: #38bdf8; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px;">
+                            <i class="fas fa-file-contract"></i> IEEE CONFERENCE PAPER
+                        </span>
+                        <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(234, 179, 8, 0.12); color: #facc15; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;">
+                            <i class="fas fa-clock"></i> Accepted & Presented (In Press)
+                        </span>
+                    </div>
+                    <span style="color: #94a3b8; font-size: 13px;"><i class="fas fa-barcode"></i> Paper ID: <strong>748</strong></span>
+                </div>
+
+                <h3 style="color: #f8fafc; font-size: 22px; font-weight: 700; margin-bottom: 14px; line-height: 1.4;">
+                    A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints
+                </h3>
+
+                <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 10px; line-height: 1.6;">
+                    <strong>Authors:</strong> Md. Hasibur Rahman, <strong>Sudipta Das</strong>, Mrs. Samina Alam, Rajendra Raj Shearam, Joy Dey
+                </p>
+
+                <p style="color: #94a3b8; font-size: 13.5px; margin-bottom: 14px; line-height: 1.6;">
+                    <i class="fas fa-university" style="color: #38bdf8;"></i> <strong>Conference:</strong> 2026 1st International Conference on Next-Generation Electrical & Electronics, Computer Systems, and Technologies (iCONEECT 2026)<br>
+                    <i class="fas fa-handshake" style="color: #38bdf8;"></i> <strong>Technical Co-Sponsor:</strong> IEEE Bangladesh Section | <strong>Venue:</strong> Premier University, Chattogram (25–26 Sept 2026)
+                </p>
+
+                <div style="background: rgba(234, 179, 8, 0.08); border-left: 3px solid #facc15; padding: 10px 14px; border-radius: 6px; margin-bottom: 18px; font-size: 13px; color: #fef08a;">
+                    <i class="fas fa-info-circle"></i> <strong>Publication Notice:</strong> Presented at iCONEECT 2026. The official conference proceedings are currently in process for upcoming IEEE digital publication.
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38bdf8; padding: 14px 18px; border-radius: 8px; margin-bottom: 24px; font-size: 13.5px; color: #cbd5e1; line-height: 1.7;">
+                    <strong>Key Benchmarks:</strong> Evaluated on 103,020 augmented fundus images across 5 clinical severity stages. 
+                    <strong>MobileNetV3-Large</strong> achieved <strong>98.91% validation accuracy</strong> for binary detection with only ~5.4M parameters (outperforming ViT-Base's 86M parameters). 
+                    For 5-class severity grading, <strong>EfficientNet-B0</strong> achieved top performance with <strong>98.1% validation accuracy</strong> and <strong>98.3% test accuracy</strong>.
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="iCONEECT_presentation_slides.pdf" target="_blank" class="btn" style="text-decoration: none; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-file-powerpoint"></i> View Presentation Slides (PDF)
+                    </a>
+
+                    <button onclick="openCertModal('Certificate of Presentation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '01.jpg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-award"></i> Presentation Certificate
+                    </button>
+
+                    <button onclick="openCertModal('Certificate of Appreciation (Paper ID: 748)', 'iCONEECT 2026 | IEEE Bangladesh Section & Premier University', 'September 25-26, 2026', '02.jpg')" class="btn btn-outline" style="cursor: pointer; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-certificate"></i> Appreciation Certificate
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 3. HARDWARE & ENGINEERING PROJECTS ===== -->
         <h3 class="project-category-title">Engineering Projects</h3>
 
         <div class="projects-container">
             <div class="project-card clickable-card" onclick="openProject('solarModal')">
-                <div class="project-icon">☀️️</div>
+                <div class="project-icon">☀</div>
                 <span class="project-type">EMBEDDED SYSTEM</span>
                 <h3>Arduino-Based Single-Axis Solar Tracking System</h3>
                 <p>An Arduino-based solar tracking system designed to optimize solar panel positioning.</p>
@@ -333,7 +385,7 @@
     </div>
 </div>
 
-<!-- ===== SOLAR TRACKING MODAL ===== -->
+<!-- ===== OTHER PROJECT MODALS ===== -->
 <div id="solarModal" class="project-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeProject('solarModal')">×</button>
@@ -345,7 +397,6 @@
     </div>
 </div>
 
-<!-- ===== STREET LIGHT MODAL ===== -->
 <div id="streetLightModal" class="project-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeProject('streetLightModal')">×</button>
@@ -357,7 +408,6 @@
     </div>
 </div>
 
-<!-- ===== PLC MODAL ===== -->
 <div id="trafficModal" class="project-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeProject('trafficModal')">×</button>
@@ -369,7 +419,6 @@
     </div>
 </div>
 
-<!-- ===== LINE FOLLOWER MODAL ===== -->
 <div id="lineFollowerModal" class="project-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeProject('lineFollowerModal')">×</button>
@@ -381,7 +430,6 @@
     </div>
 </div>
 
-<!-- ===== WATER LEVEL MODAL ===== -->
 <div id="waterModal" class="project-modal">
     <div class="modal-content">
         <button class="close-modal" onclick="closeProject('waterModal')">×</button>
@@ -399,7 +447,6 @@
         <h2 class="section-title">My <span>Education</span></h2>
         
         <div class="education-grid">
-            <!-- M.Sc. -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-graduation-cap"></i> Post Graduation</div>
                 <div class="edu-year">July 2026 – Present</div>
@@ -408,7 +455,6 @@
                 <div class="edu-glow-bar"></div>
             </div>
 
-            <!-- B.Sc. -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-user-graduate"></i> Graduation</div>
                 <div class="edu-year">Passing Year: 16 May 2026</div>
@@ -417,7 +463,6 @@
                 <div class="edu-glow-bar"></div>
             </div>
 
-            <!-- HSC -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-school"></i> Higher Secondary</div>
                 <div class="edu-year">Passing Year: 2021</div>
@@ -427,7 +472,6 @@
                 <div class="edu-glow-bar"></div>
             </div>
 
-            <!-- SSC -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-book-open"></i> Secondary</div>
                 <div class="edu-year">Passing Year: 2019</div>
@@ -437,7 +481,6 @@
                 <div class="edu-glow-bar"></div>
             </div>
 
-            <!-- JSC -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-certificate"></i> Junior Secondary</div>
                 <div class="edu-year">Passing Year: 2016</div>
@@ -447,7 +490,6 @@
                 <div class="edu-glow-bar"></div>
             </div>
 
-            <!-- PSC -->
             <div class="education-card">
                 <div class="edu-badge"><i class="fas fa-award"></i> Primary</div>
                 <div class="edu-year">Passing Year: 2013</div>
@@ -469,7 +511,7 @@
         <div class="interest-heading"><span>✦</span> Personal Interests & Creative Pursuits</div>
         <div class="interest-grid">
             <div class="interest-card"><div class="interest-icon">📚</div><h3>Reading</h3><p>Exploring knowledge, ideas and different perspectives.</p></div>
-            <div class="interest-card"><div class="interest-icon">✍️</div><h3>Writing</h3><p>Expressing thoughts and ideas through creative writing.</p></div>
+            <div class="interest-card"><div class="interest-icon">✍️️</div><h3>Writing</h3><p>Expressing thoughts and ideas through creative writing.</p></div>
             <div class="interest-card"><div class="interest-icon">📝</div><h3>Poetry</h3><p>Finding creativity and emotion through poetic expression.</p></div>
             <div class="interest-card"><div class="interest-icon">📷</div><h3>Nature Photography</h3><p>Capturing the beauty and details of the natural world.</p></div>
             <div class="interest-card"><div class="interest-icon">🏸</div><h3>Playing</h3><p>Maintaining an active lifestyle through recreational activities.</p></div>
@@ -508,6 +550,7 @@
                     <p>Promoted events and engaged <strong>500+ students</strong> through social media campaigns.</p>
                 </div>
             </div>
+
             <div class="leadership-card">
                 <div class="leadership-header">
                     <div class="leadership-icon">🎨</div>
@@ -521,7 +564,7 @@
                     <p>Led the visual branding, creative assets, and social media campaign designs for the event.</p>
                 </div>
             </div>
-<!-- iCONEECT 2026 -->
+
             <div class="leadership-card">
                 <div class="leadership-header">
                     <div class="leadership-icon">🌐</div>
@@ -554,608 +597,144 @@
     </div>
 </section>
 
-
-<!-- ===== PREMIUM AWARDS & COMPETITIONS ===== -->
-
+<!-- ===== AWARDS & COMPETITIONS ===== -->
 <section id="awards">
-
     <div class="awards-bg-glow"></div>
-
     <h2 class="awards-title">Awards & Competitions</h2>
-
     <div class="awards-grid">
-
-        <!-- Award 1 -->
         <div class="award-card">
-
             <div class="award-icon">🏆</div>
-
             <h3>Best Presenter Award</h3>
-
             <h4>“PROJECT DAY 2023”</h4>
-
             <p>Organized by Premier University.</p>
-
         </div>
 
-
-        <!-- Award 2 -->
         <div class="award-card">
-
             <div class="award-icon">🤖</div>
-
             <h3>Line Follower Robot Race</h3>
-
             <h4>Bangabandhu Innovation Fair 2024</h4>
-
             <p>Certificate of Participation, Premier University.</p>
-
         </div>
 
-
-        <!-- Award 3 -->
         <div class="award-card">
-
             <div class="award-icon">📊</div>
-
             <h3>Poster Presentation</h3>
-
             <h4>Bangabandhu Innovation Fair 2024</h4>
-
             <p>Certificate of Participation, Premier University.</p>
-
         </div>
-
     </div>
-
 </section>
 
-
 <style>
-
-/* =====================================================
-   PREMIUM AWARDS SECTION
-   ===================================================== */
-
+/* PREMIUM AWARDS SECTION */
 #awards {
-
     position: relative;
-
     padding: 90px 20px;
-
     background: #0b1120;
-
     overflow: hidden;
-
 }
-
-
-/* Background Glow */
-
 .awards-bg-glow {
-
     position: absolute;
-
     width: 500px;
     height: 500px;
-
     left: 50%;
     top: 40%;
-
     transform: translate(-50%, -50%);
-
-    background: radial-gradient(
-        circle,
-        rgba(56,189,248,0.12),
-        transparent 70%
-    );
-
+    background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
     filter: blur(20px);
-
     animation: awardsGlow 6s ease-in-out infinite alternate;
-
     pointer-events: none;
-
 }
-
-
 @keyframes awardsGlow {
-
-    0% {
-
-        transform: translate(-50%, -50%) scale(0.8);
-
-        opacity: 0.4;
-
-    }
-
-    100% {
-
-        transform: translate(-50%, -50%) scale(1.25);
-
-        opacity: 1;
-
-    }
-
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; }
+    100% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
 }
-
-
-/* ===== TITLE ===== */
-
 .awards-title {
-
     position: relative;
-
     text-align: center;
-
     color: #38bdf8;
-
     font-size: 48px;
-
     margin-bottom: 60px;
-
     font-weight: 700;
-
     letter-spacing: 1px;
-
-    animation: titleAppear 1s ease forwards;
-
 }
-
-
-@keyframes titleAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(-40px);
-
-        filter: blur(8px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-        filter: blur(0);
-
-    }
-
-}
-
-
-/* ===== GRID ===== */
-
 .awards-grid {
-
     position: relative;
-
     max-width: 1150px;
-
     margin: auto;
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 28px;
-
 }
-
-
-/* ===== CARD ===== */
-
 .award-card {
-
     position: relative;
-
     padding: 32px;
-
     min-height: 260px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(17,24,39,0.95),
-        rgba(15,23,42,0.85)
-    );
-
+    background: linear-gradient(145deg, rgba(17,24,39,0.95), rgba(15,23,42,0.85));
     border: 1px solid rgba(56,189,248,0.25);
-
     border-radius: 22px;
-
     overflow: hidden;
-
     opacity: 0;
-
-    transform:
-        translateY(80px)
-        scale(0.92);
-
-    transition:
-
-        opacity 0.8s ease,
-
-        transform 0.8s cubic-bezier(.2,.8,.2,1),
-
-        box-shadow 0.4s ease,
-
-        border-color 0.4s ease;
-
+    transform: translateY(80px) scale(0.92);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease, border-color 0.4s ease;
     backdrop-filter: blur(12px);
-
 }
-
-
-/* Visible cards */
-
 .award-card.show {
-
     opacity: 1;
-
-    transform:
-        translateY(0)
-        scale(1);
-
+    transform: translateY(0) scale(1);
 }
-
-
-/* Stagger */
-
-.award-card:nth-child(1) {
-
-    transition-delay: 0.1s;
-
-}
-
-
-.award-card:nth-child(2) {
-
-    transition-delay: 0.25s;
-
-}
-
-
-.award-card:nth-child(3) {
-
-    transition-delay: 0.4s;
-
-}
-
-
-/* ===== MOVING SHINE ===== */
-
-.award-card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 80px;
-
-    height: 160%;
-
-    top: -30%;
-
-    left: -150px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.15),
-        transparent
-    );
-
-    transform: rotate(25deg);
-
-    transition: 0.9s ease;
-
-}
-
-
-/* Shine on hover */
-
-.award-card:hover::before {
-
-    left: 120%;
-
-}
-
-
-/* ===== TOP GLOW ===== */
-
-.award-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 100%;
-
-    height: 2px;
-
-    top: 0;
-
-    left: 0;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #38bdf8,
-        transparent
-    );
-
-    opacity: 0;
-
-    transition: 0.4s ease;
-
-}
-
-
-.award-card:hover::after {
-
-    opacity: 1;
-
-}
-
-
-/* ===== HOVER ===== */
-
+.award-card:nth-child(1) { transition-delay: 0.1s; }
+.award-card:nth-child(2) { transition-delay: 0.25s; }
+.award-card:nth-child(3) { transition-delay: 0.4s; }
 .award-card:hover {
-
-    transform:
-        translateY(-15px)
-        scale(1.025);
-
+    transform: translateY(-15px) scale(1.025);
     border-color: rgba(56,189,248,0.8);
-
-    box-shadow:
-
-        0 25px 60px rgba(0,0,0,0.45),
-
-        0 0 30px rgba(56,189,248,0.12);
-
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45), 0 0 30px rgba(56,189,248,0.12);
 }
-
-
-/* ===== ICON ===== */
-
 .award-icon {
-
     position: relative;
-
     width: 60px;
-
     height: 60px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 34px;
-
     margin-bottom: 22px;
-
     border-radius: 16px;
-
     background: rgba(56,189,248,0.08);
-
     border: 1px solid rgba(56,189,248,0.18);
-
     transition: 0.5s ease;
-
 }
-
-
-/* Icon hover */
-
-.award-card:hover .award-icon {
-
-    transform:
-
-        translateY(-8px)
-
-        scale(1.12)
-
-        rotate(5deg);
-
-    box-shadow:
-
-        0 0 25px rgba(56,189,248,0.25);
-
-    animation: iconFloat 1.5s ease-in-out infinite;
-
-}
-
-
-@keyframes iconFloat {
-
-    0%,100% {
-
-        transform:
-            translateY(-8px)
-            scale(1.12)
-            rotate(5deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-14px)
-            scale(1.16)
-            rotate(-5deg);
-
-    }
-
-}
-
-
-/* ===== CARD TEXT ===== */
-
-.award-card h3 {
-
-    color: #f8fafc;
-
-    font-size: 21px;
-
-    margin: 0 0 10px;
-
-    transition: 0.3s ease;
-
-}
-
-
-.award-card:hover h3 {
-
-    color: #38bdf8;
-
-}
-
-
-.award-card h4 {
-
-    color: #cbd5e1;
-
-    font-size: 15px;
-
-    margin: 0 0 12px;
-
-    line-height: 1.5;
-
-}
-
-
-.award-card p {
-
-    color: #94a3b8;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-    margin: 0;
-
-}
-
-
-/* =====================================================
-   TABLET
-   ===================================================== */
+.award-card h3 { color: #f8fafc; font-size: 21px; margin: 0 0 10px; }
+.award-card h4 { color: #cbd5e1; font-size: 15px; margin: 0 0 12px; }
+.award-card p { color: #94a3b8; font-size: 13px; line-height: 1.6; margin: 0; }
 
 @media (max-width: 900px) {
-
-    .awards-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-    }
-
-    .awards-title {
-
-        font-size: 40px;
-
-    }
-
+    .awards-grid { grid-template-columns: repeat(2, 1fr); }
+    .awards-title { font-size: 40px; }
 }
-
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
-
 @media (max-width: 600px) {
-
-    #awards {
-
-        padding: 70px 18px;
-
-    }
-
-    .awards-title {
-
-        font-size: 32px;
-
-        margin-bottom: 40px;
-
-    }
-
-    .awards-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-
-    }
-
-    .award-card {
-
-        min-height: auto;
-
-        padding: 26px;
-
-    }
-
-    .award-card:hover {
-
-        transform:
-            translateY(-7px)
-            scale(1.01);
-
-    }
-
+    #awards { padding: 70px 18px; }
+    .awards-title { font-size: 32px; margin-bottom: 40px; }
+    .awards-grid { grid-template-columns: 1fr; gap: 20px; }
 }
-
 </style>
 
-
-<!-- ===== AWARDS SCROLL ANIMATION ===== -->
-
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
-
-    const cards =
-        document.querySelectorAll(".award-card");
-
-
-    const observer =
-        new IntersectionObserver(
-
-            function (entries) {
-
-                entries.forEach(function (entry) {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("show");
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.15
+    const cards = document.querySelectorAll(".award-card");
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
             }
-
-        );
-
+        });
+    }, { threshold: 0.15 });
 
     cards.forEach(function (card) {
-
         observer.observe(card);
-
     });
-
 });
-
 </script>
 
 <!-- ===== CERTIFICATIONS & WORKSHOPS ===== -->
@@ -1167,15 +746,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="cert-count-badge">Total Certifications: <span id="certTotalDisplay">0</span></div>
         </div>
 
-        <!-- Controls: Search & Filters -->
         <div class="cert-controls">
-            <!-- Search Bar -->
             <div class="cert-search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="certSearch" placeholder="Search by title, organization, topic or skill...">
             </div>
 
-            <!-- Category Filter Buttons -->
             <div class="cert-filters" id="certFilterButtons">
                 <button class="filter-btn active" data-category="all">All</button>
                 <button class="filter-btn" data-category="ieee">IEEE</button>
@@ -1187,7 +763,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="filter-btn" data-category="other">Other</button>
             </div>
 
-            <!-- Year Filter Dropdown -->
             <div class="cert-year-filter">
                 <select id="certYearSelect">
                     <option value="all">All Years</option>
@@ -1204,10 +779,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
 
-        <!-- Dynamic Certifications Grid -->
-        <div class="cert-grid" id="certGrid">
-            <!-- JavaScript এর মাধ্যমে অটোমেটিক সব কার্ড লোড হবে -->
-        </div>
+        <div class="cert-grid" id="certGrid"></div>
     </div>
 </section>
 
@@ -1230,164 +802,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- ===== CONTACT ===== -->
 <section id="contact">
-
     <div class="container contact-section">
-
         <div class="contact-heading">
-            <span class="contact-badge">
-                <i class="fas fa-paper-plane"></i> LET'S CONNECT
-            </span>
-
+            <span class="contact-badge"><i class="fas fa-paper-plane"></i> LET'S CONNECT</span>
             <h2 class="section-title">Contact Me</h2>
-
-            <p class="contact-subtitle">
-                Interested in working together, discussing a project,
-                research collaboration, or simply connecting?
-            </p>
+            <p class="contact-subtitle">Interested in working together, discussing a project, research collaboration, or simply connecting?</p>
         </div>
 
-
-        <!-- Contact Information -->
         <div class="contact-cards">
-
-            <!-- Email -->
-            <a href="mailto:sudipta1212das32@gmail.com"
-               class="contact-card">
-
-                <div class="contact-icon email-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-
+            <a href="mailto:sudipta1212das32@gmail.com" class="contact-card">
+                <div class="contact-icon email-icon"><i class="fas fa-envelope"></i></div>
                 <div class="contact-info">
                     <span class="contact-label">EMAIL</span>
-                    <span class="contact-value">
-                        sudipta1212das32@gmail.com
-                    </span>
+                    <span class="contact-value">sudipta1212das32@gmail.com</span>
                 </div>
-
                 <i class="fas fa-arrow-right contact-arrow"></i>
-
             </a>
 
-
-            <!-- Phone -->
-            <a href="tel:+8801580485253"
-               class="contact-card">
-
-                <div class="contact-icon phone-icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-
+            <a href="tel:+8801580485253" class="contact-card">
+                <div class="contact-icon phone-icon"><i class="fas fa-phone"></i></div>
                 <div class="contact-info">
                     <span class="contact-label">PHONE</span>
-                    <span class="contact-value">
-                        +880 1580-485253
-                    </span>
+                    <span class="contact-value">+880 1580-485253</span>
                 </div>
-
                 <i class="fas fa-arrow-right contact-arrow"></i>
-
             </a>
 
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/8801580485253"
-               target="_blank"
-               class="contact-card">
-
-                <div class="contact-icon whatsapp-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
-
+            <a href="https://wa.me/8801580485253" target="_blank" class="contact-card">
+                <div class="contact-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
                 <div class="contact-info">
                     <span class="contact-label">WHATSAPP</span>
-                    <span class="contact-value">
-                        +880 1580-485253
-                    </span>
+                    <span class="contact-value">+880 1580-485253</span>
                 </div>
-
                 <i class="fas fa-arrow-right contact-arrow"></i>
-
             </a>
-
         </div>
 
-
-        <!-- Social Media -->
         <div class="social-section">
-
-            <p class="social-title">
-                <i class="fas fa-share-nodes"></i>
-                FIND ME ONLINE
-            </p>
-
+            <p class="social-title"><i class="fas fa-share-nodes"></i> FIND ME ONLINE</p>
             <div class="social-links">
-
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/engr-sudipta-das-73861b394/"
-                   target="_blank"
-                   class="social-btn linkedin">
-
+                <a href="https://www.linkedin.com/in/engr-sudipta-das-73861b394/" target="_blank" class="social-btn linkedin">
                     <i class="fab fa-linkedin-in"></i>
                     <span>LinkedIn</span>
-                    
                 </a>
-
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/shudipta.shudipta.3"
-                   target="_blank"
-                   class="social-btn facebook">
-
+                <a href="https://www.facebook.com/shudipta.shudipta.3" target="_blank" class="social-btn facebook">
                     <i class="fab fa-facebook-f"></i>
                     <span>Facebook</span>
-
                 </a>
-
-                <!-- Telegram -->
-                <a href="https://t.me/sudipta_das1212"
-                    target="_blank"
-                    class="social-btn telegram">
-                   
+                <a href="https://t.me/sudipta_das1212" target="_blank" class="social-btn telegram">
                     <i class="fab fa-telegram-plane"></i>
                     <span>Telegram</span>
                 </a>
-
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/sudipta_das_420/"
-                   target="_blank"
-                   class="social-btn instagram">
-
+                <a href="https://www.instagram.com/sudipta_das_420/" target="_blank" class="social-btn instagram">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
-
                 </a>
-
             </div>
-
         </div>
 
-
-        <!-- Bottom Message -->
         <div class="contact-footer">
-
             <i class="fas fa-bolt"></i>
-
-            <span>
-                Let's build something innovative together.
-            </span>
-
+            <span>Let's build something innovative together.</span>
         </div>
-
     </div>
-
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
 </footer>
-   
-    <!-- ===== CV NOTICE MODAL ===== -->
+    
+<!-- ===== CV NOTICE MODAL ===== -->
 <div id="cvModal" class="modal-overlay">
   <div class="modal-card">
     <div class="lock-icon">🔒</div>
@@ -1395,20 +880,16 @@ document.addEventListener("DOMContentLoaded", function () {
     <p class="modal-subtitle">
         This CV is password-protected for security purposes. Please contact me to obtain the password to open the file.
     </p>
-    
     <div class="modal-actions">
-      <!-- ফাইলটির সঠিক নাম অনুযায়ী পাথ -->
       <a href="Sudipta%20CV2026_protected.pdf" target="_blank" class="btn-download" onclick="closeCvNotice()">Open / Download PDF</a>
       <a href="#contact" class="btn-contact" onclick="closeCvNotice()">Contact Authority</a>
     </div>
-    
     <button class="btn-close" onclick="closeCvNotice()">✕</button>
   </div>
 </div>
 
 <script src="script.js"></script>
 <script>
-    // ⬇️ ঠিক এইখানে কোডটি বসাবেন ⬇️
 function openCvNotice() {
     const modal = document.getElementById("cvModal");
     if (modal) {
@@ -1425,15 +906,6 @@ function closeCvNotice() {
     }
 }
 
-// Open Modal (আপনার আগের কোড)
-function openProject(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-    }
-}
-// Open Modal
 function openProject(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
@@ -1442,7 +914,6 @@ function openProject(modalId) {
     }
 }
 
-// Close Modal
 function closeProject(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
@@ -1451,7 +922,6 @@ function closeProject(modalId) {
     }
 }
 
-// Close when clicking outside
 window.addEventListener("click", function(event) {
     if (event.target.classList.contains("project-modal")) {
         event.target.style.display = "none";
@@ -1459,7 +929,6 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// Close when pressing ESC key
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
         const modals = document.querySelectorAll(".project-modal");
@@ -1471,13 +940,32 @@ document.addEventListener("keydown", function(event) {
 });
 </script>
 
-    <script>
+<script>
 // =====================================================
 // COMPLETE CERTIFICATIONS LIST & DYNAMIC ENGINE
 // =====================================================
 
 const certificatesData = [
-{ title: "The SDG Primer", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "workshop", img: "1.jpg" },
+    // ⭐️ iCONEECT 2026 Conference Certificates
+    { 
+        title: "Certificate of Presentation (Paper ID: 748) - iCONEECT 2026", 
+        org: "IEEE Bangladesh Section & Premier University", 
+        date: "September 25–26, 2026", 
+        year: "2026", 
+        category: "ieee programming", 
+        img: "01.jpg" 
+    },
+    { 
+        title: "Certificate of Appreciation (Paper ID: 748) - iCONEECT 2026", 
+        org: "IEEE Bangladesh Section & Premier University", 
+        date: "September 25–26, 2026", 
+        year: "2026", 
+        category: "ieee programming", 
+        img: "02.jpg" 
+    },
+
+    // Verified Certificates
+    { title: "The SDG Primer", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "workshop", img: "1.jpg" },
     { title: "Professional Video Editing", org: "Futurenation", date: "February 26, 2025", year: "2025", category: "workshop", img: "2.jpg" },
     { title: "Motion Graphics", org: "Futurenation", date: "January 11, 2025", year: "2025", category: "workshop", img: "3.jpg" },
     { title: "Digital Marketing", org: "Futurenation & CodersTrust Bangladesh", date: "February 23, 2025", year: "2025", category: "workshop", img: "4.jpg" },
@@ -1503,8 +991,6 @@ const certificatesData = [
     { title: "Digital Marketing Workshop for Absolute Beginners", org: "Ostad (C26882)", date: "2025", year: "2025", category: "workshop", img: "34.jpg" },
     { title: "IELTS Academic and General Preparation", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "english", img: "28.jpg" },
     { title: "JavaScript Workshop for Absolute Beginners", org: "Ostad (C27055)", date: "2025", year: "2025", category: "programming workshop", img: "35.jpg" },
-
-    // Additional Verified Certificates (Default Badges shown gracefully)
     { title: "IEEE Student Membership", org: "IEEE (In Good Standing)", date: "December 2025", year: "2025", category: "ieee", img:"45.jpg" },
     { title: "IEEE Women in Engineering Membership", org: "IEEE WIE", date: "2025", year: "2025", category: "ieee", img:"48.jpg" },
     { title: "Workshop: bdapps 360 Account & Lite App Creation", org: "IEEE Premier University SB WIE Affinity Group", date: "June 23, 2025", year: "2025", category: "workshop ieee", img:"55.jpg" },
@@ -1517,43 +1003,42 @@ const certificatesData = [
     { title: "Golang Workshop for Absolute Beginners", org: "Ostad (C26796)", date: "2025", year: "2025", category: "programming workshop", img:"37.jpg" },
     { title: "Content Creation with AI Workshop", org: "Ostad (C26747)", date: "2025", year: "2025", category: "programming workshop", img:"38.jpg" },
     { title: "Cyber Security & Ethical Hacking Workshop", org: "Ostad (C26771)", date: "2025", year: "2025", category: "cybersecurity workshop", img:"39.jpg" },
-    { title: "Pathway to Software Engineering", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "programming", img:"29.jpg" },
-    { title: "Introduction In Cyber Attack For Beginners", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity", img:"50.jpg" },
-    { title: "AI & Cyber Security Mastery 2025", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity programming", img:"51.jpg" },
-    { title: "Quantum Machine Learning", org: "Open HPI", date: "January 25, 2025", year: "2025", category: "programming", img:"52.jpg" },
-    { title: "Workshop: Python-Minigames in Replit", org: "Open HPI", date: "February 18, 2025", year: "2025", category: "programming workshop", img:"53.jpg" },
-    { title: "Designing A 3 Phase Motor Circuit In AutoCAD Electrical", org: "SourceCAD", date: "June 8, 2025", year: "2025", category: "engineering", img:"54.jpg" },
+    { title: "Pathway to Software Engineering", org: "Bohubrihi", date: "June 2, 2025", year: "2025", category: "programming", img: "29.jpg" },
+    { title: "Introduction In Cyber Attack For Beginners", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity", img: "50.jpg" },
+    { title: "AI & Cyber Security Mastery 2025", org: "Udemy", date: "June 4, 2025", year: "2025", category: "cybersecurity programming", img: "51.jpg" },
+    { title: "Quantum Machine Learning", org: "Open HPI", date: "January 25, 2025", year: "2025", category: "programming", img: "52.jpg" },
+    { title: "Workshop: Python-Minigames in Replit", org: "Open HPI", date: "February 18, 2025", year: "2025", category: "programming workshop", img: "53.jpg" },
+    { title: "Designing A 3 Phase Motor Circuit In AutoCAD Electrical", org: "SourceCAD", date: "June 8, 2025", year: "2025", category: "engineering", img: "54.jpg" },
     { title: "Workplace Communication Essentials", org: "Passport to Earning Bangladesh (UNICEF)", date: "January 22, 2026", year: "2026", category: "english", img: "76.jpg" },
     { title: "Art of Problem Definition", org: "Passport to Earning Bangladesh (UNICEF)", date: "January 22, 2026", year: "2026", category: "workshop", img: "77.jpg" },
     { title: "Excel Essentials for Workplace Productivity", org: "Passport to Earning Bangladesh (UNICEF)", date: "January 19, 2026", year: "2026", category: "programming", img: "78.jpg" },
     { title: "Unleashing Cognitive Empowerment", org: "Passport to Earning Bangladesh (UNICEF)", date: "January 22, 2026", year: "2026", category: "english", img: "79.jpg" },
     { title: "Certificate of Recognition: Campus Volunteer", org: "Futurenation, UNDP", date: "February 16, 2026", year: "2026", category: "workshop", img: "83.jpg" },
     { title: "Preparatory Online Training on IELTS Reading Module", org: "Futurenation, UNDP & Grameenphone", date: "October 14, 2025", year: "2025", category: "english", img: "84.jpg" },
-    { title: "Workshop: 3D Printing & Product Development", org: "American Corner Chattogram", date: "March 17-18, 2025", year: "2025", category: "engineering workshop", img:"49.jpg" },
+    { title: "Workshop: 3D Printing & Product Development", org: "American Corner Chattogram", date: "March 17-18, 2025", year: "2025", category: "engineering workshop", img: "49.jpg" },
     { title: "Digital Marketing Workshop for Absolute Beginners", org: "Ostad (Certificate ID: C26882)", date: "2025", year: "2025", category: "workshop", img: "41.jpg" },
     { title: "Python Workshop for Absolute Beginners", org: "Ostad (Certificate ID: C26729)", date: "2025", year: "2025", category: "programming workshop", img: "42.jpg" },
     { title: "Social Media Certified", org: "HubSpot Academy", date: "October 21, 2025", year: "2025", category: "workshop", img: "63.jpg" },
     { title: "Campus to Career Preparation", org: "Youth Skill Development Institute (YSDI) Trust", date: "2025", year: "2025", category: "english", img: "74.jpg" },
     { title: "Excel Essentials for Workplace Productivity", org: "Passport to Earning Bangladesh (UNICEF)", date: "January 19, 2026", year: "2026", category: "programming", img: "75.jpg" },
-    { title: "Preparatory Online Training on IELTS Speaking Module", org: "Futurenation – Grameenphone & UNDP", date: "September 3, 2025", year: "2025", category: "english", img:"8.jpg" },
-    { title: "AutoCAD Electrical Essential Course", org: "SourceCAD", date: "October 9, 2025", year: "2025", category: "engineering", img:"60.jpg" },
-    { title: "Social Media Marketing", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "workshop", img:"61.jpg" },
-    { title: "Introduction to Cybersecurity Awareness", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "cybersecurity", img:"62.jpg" },
-    { title: "Facebook Ad Creative Basics & Audience Targeting", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "workshop", img:"9.jpg" },
-    { title: "Understanding the Ecosystem of Facebook Ads", org: "Futurenation & UNDP", date: "September 7, 2025", year: "2025", category: "workshop", img:"20.jpg" },
-    { title: "Reselling & Affiliate Marketing Basics", org: "Futurenation & UNDP", date: "September 24, 2025", year: "2025", category: "workshop", img:"10.jpg" },
-    { title: "No Code Web Development with WordPress", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "programming", img:"11.jpg" },
-    { title: "From Classrooms to Careers: Building the Future with EEE", org: "IEEE RAS Premier University SB Chapter", date: "October 14, 2025", year: "2025", category: "ieee engineering", img:"64.jpg" },
-    { title: "English Online Self-Study: Daily Life (Level A2)", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img:"65.jpg" },
-    { title: "English Online Self-Study: New ideas and opportunities", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img:"66.jpg" },
-    { title: "English Online Self-Study: Travel and history (Level A2)", org: "British Council", date: "07 February 2026", year: "2026", category: "english", img:"67.jpg" },
-    { title: "Canva for Presentations", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img:"68.jpg" },
-    { title: "Introduction to 2D Animation", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img:"69.jpg" },
-    { title: "Online Safety", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "cybersecurity", img:"71.jpg" },
-    { title: "LinkedIn 101", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img:"70.jpg" },
-    { title: "Environmental Stewardship", org: "Futurenation & UNDP", date: "November 18, 2025", year: "2025", category: "workshop", img:"13.jpg" },
-    { title: "Soft Skills for Life", org: "Youth Skill Development Institute (YSDI) Trust", date: "2025", year: "2025", category: "english", img:"73.jpg" },
-    // Newly uploaded verified certificates
+    { title: "Preparatory Online Training on IELTS Speaking Module", org: "Futurenation – Grameenphone & UNDP", date: "September 3, 2025", year: "2025", category: "english", img: "8.jpg" },
+    { title: "AutoCAD Electrical Essential Course", org: "SourceCAD", date: "October 9, 2025", year: "2025", category: "engineering", img: "60.jpg" },
+    { title: "Social Media Marketing", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "workshop", img: "61.jpg" },
+    { title: "Introduction to Cybersecurity Awareness", org: "HP LIFE & HP Foundation", date: "October 10, 2025", year: "2025", category: "cybersecurity", img: "62.jpg" },
+    { title: "Facebook Ad Creative Basics & Audience Targeting", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "workshop", img: "9.jpg" },
+    { title: "Understanding the Ecosystem of Facebook Ads", org: "Futurenation & UNDP", date: "September 7, 2025", year: "2025", category: "workshop", img: "20.jpg" },
+    { title: "Reselling & Affiliate Marketing Basics", org: "Futurenation & UNDP", date: "September 24, 2025", year: "2025", category: "workshop", img: "10.jpg" },
+    { title: "No Code Web Development with WordPress", org: "Futurenation & UNDP", date: "September 10, 2025", year: "2025", category: "programming", img: "11.jpg" },
+    { title: "From Classrooms to Careers: Building the Future with EEE", org: "IEEE RAS Premier University SB Chapter", date: "October 14, 2025", year: "2025", category: "ieee engineering", img: "64.jpg" },
+    { title: "English Online Self-Study: Daily Life (Level A2)", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img: "65.jpg" },
+    { title: "English Online Self-Study: New ideas and opportunities", org: "British Council", date: "11 November 2025", year: "2025", category: "english", img: "66.jpg" },
+    { title: "English Online Self-Study: Travel and history (Level A2)", org: "British Council", date: "07 February 2026", year: "2026", category: "english", img: "67.jpg" },
+    { title: "Canva for Presentations", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "68.jpg" },
+    { title: "Introduction to 2D Animation", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "69.jpg" },
+    { title: "Online Safety", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "cybersecurity", img: "71.jpg" },
+    { title: "LinkedIn 101", org: "Grameenphone Academy", date: "November 16, 2025", year: "2025", category: "workshop", img: "70.jpg" },
+    { title: "Environmental Stewardship", org: "Futurenation & UNDP", date: "November 18, 2025", year: "2025", category: "workshop", img: "13.jpg" },
+    { title: "Soft Skills for Life", org: "Youth Skill Development Institute (YSDI) Trust", date: "2025", year: "2025", category: "english", img: "73.jpg" },
     { title: "Introduction to Cybersecurity: Threats, Defenses, and Career Pathways", org: "IEEE Premier University Student Branch (IEEE EduWeek 2026)", date: "April 12, 2026", year: "2026", category: "ieee cybersecurity", img: "97.jpg" },
     { title: "Survive or Thrive: How Bangladesh’s Engineers Can Win in the Age of AI", org: "IEEE BRACU Student Branch (IEEE WEEK 2.0)", date: "2026", year: "2026", category: "ieee programming", img: "98.jpg" },
     { title: "IEEE PES Day 2026 Poster Design Competition", org: "IEEE Power & Energy Society Premier University SB Chapter", date: "June 04, 2026", year: "2026", category: "ieee workshop", img: "99.jpg" },
@@ -1576,9 +1061,9 @@ const certificatesData = [
     { title: "Social Media Content Strategy and Branding", org: "Workwave & Futurenation", date: "October 29, 2025", year: "2025", category: "workshop", img: "16.jpg" },
     { title: "Social Media Monetization Methods", org: "Workwave & Futurenation", date: "November 5, 2025", year: "2025", category: "workshop", img: "17.jpg" },
     { title: "Content Creation with AI Workshop", org: "Ostad (Certificate ID: C26747)", date: "2025", year: "2025", category: "programming", img: "40.jpg" },
-    { title: "Microelectronics & Robotics: From Silicon to Software", org: "IEEE RAS Premier University SB Chapter", date: "17 Jan, 2026", year: "2026", category: "ieee engineering", img:"80.jpg" },
-    { title: "Beyond the Syllabus: Where Student Research Finds Its Voice", org: "IEEE Computer Society Premier University SB Chapter", date: "16 Feb, 2026", year: "2026", category: "ieee", img:"81.jpg" },
-    { title: "WorkWave Mentorship Programme in Graphic Design", org: "Futurenation", date: "February 16, 2026", year: "2026", category: "workshop", img:"82.jpg" }
+    { title: "Microelectronics & Robotics: From Silicon to Software", org: "IEEE RAS Premier University SB Chapter", date: "17 Jan, 2026", year: "2026", category: "ieee engineering", img: "80.jpg" },
+    { title: "Beyond the Syllabus: Where Student Research Finds Its Voice", org: "IEEE Computer Society Premier University SB Chapter", date: "16 Feb, 2026", year: "2026", category: "ieee", img: "81.jpg" },
+    { title: "WorkWave Mentorship Programme in Graphic Design", org: "Futurenation", date: "February 16, 2026", year: "2026", category: "workshop", img: "82.jpg" }
 ];
 
 function getPrimaryCategory(cat) {
@@ -1710,7 +1195,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (searchInput) searchInput.addEventListener('input', executeFilter);
     if (yearSelect) yearSelect.addEventListener('change', executeFilter);
 });
-        // ===== ABOUT IMAGE AUTO-SLIDER ENGINE =====
+
+// ===== ABOUT IMAGE AUTO-SLIDER ENGINE =====
 let currentSlideIndex = 0;
 let slideTimer;
 
@@ -1744,10 +1230,9 @@ function nextSlide() {
 function setSlide(index) {
     clearInterval(slideTimer);
     showSlide(index);
-    slideTimer = setInterval(nextSlide, 3500); // প্রতি ৩.৫ সেকেন্ডে অটো বদলাবে
+    slideTimer = setInterval(nextSlide, 3500);
 }
 
-// পেজ লোড হলে স্বয়ংক্রিয়ভাবে স্লাইড শুরু হবে
 document.addEventListener("DOMContentLoaded", function () {
     slideTimer = setInterval(nextSlide, 3500);
 });
