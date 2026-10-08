@@ -859,31 +859,44 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
         <!-- Direct Contact Form -->
-        <div class="contact-form-container">
-            <h3><i class="fas fa-envelope-open-text"></i> Send Me a Message</h3>
-            <form action="https://formspree.io/f/xjygyppk" method="POST" class="styled-contact-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" name="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Email</label>
-                        <input type="email" name="_replyto" placeholder="name@example.com" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" name="subject" placeholder="Project Collaboration / Inquiries" required>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-send"><i class="fas fa-paper-plane"></i> Send Message</button>
-            </form>
+ <!-- Mini Trigger Button -->
+        <div class="contact-form-trigger-wrapper">
+            <button type="button" class="btn-open-msg" onclick="openContactModal()">
+                <i class="fas fa-paper-plane"></i> Send Direct Message
+            </button>
         </div>
 
+        <!-- Modal Popup Form -->
+        <div id="contactMsgModal" class="project-modal">
+            <div class="modal-content contact-popup-card">
+                <button class="close-modal" onclick="closeContactModal()">×</button>
+                <span class="modal-type"><i class="fas fa-paper-plane"></i> GET IN TOUCH</span>
+                <h2>Send Me a Message</h2>
+                <div class="modal-divider"></div>
+                
+                <form action="https://formspree.io/f/xjygyppk" method="POST" class="styled-contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" name="_replyto" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" name="subject" placeholder="Project Collaboration / Inquiries" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-send"><i class="fas fa-paper-plane"></i> Submit Message</button>
+                </form>
+            </div>
+        </div>
         <div class="social-section">
             <p class="social-title"><i class="fas fa-share-nodes"></i> FIND ME ONLINE</p>
             <div class="social-links">
