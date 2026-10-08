@@ -4855,3 +4855,134 @@ section.personal-section .personal-row.address .personal-value {
     transform: translateY(-5px) scale(1.08);
     color: #ffffff;
 }
+/* ===== CV NOTICE MODAL STYLES ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 29, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-card {
+    position: relative;
+    background: linear-gradient(145deg, #111827, #0f172a);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 18px;
+    padding: 35px 30px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.12);
+    animation: modalSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.lock-icon {
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 4px 10px rgba(250, 204, 21, 0.3));
+}
+
+.modal-card h3 {
+    color: #f8fafc;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+}
+
+.modal-subtitle {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-actions .btn-download,
+.modal-actions .btn-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.modal-actions .btn-download {
+    background: #0284c7;
+    color: #ffffff;
+    border: 1px solid #38bdf8;
+}
+
+.modal-actions .btn-download:hover {
+    background: #0369a1;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    transform: translateY(-2px);
+}
+
+.modal-actions .btn-contact {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.modal-actions .btn-contact:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #f8fafc;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 18px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+}
