@@ -951,8 +951,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- ===== CV NOTICE MODAL ===== -->
 <div id="cvModal" class="modal-overlay">
-<!-- ===== CV NOTICE MODAL ===== -->
-<div id="cvModal" class="modal-overlay">
   <div class="modal-card">
     <div class="lock-icon">🔒</div>
     <h3>Password Protected Resume</h3>
@@ -1001,16 +999,18 @@ function closeProject(modalId) {
     }
 }
 
+// মডালের বাইরে ক্লিক করলে যাতে বন্ধ হয় (CV ও অন্যান্য সব প্রজেক্ট মডাল সহ)
 window.addEventListener("click", function(event) {
-    if (event.target.classList.contains("project-modal")) {
+    if (event.target.classList.contains("project-modal") || event.target.classList.contains("modal-overlay")) {
         event.target.style.display = "none";
         document.body.style.overflow = "auto";
     }
 });
 
+// কীবোর্ডের Escape বাটন চাপলে যাতে বন্ধ হয়
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
-        const modals = document.querySelectorAll(".project-modal");
+        const modals = document.querySelectorAll(".project-modal, .modal-overlay");
         modals.forEach(function(modal) {
             modal.style.display = "none";
         });
@@ -1018,8 +1018,6 @@ document.addEventListener("keydown", function(event) {
     }
 });
 </script>
-
-<script>
 // =====================================================
 // COMPLETE CERTIFICATIONS LIST & DYNAMIC ENGINE
 // =====================================================
