@@ -817,7 +817,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="contact-subtitle">Interested in working together, discussing a project, research collaboration, or simply connecting?</p>
         </div>
 
-<div class="contact-cards">
+<div class="contact-cards contact-cards-grid">
             <div class="contact-card">
                 <a href="mailto:sudipta1212das32@gmail.com" class="contact-main-link">
                     <div class="contact-icon email-icon"><i class="fas fa-envelope"></i></div>
@@ -855,6 +855,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button class="copy-btn" onclick="copyToClipboard('+8801580485253', this)" title="Copy WhatsApp Number">
                     <i class="fas fa-copy"></i>
                 </button>
+            </div>
+    
+        <!-- 4th Card: Send Direct Message -->
+            <div class="contact-card clickable-msg-card" onclick="openContactModal()" style="cursor: pointer;">
+                <div class="contact-main-link">
+                    <div class="contact-icon msg-icon"><i class="fas fa-paper-plane"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">MESSAGE</span>
+                        <span class="contact-value" style="color: #38bdf8; font-weight: 600;">Send Direct Message</span>
+                    </div>
+                </div>
+                <div class="open-modal-icon-badge">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </div>
             </div>
         </div>
 
