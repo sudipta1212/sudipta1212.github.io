@@ -4502,3 +4502,119 @@ section.personal-section .personal-row.address .personal-value {
         grid-template-columns: 1fr;
     }
 }
+/* Copy Button */
+.contact-card {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+}
+.contact-main-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+}
+.copy-btn {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.copy-btn:hover {
+    background: #38bdf8;
+    color: #0b1120;
+}
+
+/* Project Filter Buttons */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 30px 0;
+}
+.proj-filter-btn {
+    background: rgba(17, 24, 39, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #94a3b8;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13.5px;
+    transition: 0.3s ease;
+}
+.proj-filter-btn:hover,
+.proj-filter-btn.active {
+    background: #38bdf8;
+    color: #0b1120;
+    font-weight: 600;
+    border-color: #38bdf8;
+}
+
+/* Contact Form */
+.contact-form-container {
+    max-width: 750px;
+    margin: 40px auto 0 auto;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.85));
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 20px;
+    padding: 30px;
+}
+.contact-form-container h3 {
+    color: #38bdf8;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    flex: 1;
+}
+.form-group label {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+.form-group input, 
+.form-group textarea {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #f8fafc;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+}
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #38bdf8;
+}
+.btn-send {
+    background: #38bdf8;
+    color: #0b1120;
+    font-weight: 600;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-send:hover {
+    background: #0ea5e9;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+@media (max-width: 600px) {
+    .form-row { flex-direction: column; gap: 0; }
+}
