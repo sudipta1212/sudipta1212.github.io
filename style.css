@@ -5071,3 +5071,80 @@ section.personal-section .personal-row.address .personal-value {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+/* ===== STATS COUNTER BANNER FIX ===== */
+.stats-counter-banner {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 30px 15px;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.9));
+    border-top: 1px solid rgba(56, 189, 248, 0.25);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.stats-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-box {
+    flex: 1 1 200px;
+    text-align: center;
+    padding: 15px 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.stat-box h3 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin: 0 0 6px 0;
+    line-height: 1.1;
+    font-family: inherit;
+}
+
+.stat-box p {
+    font-size: 13.5px;
+    color: #94a3b8;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* মোবাইলের জন্য রেসপনসিভ (২টি করে এক সারিতে দেখাবে) */
+@media (max-width: 768px) {
+    .stats-flex {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .stat-box {
+        flex: unset;
+        padding: 12px 8px;
+    }
+
+    .stat-box h3 {
+        font-size: 28px;
+    }
+
+    .stat-box p {
+        font-size: 12px;
+    }
+}
