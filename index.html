@@ -90,6 +90,26 @@
         </div>
     </div>
 </section>
+    <div class="stats-counter-banner">
+    <div class="container stats-flex">
+        <div class="stat-box">
+            <h3 class="counter" data-target="1">0</h3>
+            <p>Accepted Paper (IEEE)</p>
+        </div>
+        <div class="stat-box">
+            <h3 class="counter" data-target="5">0</h3>
+            <p>Core Projects</p>
+        </div>
+        <div class="stat-box">
+            <h3 class="counter" data-target="70">0</h3>
+            <p>Certifications & Badges</p>
+        </div>
+        <div class="stat-box">
+            <h3 class="counter" data-target="500">0</h3>
+            <p>Students Impacted</p>
+        </div>
+    </div>
+</div>
 
 <!-- ===== ABOUT ===== -->
 <section id="about">
@@ -1570,6 +1590,39 @@ if (mobileMenuBtn && navLinks) {
         });
     });
 }
+    const counters = document.querySelectorAll('.counter');
+let counterStarted = false;
+
+function startCounterAnimation() {
+    counters.forEach(counter => {
+        counter.innerText = '0';
+        const target = +counter.getAttribute('data-target');
+        const increment = target / 60; // গতি নিয়ন্ত্রণ
+
+        const updateCounter = () => {
+            const current = +counter.innerText.replace('+', '');
+            if (current < target) {
+                counter.innerText = `${Math.ceil(current + increment)}`;
+                setTimeout(updateCounter, 25);
+            } else {
+                counter.innerText = target + (target >= 50 ? "+" : "");
+            }
+        };
+        updateCounter();
+    });
+}
+
+// স্ক্রোল করে যখন স্ট্যাটাস সেকশন আসবে তখন স্টার্ট হবে
+window.addEventListener('scroll', () => {
+    const statsSection = document.querySelector('.stats-counter-banner');
+    if (statsSection) {
+        const top = statsSection.getBoundingClientRect().top;
+        if (top < window.innerHeight && !counterStarted) {
+            startCounterAnimation();
+            counterStarted = true;
+        }
+    }
+});
 </script>
 </body>
 </html>
