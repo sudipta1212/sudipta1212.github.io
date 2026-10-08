@@ -1464,6 +1464,77 @@ function scrollToTop() {
         behavior: "smooth"
     });
 }
+
+    // ===== ১. টপ স্ক্রোল প্রগ্রেস বার =====
+const progressBar = document.createElement("div");
+progressBar.id = "scrollProgressBar";
+progressBar.style.cssText = "position:fixed;top:0;left:0;height:4px;background:#38bdf8;z-index:99999;transition:width 0.1s;";
+document.body.appendChild(progressBar);
+
+window.addEventListener("scroll", () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progressBar.style.width = ((winScroll / height) * 100) + "%";
+});
+
+// ===== ২. একটিভ ন্যাভবার ইন্ডিকেটর =====
+const sections = document.querySelectorAll("section[id]");
+window.addEventListener("scroll", () => {
+    let scrollY = window.pageYOffset;
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 150;
+        const sectionId = current.getAttribute("id");
+        const navItem = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+        if (navItem) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navItem.classList.add("active-nav");
+            } else {
+                navItem.classList.remove("active-nav");
+            }
+        }
+    });
+});
+
+// ===== ৩. হিরো সেকশনে টাইপিং অ্যানিমেশন =====
+const typingRoles = [
+    "Electrical & Electronic Engineer",
+    "Nuclear Engineering Researcher",
+    "IoT & Embedded Systems Enthusiast",
+    "Deep Learning Researcher"
+];
+let roleIdx = 0;
+let charIdx = 0;
+let isDeleting = false;
+const heroSub = document.querySelector(".hero-text h2");
+
+function typeEffect() {
+    if (!heroSub) return;
+    const currentText = typingRoles[roleIdx];
+    
+    if (isDeleting) {
+        heroSub.textContent = currentText.substring(0, charIdx - 1);
+        charIdx--;
+    } else {
+        heroSub.textContent = currentText.substring(0, charIdx + 1);
+        charIdx++;
+    }
+
+    let typeSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && charIdx === currentText.length) {
+        typeSpeed = 1800; // পুরো শব্দ লেখার পর বিরতি
+        isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        roleIdx = (roleIdx + 1) % typingRoles.length;
+        typeSpeed = 400;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
 </script>
 </body>
 </html>
