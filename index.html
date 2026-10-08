@@ -1374,6 +1374,21 @@ function filterProjects(category, btnElement) {
         }
     });
 }
+    function openContactModal() {
+    const modal = document.getElementById("contactMsgModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeContactModal() {
+    const modal = document.getElementById("contactMsgModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
 </script>
 </body>
 </html>
