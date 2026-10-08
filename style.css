@@ -4822,3 +4822,36 @@ section.personal-section .personal-row.address .personal-value {
 [data-theme="light"] #awards {
     background: #f1f5f9 !important;
 }
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: #0b1120;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    transform: translateY(-5px) scale(1.08);
+    color: #ffffff;
+}
