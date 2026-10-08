@@ -1109,7 +1109,8 @@ function renderCertificates(data) {
     if (totalBadge) totalBadge.textContent = certificatesData.length + "+";
 }
 
-// Robust openCertModal function that reconstructs the image element safely
+let currentCertImgSrc = "";
+
 function openCertModal(title, org, date, imgSrc) {
     const modal = document.getElementById('certPreviewModal');
     const modalTitle = document.getElementById('modalCertTitle');
@@ -1119,17 +1120,16 @@ function openCertModal(title, org, date, imgSrc) {
     const viewFullBtn = document.getElementById('viewFullBtn');
     const imgContainer = document.getElementById('modalImgContainer');
 
+    currentCertImgSrc = imgSrc;
+
     modalTitle.textContent = title;
     modalOrg.textContent = org;
     modalDate.textContent = date;
 
-    // Reset container and create image cleanly
-    imgContainer.innerHTML = `<img id="modalCertImg" src="${imgSrc}" alt="${title}" style="max-width:100%; max-height:68vh; border-radius:8px; display:block; margin:auto;">`;
+    imgContainer.innerHTML = `<img id="modalCertImg" src="${imgSrc}" alt="${title}" style="max-width:100%; max-height:68vh; border-radius:8px; display:block; margin:auto; background:#fff;">`;
     const modalImg = document.getElementById('modalCertImg');
 
-    downloadBtn.href = imgSrc;
     downloadBtn.style.display = 'inline-flex';
-    viewFullBtn.href = imgSrc;
     viewFullBtn.style.display = 'inline-flex';
 
     modalImg.onerror = function() {
@@ -1141,6 +1141,55 @@ function openCertModal(title, org, date, imgSrc) {
 
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+}
+
+function toggleFullScreenImg() {
+    const img = document.getElementById('modalCertImg');
+    if (!img) return;
+
+    if (!document.fullscreenElement) {
+        if (img.requestFullscreen) {
+            img.requestFullscreen();
+        } else if (img.webkitRequestFullscreen) {
+            img.webkitRequestFullscreen();
+        } else if (img.msRequestFullscreen) {
+            img.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+function triggerDownloadCert() {
+    if (!currentCertImgSrc) return;
+
+    fetch(currentCertImgSrc)
+        .then(response => {
+            if (!response.ok) throw new Error("Network error");
+            return response.blob();
+        })
+        .then(blob => {
+            const blobUrl = window.URL.createObjectURL(blob);
+            const tempLink = document.createElement('a');
+            tempLink.style.display = 'none';
+            tempLink.href = blobUrl;
+            tempLink.download = currentCertImgSrc.split('/').pop() || 'certificate.jpg';
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            setTimeout(() => {
+                window.URL.revokeObjectURL(blobUrl);
+                document.body.removeChild(tempLink);
+            }, 100);
+        })
+        .catch(() => {
+            const fallbackLink = document.createElement('a');
+            fallbackLink.href = currentCertImgSrc;
+            fallbackLink.setAttribute('download', '');
+            fallbackLink.target = '_blank';
+            fallbackLink.click();
+        });
 }
 
 function closeCertModal() {
