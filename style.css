@@ -4986,3 +4986,62 @@ section.personal-section .personal-row.address .personal-value {
     background: rgba(255, 255, 255, 0.08);
     color: #f8fafc;
 }
+
+/* ===== 📱 MOBILE MENU BUTTON & RESPONSIVE STYLES ===== */
+
+/* ডানপাশের অ্যাকশন বাটনগুলোর কন্টেইনার */
+.nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* মোবাইল মেনু হ্যামবার্গার বাটন (ডিফল্টভাবে ডেস্কটপে হাইড থাকবে) */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: #38bdf8;
+}
+
+/* ৯০৯ পিক্সেলের কম স্ক্রিন বা মোবাইল ডিভাইসের জন্য রেসপনসিভ ডিজাইন */
+@media (max-width: 900px) {
+    .mobile-menu-btn {
+        display: flex; /* মোবাইলে হ্যামবার্গার বাটন দৃশ্যমান হবে */
+    }
+
+    .navbar .nav-links {
+        display: none; /* ডিফল্টভাবে মেনু লিস্ট লুকানো থাকবে */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color, rgba(11, 17, 32, 0.98));
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        padding: 25px 0;
+        gap: 18px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        z-index: 999;
+    }
+
+    /* জাভাস্ক্রিপ্ট দিয়ে এই ক্লাস যুক্ত হলে মেনু ওপেন হবে */
+    .navbar .nav-links.active-menu {
+        display: flex;
+    }
+}
