@@ -48,6 +48,12 @@
             <!-- CV Option -->
             <li><a href="javascript:void(0)" onclick="openCvNotice()" class="nav-cv-btn">🔒 CV</a></li>
             <li><a href="#contact">Contact</a></li>
+            <!-- 🌓 এখানে Theme Toggle বাটনটি যোগ করুন -->
+            <li>
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+            </li>
         </ul>
     </div>
 </header>
@@ -1395,6 +1401,40 @@ function closeContactModal() {
         modal.style.display = "none";
         document.body.style.overflow = "auto";
     }
+}
+    // ===== THEME TOGGLE ENGINE (DARK / LIGHT MODE) =====
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+// ব্রাউজারে আগে থেকে কোনো থিম সেভ করা আছে কিনা চেক করা
+const savedTheme = localStorage.getItem('sudipta_theme') || 'dark';
+
+if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    if (themeIcon) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function () {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'light') {
+            // ডার্ক মোডে সুইচ করা
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('sudipta_theme', 'dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            // লাইট মোডে সুইচ করা
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('sudipta_theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    });
 }
 </script>
 </body>
