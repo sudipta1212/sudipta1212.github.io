@@ -943,7 +943,14 @@ document.addEventListener("DOMContentLoaded", function () {
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
 </footer>
-    
+    <!-- 🚀 এখানে বাটনটি বসিয়ে দিন -->
+<!-- ===== SCROLL TO TOP BUTTON ===== -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ===== CV NOTICE MODAL ===== -->
+<div id="cvModal" class="modal-overlay">
 <!-- ===== CV NOTICE MODAL ===== -->
 <div id="cvModal" class="modal-overlay">
   <div class="modal-card">
@@ -1436,6 +1443,25 @@ if (themeToggleBtn) {
         }
     });
 }
+    // 🚀 ===== SCROLL TO TOP ENGINE (এখানে যোগ করুন) =====
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", function () {
+        if (scrollTopBtn) {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        }
+    });
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 </script>
 </body>
 </html>
