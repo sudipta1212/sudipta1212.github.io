@@ -1332,6 +1332,35 @@ function setSlide(index) {
 document.addEventListener("DOMContentLoaded", function () {
     slideTimer = setInterval(nextSlide, 3500);
 });
+    // Copy To Clipboard Function
+function copyToClipboard(text, btnElement) {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btnElement.innerHTML;
+        btnElement.innerHTML = '<i class="fas fa-check" style="color: #4ade80;"></i>';
+        setTimeout(() => {
+            btnElement.innerHTML = originalHtml;
+        }, 2000);
+    }).catch(err => {
+        console.error("Failed to copy:", err);
+    });
+}
+
+// Project Filtering Function
+function filterProjects(category, btnElement) {
+    const filterButtons = document.querySelectorAll('.proj-filter-btn');
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    const cards = document.querySelectorAll('.projects-container .project-card');
+    cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
 </script>
 </body>
 </html>
