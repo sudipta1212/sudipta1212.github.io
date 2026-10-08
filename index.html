@@ -793,9 +793,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="cert-modal-img-wrapper" id="modalImgContainer">
             <img id="modalCertImg" src="" alt="Certificate Preview">
         </div>
-        <div class="cert-modal-actions">
-            <a id="downloadCertBtn" href="#" download="certificate.jpg" class="cert-action-btn"><i class="fas fa-download"></i> Download Image</a>
-            <a id="viewFullBtn" href="#" target="_blank" class="cert-action-btn view-btn"><i class="fas fa-external-link-alt"></i> View Full Screen</a>
+   <div class="cert-modal-actions">
+            <button id="downloadCertBtn" onclick="triggerDownloadCert()" class="cert-action-btn"><i class="fas fa-download"></i> Download Image</button>
+            <button id="viewFullBtn" onclick="toggleFullScreenImg()" class="cert-action-btn view-btn"><i class="fas fa-expand"></i> View Full Screen</button>
         </div>
     </div>
 </div>
