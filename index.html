@@ -11,6 +11,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- Calendly Widget CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PMC370114Q"></script>
     <script>
@@ -850,7 +853,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <p class="contact-subtitle">Interested in working together, discussing a project, research collaboration, or simply connecting?</p>
         </div>
 
-<div class="contact-cards contact-cards-grid">
+        <div class="contact-cards contact-cards-grid">
             <div class="contact-card">
                 <a href="mailto:sudipta1212das32@gmail.com" class="contact-main-link">
                     <div class="contact-icon email-icon"><i class="fas fa-envelope"></i></div>
@@ -890,13 +893,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 </button>
             </div>
     
-        <!-- 4th Card: Send Direct Message -->
+            <!-- 4th Card: Send Direct Message -->
             <div class="contact-card clickable-msg-card" onclick="openContactModal()" style="cursor: pointer;">
                 <div class="contact-main-link">
                     <div class="contact-icon msg-icon"><i class="fas fa-paper-plane"></i></div>
                     <div class="contact-info">
                         <span class="contact-label">MESSAGE</span>
                         <span class="contact-value" style="color: #38bdf8; font-weight: 600;">Send Direct Message</span>
+                    </div>
+                </div>
+                <div class="open-modal-icon-badge">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </div>
+            </div>
+
+            <!-- 5th Card: Schedule 15-Min Meeting (Calendly Integration) -->
+            <div class="contact-card clickable-msg-card" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sudiptadas/15min'});return false;" style="cursor: pointer;">
+                <div class="contact-main-link">
+                    <div class="contact-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; font-size: 20px;">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">MEETING</span>
+                        <span class="contact-value" style="color: #38bdf8; font-weight: 600;">Schedule 15-Min Chat</span>
                     </div>
                 </div>
                 <div class="open-modal-icon-badge">
@@ -993,6 +1012,10 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <script src="script.js"></script>
+
+<!-- Calendly Pop-up Widget JS -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
 <script>
 function openCvNotice() {
     const modal = document.getElementById("cvModal");
@@ -1492,7 +1515,7 @@ function scrollToTop() {
     });
 }
 
-    // ===== ১. টপ স্ক্রোল প্রগ্রেস বার =====
+// ===== ১. টপ স্ক্রোল প্রগ্রেস বার =====
 const progressBar = document.createElement("div");
 progressBar.id = "scrollProgressBar";
 progressBar.style.cssText = "position:fixed;top:0;left:0;height:4px;background:#38bdf8;z-index:99999;transition:width 0.1s;";
@@ -1562,7 +1585,7 @@ function typeEffect() {
 }
 
 document.addEventListener("DOMContentLoaded", typeEffect);
-    // ===== 📱 MOBILE RESPONSIVE HAMBURGER MENU ENGINE =====
+// ===== 📱 MOBILE RESPONSIVE HAMBURGER MENU ENGINE =====
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
 const navLinks = document.querySelector(".nav-links");
 
@@ -1578,7 +1601,7 @@ if (mobileMenuBtn && navLinks) {
         }
     });
 
-    // মোবাইল মেনুর যেকোনো লিংকে ক্লিক করলে মেনু অটো বন্ধ হয়ে যাবে
+    // মোবাইল মেনুর যেকোনো লিংকে ক্লিক করলে মেনু অটো বন্ধ হয়ে যাবে
     document.querySelectorAll(".nav-links a").forEach(link => {
         link.addEventListener("click", () => {
             navLinks.classList.remove("active-menu");
@@ -1590,14 +1613,14 @@ if (mobileMenuBtn && navLinks) {
         });
     });
 }
-    const counters = document.querySelectorAll('.counter');
+const counters = document.querySelectorAll('.counter');
 let counterStarted = false;
 
 function startCounterAnimation() {
     counters.forEach(counter => {
         counter.innerText = '0';
         const target = +counter.getAttribute('data-target');
-        const increment = target / 60; // গতি নিয়ন্ত্রণ
+        const increment = target / 60; // গতি নিয়ন্ত্রণ
 
         const updateCounter = () => {
             const current = +counter.innerText.replace('+', '');
