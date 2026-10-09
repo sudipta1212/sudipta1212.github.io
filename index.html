@@ -1647,41 +1647,39 @@ window.addEventListener('scroll', () => {
     }
 });
     </script>
- <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
+<!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS TEST MODE) ===== -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
 (function() {
-    const EMAILJS_PUBLIC_KEY = "DitL7CRByg5jbQtbx";
+    const EMAILJS_PUBLIC_KEY = "ix7eGawQmL3c-Dl2p8iSk";
     const EMAILJS_SERVICE_ID = "service_w7vrcvx";
-    const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
+    const EMAILJS_TEMPLATE_ID = "tamplate_pkh3eth"; // যদি EmailJS-এ template_pkh3eth হয় তবে তা দিন
 
-    // 1. Init
+    // EmailJS Initialize
     emailjs.init({
         publicKey: EMAILJS_PUBLIC_KEY,
     });
 
-    // 2. Fetch IP & Send
-    fetch("https://ipapi.co/json/")
-        .then(res => res.json())
-        .then(data => {
-            const templateParams = {
-                visitor_city: data.city || "Unknown City",
-                visitor_country: data.country_name || "Unknown Country",
-                visitor_ip: data.ip || "Hidden IP",
-                visitor_org: data.org || "Unknown ISP",
-                visitor_device: navigator.userAgent.includes("Mobile") ? "Mobile Device" : "Desktop PC",
-                visit_time: new Date().toLocaleTimeString(),
-                page_url: window.location.href
-            };
+    const testParams = {
+        visitor_city: "Chattogram",
+        visitor_country: "Bangladesh",
+        visitor_ip: "Live Test",
+        visitor_org: "Broadband",
+        visitor_device: navigator.userAgent.includes("Mobile") ? "Mobile" : "Desktop",
+        visit_time: new Date().toLocaleTimeString(),
+        page_url: window.location.href
+    };
 
-            return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    // সরাসরি ইমেইল পাঠানোর রিকোয়েস্ট
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, testParams)
+        .then(function(response) {
+            console.log("SUCCESS!", response.status, response.text);
+            alert("✅ ইমেইল সফলভাবে পাঠানো হয়েছে! ইনবক্স বা স্প্যাম চেক করুন।");
         })
-        .then((response) => {
-            console.log("SUCCESS! Email sent status:", response.status, response.text);
-        })
-        .catch(err => {
-            console.error("FAILED to send email:", err);
+        .catch(function(error) {
+            console.error("FAILED...", error);
+            alert("❌ ইমেইল পাঠাতে সমস্যা হয়েছে:\n" + JSON.stringify(error));
         });
 })();
 </script>
