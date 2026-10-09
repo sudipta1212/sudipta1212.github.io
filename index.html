@@ -1647,39 +1647,56 @@ window.addEventListener('scroll', () => {
     }
 });
     </script>
-<!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS TEST MODE) ===== -->
+<!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
 (function() {
-    const EMAILJS_PUBLIC_KEY = "DitL7CRByg5jbQtbx";
+    const EMAILJS_PUBLIC_KEY = "NJTucZB3vO1tLmTj7";
     const EMAILJS_SERVICE_ID = "service_w7vrcvx";
-    const EMAILJS_TEMPLATE_ID = "tamplate_pkh3eth"; // যদি EmailJS-এ template_pkh3eth হয় তবে তা দিন
+    const EMAILJS_TEMPLATE_ID = "tamplate_pkh3eth";
 
-    // EmailJS Initialize
+    // 1. Initialize EmailJS
     emailjs.init({
         publicKey: EMAILJS_PUBLIC_KEY,
     });
 
-    const testParams = {
-        visitor_city: "Chattogram",
-        visitor_country: "Bangladesh",
-        visitor_ip: "Live Test",
-        visitor_org: "Broadband",
-        visitor_device: navigator.userAgent.includes("Mobile") ? "Mobile" : "Desktop",
-        visit_time: new Date().toLocaleTimeString(),
-        page_url: window.location.href
-    };
+    // 2. একই ভিজিটর পেজ রিফ্রেশ দিলে বারবার মেইল যাওয়া আটকানোর গার্ড
+    if (sessionStorage.getItem("portfolio_visited")) {
+        return;
+    }
+    sessionStorage.setItem("portfolio_visited", "true");
 
-    // সরাসরি ইমেইল পাঠানোর রিকোয়েস্ট
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, testParams)
-        .then(function(response) {
-            console.log("SUCCESS!", response.status, response.text);
-            alert("✅ ইমেইল সফলভাবে পাঠানো হয়েছে! ইনবক্স বা স্প্যাম চেক করুন।");
+    // 3. ভিজিটরের লোকেশন ও আইপি ডেটা নিয়ে ইমেইল পাঠানো
+    fetch("https://ipapi.co/json/")
+        .then(res => res.json())
+        .then(data => {
+            const templateParams = {
+                visitor_city: data.city || "Unknown City",
+                visitor_country: data.country_name || "Unknown Country",
+                visitor_ip: data.ip || "Hidden IP",
+                visitor_org: data.org || "Unknown ISP",
+                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
+                visit_time: new Date().toLocaleString(),
+                page_url: window.location.href
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .catch(err => console.error("Email Tracker Error:", err));
         })
-        .catch(function(error) {
-            console.error("FAILED...", error);
-            alert("❌ ইমেইল পাঠাতে সমস্যা হয়েছে:\n" + JSON.stringify(error));
+        .catch(() => {
+            const fallbackParams = {
+                visitor_city: "Unavailable",
+                visitor_country: "Unavailable",
+                visitor_ip: "Unavailable",
+                visitor_org: "Unavailable",
+                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
+                visit_time: new Date().toLocaleString(),
+                page_url: window.location.href
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, fallbackParams)
+                .catch(err => console.error("Email Tracker Error:", err));
         });
 })();
 </script>
