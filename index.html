@@ -1647,7 +1647,7 @@ window.addEventListener('scroll', () => {
     }
 });
     </script>
-   <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
+ <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
@@ -1656,49 +1656,32 @@ window.addEventListener('scroll', () => {
     const EMAILJS_SERVICE_ID = "service_w7vrcvx";
     const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
 
-    // EmailJS Initialize
+    // 1. Init
     emailjs.init({
         publicKey: EMAILJS_PUBLIC_KEY,
     });
 
-    // একই সেশনে বারবার ইমেইল পাঠানো আটকানোর জন্য
-    if (sessionStorage.getItem("portfolio_visitor_tracked")) {
-        return;
-    }
-    sessionStorage.setItem("portfolio_visitor_tracked", "true");
-
-    // ভিজিটরের লোকেশন ও ডিভাইস ইনফো সংগ্রহ
+    // 2. Fetch IP & Send
     fetch("https://ipapi.co/json/")
         .then(res => res.json())
         .then(data => {
             const templateParams = {
                 visitor_city: data.city || "Unknown City",
                 visitor_country: data.country_name || "Unknown Country",
-                visitor_ip: data.ip || "Hidden/VPN",
+                visitor_ip: data.ip || "Hidden IP",
                 visitor_org: data.org || "Unknown ISP",
-                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
-                visit_time: new Date().toLocaleString(),
+                visitor_device: navigator.userAgent.includes("Mobile") ? "Mobile Device" : "Desktop PC",
+                visit_time: new Date().toLocaleTimeString(),
                 page_url: window.location.href
             };
 
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(() => console.log("Portfolio Visitor Alert Sent Successfully!"))
-                .catch(err => console.error("Email Tracker Error:", err));
+            return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
         })
-        .catch(() => {
-            const templateParams = {
-                visitor_city: "Unavailable",
-                visitor_country: "Unavailable",
-                visitor_ip: "Unavailable",
-                visitor_org: "Unavailable",
-                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
-                visit_time: new Date().toLocaleString(),
-                page_url: window.location.href
-            };
-
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(() => console.log("Portfolio Visitor Alert Sent Successfully (Fallback)!"))
-                .catch(err => console.error("Email Tracker Error:", err));
+        .then((response) => {
+            console.log("SUCCESS! Email sent status:", response.status, response.text);
+        })
+        .catch(err => {
+            console.error("FAILED to send email:", err);
         });
 })();
 </script>
