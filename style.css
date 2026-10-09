@@ -5148,3 +5148,64 @@ section.personal-section .personal-row.address .personal-value {
         font-size: 12px;
     }
 }
+/* ==========================================================
+   CALENDLY MEETING CARD & POPUP ENHANCEMENTS
+   ========================================================== */
+
+/* মিটিং কার্ডের কাস্টম স্টাইল ও হোভার এফেক্ট */
+.contact-cards .contact-card.clickable-msg-card:hover .contact-icon {
+    transform: scale(1.08) rotate(-4deg);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* কন্টাক্ট গ্রিড রেস্পন্সিভ লেআউট (৫টি কার্ড থাকলে সুন্দর বিন্যাস) */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Calendly অফিসিয়াল পপআপ উইজেটের ডার্ক থিম টিউনিং */
+.calendly-overlay {
+    backdrop-filter: blur(8px) !important;
+    background-color: rgba(11, 17, 32, 0.85) !important;
+    z-index: 99999 !important;
+}
+
+.calendly-popup {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.25) !important;
+    border: 1px solid rgba(56, 189, 248, 0.35) !important;
+}
+
+.calendly-popup-close {
+    top: 20px !important;
+    right: 20px !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #38bdf8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    border-radius: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+}
+
+.calendly-popup-close:hover {
+    background: #38bdf8 !important;
+    color: #0b1120 !important;
+    transform: rotate(90deg) scale(1.1) !important;
+}
+
+/* লাইট মোড সাপোর্ট (যখন থিম টগল করা হবে) */
+[data-theme="light"] .calendly-overlay {
+    background-color: rgba(241, 245, 249, 0.85) !important;
+}
+
+[data-theme="light"] .calendly-popup {
+    border-color: rgba(2, 132, 199, 0.3) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
