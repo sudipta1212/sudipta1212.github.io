@@ -1646,7 +1646,8 @@ window.addEventListener('scroll', () => {
         }
     }
 });
-    <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
+    </script>
+   <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script type="text/javascript">
@@ -1660,7 +1661,7 @@ window.addEventListener('scroll', () => {
         publicKey: EMAILJS_PUBLIC_KEY,
     });
 
-    // একই ভিজিটর সাইটে ঘোরাঘুরি বা রিলোড দিলে প্রতি সেকেন্ডে যেন ইমেইল না পাঠায় (Session Guard)
+    // একই সেশনে বারবার ইমেইল পাঠানো আটকানোর জন্য
     if (sessionStorage.getItem("portfolio_visitor_tracked")) {
         return;
     }
@@ -1681,10 +1682,10 @@ window.addEventListener('scroll', () => {
             };
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(() => console.log("Portfolio Visitor Alert Sent Successfully!"))
                 .catch(err => console.error("Email Tracker Error:", err));
         })
         .catch(() => {
-            // আইপি ব্লক থাকলে সাধারণ ডেটা দিয়ে নোটিফিকেশন পাঠাবে
             const templateParams = {
                 visitor_city: "Unavailable",
                 visitor_country: "Unavailable",
@@ -1696,6 +1697,7 @@ window.addEventListener('scroll', () => {
             };
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(() => console.log("Portfolio Visitor Alert Sent Successfully (Fallback)!"))
                 .catch(err => console.error("Email Tracker Error:", err));
         });
 })();
