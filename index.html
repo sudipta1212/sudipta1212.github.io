@@ -1646,6 +1646,59 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+    <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE (EMAILJS) ===== -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+(function() {
+    const EMAILJS_PUBLIC_KEY = "ix7eGawQmL3c-Dl2p8iSk";
+    const EMAILJS_SERVICE_ID = "service_w7vrcvx";
+    const EMAILJS_TEMPLATE_ID = "tamplate_pkh3eth";
+
+    // EmailJS Initialize
+    emailjs.init({
+        publicKey: EMAILJS_PUBLIC_KEY,
+    });
+
+    // একই ভিজিটর সাইটে ঘোরাঘুরি বা রিলোড দিলে প্রতি সেকেন্ডে যেন ইমেইল না পাঠায় (Session Guard)
+    if (sessionStorage.getItem("portfolio_visitor_tracked")) {
+        return;
+    }
+    sessionStorage.setItem("portfolio_visitor_tracked", "true");
+
+    // ভিজিটরের লোকেশন ও ডিভাইস ইনফো সংগ্রহ
+    fetch("https://ipapi.co/json/")
+        .then(res => res.json())
+        .then(data => {
+            const templateParams = {
+                visitor_city: data.city || "Unknown City",
+                visitor_country: data.country_name || "Unknown Country",
+                visitor_ip: data.ip || "Hidden/VPN",
+                visitor_org: data.org || "Unknown ISP",
+                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
+                visit_time: new Date().toLocaleString(),
+                page_url: window.location.href
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .catch(err => console.error("Email Tracker Error:", err));
+        })
+        .catch(() => {
+            // আইপি ব্লক থাকলে সাধারণ ডেটা দিয়ে নোটিফিকেশন পাঠাবে
+            const templateParams = {
+                visitor_city: "Unavailable",
+                visitor_country: "Unavailable",
+                visitor_ip: "Unavailable",
+                visitor_org: "Unavailable",
+                visitor_device: navigator.userAgent.includes("Mobile") ? "📱 Mobile Device" : "💻 Desktop / PC",
+                visit_time: new Date().toLocaleString(),
+                page_url: window.location.href
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .catch(err => console.error("Email Tracker Error:", err));
+        });
+})();
 </script>
 </body>
 </html>
