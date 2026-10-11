@@ -1916,41 +1916,87 @@ function appendChatMessage(text, sender) {
 }
 
 // Knowledge Base & Intelligent Rule Matching
+// ====================================================
+// COMPLETE PORTFOLIO KNOWLEDGE BASE ENGINE
+// ====================================================
 function generateAiPortfolioResponse(query) {
     const q = query.toLowerCase();
 
-    // 1. Publication / Conference Queries
-    if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
-        return "📄 Sudipta presented his research paper (Paper ID: 748) at the <strong>iCONEECT 2026</strong> conference (technically co-sponsored by IEEE Bangladesh Section) held at Premier University, Chattogram (Sept 25–26, 2026).";
+    // ১. কলেজ / এইচএসসি সংক্রান্ত (HSC / College)
+    if (q.includes("clg") || q.includes("college") || q.includes("hsc") || q.includes("কলেজ") || q.includes("kazem ali")) {
+        return "🏫 সুদীপ্ত তাঁর <strong>Higher Secondary Certificate (HSC)</strong> সম্পন্ন করেছেন <strong>Kazem Ali High School and College</strong> (বিজ্ঞান বিভাগ, চট্টগ্রাম বোর্ড) থেকে ২০২১ সালে।";
     }
 
-    // 2. Thesis / Model Architecture Queries
-    if (q.includes("architecture") || q.includes("retinopathy") || q.includes("model") || q.includes("thesis") || q.includes("রেটিনোপ্যাথি") || q.includes("মডেল") || q.includes("থিসিস")) {
-        return "🧠 For Automated Diabetic Retinopathy detection, Sudipta evaluated <strong>MobileNetV3-Large</strong> (98.91% binary accuracy with ~5.4M parameters), <strong>EfficientNet-B0</strong> (98.1% multiclass accuracy), and <strong>Vision Transformers (ViT-Base)</strong>, along with Explainable AI (LIME & Grad-CAM).";
+    // ২. স্কুল সংক্রান্ত (SSC / JSC / PSC / Schools)
+    if (q.includes("school") || q.includes("স্কুল") || q.includes("ssc") || q.includes("jsc") || q.includes("psc") || q.includes("railway") || q.includes("lions")) {
+        if (q.includes("psc") || q.includes("primary") || q.includes("lions")) {
+            return "🏫 প্রাইমারি স্কুল (PSC): <strong>Lions School</strong> (২০১৩)।";
+        }
+        return "🏫 সুদীপ্ত তাঁর <strong>SSC (২০১৯)</strong> এবং <strong>JSC (২০১৬)</strong> উভয়ই সম্পন্ন করেছেন <strong>Railway Public High School</strong> (চট্টগ্রাম বোর্ড, বিজ্ঞান বিভাগ) থেকে।";
     }
 
-    // 3. Current Education / Studies
-    if (q.includes("study") || q.includes("degree") || q.includes("m.sc") || q.includes("cuet") || q.includes("education") || q.includes("লেখাপড়া")) {
-        return "🎓 Sudipta completed his B.Sc. in Electrical & Electronic Engineering from Premier University and is currently pursuing his <strong>M.Sc. in Nuclear Engineering</strong> at Chittagong University of Engineering and Technology (CUET).";
+    // ৩. ব্যাচেলর / স্নাতক (B.Sc. in EEE / Premier University)
+    if (q.includes("bsc") || q.includes("b.sc") || q.includes("graduation") || q.includes("premier") || q.includes("গ্র্যাজুয়েশন") || q.includes("ভার্সিটি") || (q.includes("university") && !q.includes("cuet"))) {
+        return "🎓 সুদীপ্ত <strong>Premier University</strong> থেকে <strong>Electrical & Electronic Engineering (EEE)</strong> বিভাগে B.Sc. সম্পন্ন করেছেন (পাসিং ডেট: ১৬ মে ২০২৬)।";
     }
 
-    // 4. Skills / Tech Stack
-    if (q.includes("skill") || q.includes("python") || q.includes("programming") || q.includes("টুলস") || q.includes("স্কিল")) {
-        return "⚙️ His core technical skills include Python (PyTorch, Flask), MATLAB, C, PLC (Siemens S7-1200, LOGO), Arduino, IoT systems, AutoCAD Electrical, and Web Development.";
+    // ৪. বর্তমান পড়াশোনা / মাস্টার্স (M.Sc. in Nuclear / CUET)
+    if (q.includes("msc") || q.includes("m.sc") || q.includes("cuet") || q.includes("nuclear") || q.includes("current") || q.includes("পড়াশোনা") || q.includes("পড়াশোনা")) {
+        return "⚛️ সুদীপ্ত বর্তমানে <strong>Chittagong University of Engineering and Technology (CUET)</strong>-এ <strong>M.Sc. in Nuclear Engineering</strong> প্রোগ্রামে অধ্যয়নরত আছেন (জুলাই ২০২৬ – বর্তমান)।";
     }
 
-    // 5. Contact Information
-    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("hire") || q.includes("যোগাযোগ")) {
-        return "📬 You can reach Sudipta directly at <strong>sudipta1212das32@gmail.com</strong>, call/WhatsApp at <strong>+880 1580-485253</strong>, or use the 'Schedule a Meeting' Calendly button in the Contact section.";
+    // ৫. কনফারেন্স পেপার ও পাবলিকেশন (IEEE / iCONEECT 2026 / Paper ID 748)
+    if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("ieee") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
+        return "📄 <strong>IEEE Conference Paper (ID: 748):</strong><br>• <strong>Title:</strong> A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints.<br>• <strong>Conference:</strong> iCONEECT 2026 (Premier University ও IEEE Bangladesh Section-এর যৌথ উদ্যোগে আয়োজিত, ২৫–২৬ সেপ্টেম্বর ২০২৬)।";
     }
 
-    // 6. CV / Resume
-    if (q.includes("cv") || q.includes("resume") || q.includes("সিভি")) {
-        return "🔒 Sudipta's CV is available via the lock button in the navigation bar. Since it is password-protected for privacy, please contact him directly to get access.";
+    // ৬. থিসিস ও ডিপ লার্নিং মডেল (MobileNetV3, EfficientNet, ViT, XAI)
+    if (q.includes("thesis") || q.includes("model") || q.includes("retinopathy") || q.includes("deep learning") || q.includes("vit") || q.includes("mobilenet") || q.includes("থিসিস") || q.includes("মডেল")) {
+        return "🧠 <strong>Diabetic Retinopathy Detection Thesis:</strong><br>• <strong>MobileNetV3-Large:</strong> ৯৮.৯১% ভ্যালিডেশন অ্যাকুরেসি (বাইনারি ডিটেকশন, মাত্র ৫.৪ মিলিয়ন প্যারামিটার)।<br>• <strong>EfficientNet-B0:</strong> ৯৮.১% অ্যাকুরেসি (৫টি ক্লিনিক্যাল স্টেজের মাল্টিক্লাস গ্রেডিং)।<br>• এছাড়াও ব্যবহৃত হয়েছে <strong>Vision Transformers (ViT-Base)</strong> এবং ক্লিনিক্যাল ব্যাখ্যার জন্য <strong>Explainable AI (LIME & Grad-CAM)</strong>।";
     }
 
-    // Default Fallback
-    return "💡 I can help with information about Sudipta's IEEE conference paper (iCONEECT 2026), deep learning thesis models, educational background at CUET/PU, or contact details. Feel free to ask!";
+    // ৭. হার্ডওয়্যার ও ইঞ্জিনিয়ারিং প্রজেক্ট (IoT / Solar / PLC / Robotics)
+    if (q.includes("project") || q.includes("হার্ডওয়্যার") || q.includes("প্রজেক্ট") || q.includes("solar") || q.includes("plc") || q.includes("robot") || q.includes("water")) {
+        return "🛠️ <strong>সুদীপ্তর মূল ইঞ্জিনিয়ারিং প্রজেক্টসমূহ:</strong><br>১. Arduino-Based Single-Axis Solar Tracking System<br>২. Automatic Solar-Powered Street Light Controller<br>৩. PLC-Based Traffic Light Control System<br>৪. Autonomous Line Follower Robot<br>৫. Automated Water Level Indicator & Controller।";
+    }
+
+    // ৮. লিডারশিপ ও এক্সট্রা কারিকুলার (Hult Prize, IEEE SB, Futurenation)
+    if (q.includes("leadership") || q.includes("hult") || q.includes("ambassador") || q.includes("club") || q.includes("লিডারশিপ") || q.includes("ক্লাব")) {
+        return "🌟 <strong>লিডারশিপ ও অর্গানাইজেশনাল রোলস:</strong><br>• <strong>Head of Media & Communications:</strong> Hult Prize at Premier University (২০২৫–২০২৬)<br>• <strong>Campus Ambassador:</strong> iCONEECT 2026 ও Futurenation (৫০০+ স্টুডেন্টদের সাথে কানেক্টেড)<br>• <strong>সদস্য:</strong> IEEE Student Branch ও Premier University Robotics Club।";
+    }
+
+    // ৯. অ্যাওয়ার্ড ও প্রতিযোগিতা (Awards / Competitions)
+    if (q.includes("award") || q.includes("competition") || q.includes("পুরস্কার") || q.includes("অ্যাওয়ার্ড") || q.includes("best presenter")) {
+        return "🏆 <strong>অর্জন ও অ্যাওয়ার্ড:</strong><br>• <strong>Best Presenter Award:</strong> Project Day 2023 (Premier University)<br>• <strong>Line Follower Robot Race:</strong> Bangabandhu Innovation Fair 2024 (পার্টিসিপেশন সার্টিফিকেট)<br>• <strong>Poster Presentation:</strong> Bangabandhu Innovation Fair 2024।";
+    }
+
+    // ১০. টেকনিক্যাল স্কিল ও সফটওয়্যার (Programming, Software tools)
+    if (q.includes("skill") || q.includes("python") || q.includes("software") || q.includes("matlab") || q.includes("programming") || q.includes("স্কিল")) {
+        return "💻 <strong>টেকনিক্যাল স্কিলস:</strong><br>• <strong>প্রোগ্রামিং:</strong> Python (PyTorch, Flask), C, Basic Java<br>• <strong>ইঞ্জিনিয়ারিং ও সিমুলেশন টুলস:</strong> MATLAB, Arduino IDE, Siemens S7-1200, LOGO PLC, AutoCAD, MicroWind<br>• <strong>ডিজিটাল ও অন্যান্য:</strong> UI/UX Design, Data Analysis (Excel), Video Editing।";
+    }
+
+    // ১১. ব্যক্তিগত শখ ও আগ্রহ (Hobbies / Interests)
+    if (q.includes("hobby") || q.includes("interest") || q.includes("শখ") || q.includes("free time") || q.includes("পছন্দ")) {
+        return "🎨 সুদীপ্ত অবসর সময়ে বই পড়া, লেখালেখি, কবিতা, নেচার ফটোগ্রাফি, খেলাধুলা, বাগান করা এবং স্কেচিং করতে পছন্দ করেন।";
+    }
+
+    // ১২. সার্টিফিকেশন (Certificates)
+    if (q.includes("certificate") || q.includes("সার্টিফিকেট") || q.includes("কোর্স") || q.includes("training")) {
+        return "📜 সুদীপ্তর প্রোফাইলে ৭০+ ভেরিফায়েড সার্টিফিকেশন ও ব্যাজ রয়েছে—যার মধ্যে IEEE, Futurenation/UNDP, UNICEF Passport to Earning, The Asia Foundation, এবং British Council-এর কোর্স অন্তর্ভুক্ত।";
+    }
+
+    // ১৩. যোগাযোগ সংক্রান্ত (Contact / Phone / Email / Meeting)
+    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("whatsapp") || q.includes("যোগাযোগ") || q.includes("কথা")) {
+        return "📬 <strong>সুদীপ্তর সাথে যোগাযোগের মাধ্যম:</strong><br>• <strong>ইমেইল:</strong> sudipta1212das32@gmail.com<br>• <strong>ফোন/হোয়াটসঅ্যাপ:</strong> +880 1580-485253<br>• সাইটের Contact সেকশন থেকে সরাসরি মেসেজ পাঠাতে বা Calendly-এর মাধ্যমে মিটিং শিডিউল করতে পারেন।";
+    }
+
+    // ১৪. সিভি (CV / Resume)
+    if (q.includes("cv") || q.includes("resume") || q.includes("সিভি") || q.includes("রেজুমে")) {
+        return "🔒 সুদীপ্তর সিভিটি নেভিগেশন বারের '🔒 CV' বাটনে ক্লিক করে ডাউনলোড করা যাবে। তবে সুরক্ষার স্বার্থে ফাইলটি পাসওয়ার্ড প্রটেক্টেড—পাসওয়ার্ড পেতে তাঁর সাথে সরাসরি যোগাযোগ করুন।";
+    }
+
+    // সাধারণ ডিফল্ট উত্তর
+    return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
 }
 </script>
 </body>
