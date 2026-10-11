@@ -5226,3 +5226,120 @@ section.personal-section .personal-row.address .personal-value {
     opacity: 1;
     transform: translateY(0);
 }
+/* ====================================================
+   MICRO-INTERACTIONS & HOVER EFFECTS
+   ==================================================== */
+
+/* --- ১. কার্ড লিফ্ট ও স্মুথ ট্রানজিশন --- */
+.project-card, 
+.smart-skill-card, 
+.education-card, 
+.leadership-card,
+.stat-box {
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 0.35s ease;
+    will-change: transform;
+}
+
+.project-card:hover, 
+.smart-skill-card:hover, 
+.education-card:hover, 
+.leadership-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.6) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(56, 189, 248, 0.15) !important;
+}
+
+/* --- ২. বাটন শাইন ও গ্লো ইফেক্ট --- */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* মাউস হোভারে হালকা উপরে ওঠা ও নিয়ন গ্লো */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+}
+
+/* বাটনের উপর দিয়ে লাইট শাইন পাস হওয়ার অ্যানিমেশন */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(
+        60deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.25), 
+        transparent
+    );
+    transform: rotate(25deg);
+    transition: none;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 130%;
+    transition: all 0.75s ease-in-out;
+}
+
+/* ক্লিকের সময় মাইক্রো-প্রেস ফিডব্যাক */
+.btn:active, 
+.clickable-card:active {
+    transform: scale(0.97) !important;
+}
+
+/* --- ৩. কাস্টম স্মুথ কার্সর ট্র্যাকার --- */
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+}
+
+.cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(56, 189, 248, 0.6);
+    background: rgba(56, 189, 248, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease-out, 
+                width 0.25s ease, 
+                height 0.25s ease, 
+                background-color 0.25s ease,
+                border-color 0.25s ease;
+}
+
+/* ক্লিকেবল এলিমেন্টে হোভার করলে কার্সর কিছুটা বড় হবে */
+.cursor-follower.cursor-hover {
+    width: 48px;
+    height: 48px;
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+}
+
+/* টাচ ডিভাইসে (মোবাইল/ট্যাবলেট) কাস্টম কার্সর অটো-হাইড */
+@media (pointer: coarse) {
+    .cursor-dot, .cursor-follower {
+        display: none !important;
+    }
+}
