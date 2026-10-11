@@ -994,7 +994,46 @@ document.addEventListener("DOMContentLoaded", function () {
 <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
 </button>
+<!-- ===== AI PORTFOLIO CHATBOT WIDGET ===== -->
+<div id="aiChatWidget" class="ai-chat-widget">
+    <!-- Chat Window -->
+    <div id="aiChatBox" class="ai-chat-box">
+        <div class="ai-chat-header">
+            <div class="ai-chat-header-info">
+                <span class="ai-avatar">🤖</span>
+                <div>
+                    <h4>Sudipta's Assistant</h4>
+                    <span class="ai-status"><span class="status-dot-ai"></span> Online</span>
+                </div>
+            </div>
+            <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
+        </div>
 
+        <div id="aiChatMessages" class="ai-chat-messages">
+            <div class="ai-msg bot">
+                <span>👋 Hi! I'm Sudipta's portfolio assistant. You can ask me about his research, thesis models, publications, or background!</span>
+            </div>
+            <!-- Quick Chips -->
+            <div class="ai-chips">
+                <button onclick="quickAsk('Publication details')">📄 Publications</button>
+                <button onclick="quickAsk('Thesis models')">🧠 Deep Learning Models</button>
+                <button onclick="quickAsk('Current degree')">🎓 Current Studies</button>
+                <button onclick="quickAsk('How to contact')">📩 Contact</button>
+            </div>
+        </div>
+
+        <form id="aiChatForm" class="ai-chat-input-area" onsubmit="handleAiChatSubmit(event)">
+            <input type="text" id="aiUserInput" placeholder="Ask a question..." autocomplete="off" required>
+            <button type="submit" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <button id="aiChatToggleBtn" class="ai-chat-toggle-btn" onclick="toggleAiChat()" aria-label="Open AI Assistant">
+        <i class="fas fa-robot"></i>
+        <span class="ai-chat-badge">AI</span>
+    </button>
+</div>
 <!-- ===== CV NOTICE MODAL ===== -->
 <div id="cvModal" class="modal-overlay">
   <div class="modal-card">
@@ -1827,6 +1866,91 @@ if (window.matchMedia("(pointer: fine)").matches) {
         "max-glare": 0.15,   // রিফ্লেকশনের ঘনত্ব
         scale: 1.02          // হোভারের সময় হালকা জুম
     });
+}
+        // ====================================================
+// AI PORTFOLIO ASSISTANT LOGIC
+// ====================================================
+
+function toggleAiChat() {
+    const box = document.getElementById("aiChatBox");
+    if (!box) return;
+    if (box.style.display === "flex") {
+        box.style.display = "none";
+    } else {
+        box.style.display = "flex";
+        document.getElementById("aiUserInput").focus();
+    }
+}
+
+function quickAsk(text) {
+    const input = document.getElementById("aiUserInput");
+    if (input) {
+        input.value = text;
+        handleAiChatSubmit(new Event('submit'));
+    }
+}
+
+function handleAiChatSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById("aiUserInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    appendChatMessage(msg, "user");
+    input.value = "";
+
+    // Show bot reply with realistic typing delay
+    setTimeout(() => {
+        const reply = generateAiPortfolioResponse(msg);
+        appendChatMessage(reply, "bot");
+    }, 450);
+}
+
+function appendChatMessage(text, sender) {
+    const chatContainer = document.getElementById("aiChatMessages");
+    const div = document.createElement("div");
+    div.className = `ai-msg ${sender}`;
+    div.innerHTML = `<span>${text}</span>`;
+    chatContainer.appendChild(div);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Knowledge Base & Intelligent Rule Matching
+function generateAiPortfolioResponse(query) {
+    const q = query.toLowerCase();
+
+    // 1. Publication / Conference Queries
+    if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
+        return "📄 Sudipta presented his research paper (Paper ID: 748) at the <strong>iCONEECT 2026</strong> conference (technically co-sponsored by IEEE Bangladesh Section) held at Premier University, Chattogram (Sept 25–26, 2026).";
+    }
+
+    // 2. Thesis / Model Architecture Queries
+    if (q.includes("architecture") || q.includes("retinopathy") || q.includes("model") || q.includes("thesis") || q.includes("রেটিনোপ্যাথি") || q.includes("মডেল") || q.includes("থিসিস")) {
+        return "🧠 For Automated Diabetic Retinopathy detection, Sudipta evaluated <strong>MobileNetV3-Large</strong> (98.91% binary accuracy with ~5.4M parameters), <strong>EfficientNet-B0</strong> (98.1% multiclass accuracy), and <strong>Vision Transformers (ViT-Base)</strong>, along with Explainable AI (LIME & Grad-CAM).";
+    }
+
+    // 3. Current Education / Studies
+    if (q.includes("study") || q.includes("degree") || q.includes("m.sc") || q.includes("cuet") || q.includes("education") || q.includes("লেখাপড়া")) {
+        return "🎓 Sudipta completed his B.Sc. in Electrical & Electronic Engineering from Premier University and is currently pursuing his <strong>M.Sc. in Nuclear Engineering</strong> at Chittagong University of Engineering and Technology (CUET).";
+    }
+
+    // 4. Skills / Tech Stack
+    if (q.includes("skill") || q.includes("python") || q.includes("programming") || q.includes("টুলস") || q.includes("স্কিল")) {
+        return "⚙️ His core technical skills include Python (PyTorch, Flask), MATLAB, C, PLC (Siemens S7-1200, LOGO), Arduino, IoT systems, AutoCAD Electrical, and Web Development.";
+    }
+
+    // 5. Contact Information
+    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("hire") || q.includes("যোগাযোগ")) {
+        return "📬 You can reach Sudipta directly at <strong>sudipta1212das32@gmail.com</strong>, call/WhatsApp at <strong>+880 1580-485253</strong>, or use the 'Schedule a Meeting' Calendly button in the Contact section.";
+    }
+
+    // 6. CV / Resume
+    if (q.includes("cv") || q.includes("resume") || q.includes("সিভি")) {
+        return "🔒 Sudipta's CV is available via the lock button in the navigation bar. Since it is password-protected for privacy, please contact him directly to get access.";
+    }
+
+    // Default Fallback
+    return "💡 I can help with information about Sudipta's IEEE conference paper (iCONEECT 2026), deep learning thesis models, educational background at CUET/PU, or contact details. Feel free to ask!";
 }
 </script>
 </body>
