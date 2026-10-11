@@ -53,12 +53,25 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <!-- এই দুটি বাটন একসাথে লোগো ও ন্যাভ লিংকের পাশে বা বাইরে রাখুন -->
-        <div class="nav-right-actions" style="display: flex; align-items: center; gap: 12px;">
-            <!-- ১. থিম টগল বাটন (আগেরটিই থাকবে) -->
-            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
+<!-- এই বাটনগুলো একসাথে লোগো ও ন্যাভ লিংকের পাশে বা বাইরে রাখুন -->
+<div class="nav-right-actions" style="display: flex; align-items: center; gap: 12px;">
+
+    <!-- ১. সাউন্ড চালু/বন্ধ করার বাটন (নতুন) -->
+    <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle Sound" onclick="toggleAudioFx()">
+        <i class="fas fa-volume-up" id="soundIcon"></i>
+    </button>
+
+    <!-- ২. থিম টগল বাটন (ডার্ক/লাইট) -->
+    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <!-- ৩. মোবাইল মেনু হ্যামবার্গার বাটন -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</div>
 
             <!-- ২. মোবাইল মেনু হ্যামবার্গার বাটন (নতুন যোগ হবে) -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
@@ -1998,6 +2011,129 @@ function generateAiPortfolioResponse(query) {
     // সাধারণ ডিফল্ট উত্তর
     return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
 }
+        // ====================================================
+// ইউআই সাউন্ড এবং হ্যাপটিক অডিও ইঞ্জিন
+// ====================================================
+
+const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+
+// লোকালস্টোরেজ থেকে ইউজারের সাউন্ড সেটিং যাচাই (ডিফল্ট: চালু)
+let isSoundEnabled = localStorage.getItem("sudipta_sound_enabled") !== "false";
+
+function initAudioContext() {
+    if (!audioCtx && AudioContextClass) {
+        audioCtx = new AudioContextClass();
+    }
+    if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume();
+    }
+}
+
+// ১. বাটনে ক্লিক করার সাউন্ড (সফট ক্লিক)
+function playClickFx() {
+    if (!isSoundEnabled) return;
+    initAudioContext();
+    if (!audioCtx) return;
+
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(350, audioCtx.currentTime + 0.05);
+
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+    } catch (err) {
+        console.warn("অডিও প্লে করতে সমস্যা:", err);
+    }
+}
+
+// ২. কার্ডের ওপর মাউস নিলে লো-ফ্রিকোয়েন্সি পপ সাউন্ড
+function playHoverPopFx() {
+    if (!isSoundEnabled) return;
+    initAudioContext();
+    if (!audioCtx) return;
+
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.04);
+
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.04);
+    } catch (err) {
+        console.warn("অডিও প্লে করতে সমস্যা:", err);
+    }
+}
+
+// ৩. সাউন্ড চালু/বন্ধ (Mute / Unmute) নিয়ন্ত্রণ
+function toggleAudioFx() {
+    isSoundEnabled = !isSoundEnabled;
+    localStorage.setItem("sudipta_sound_enabled", isSoundEnabled);
+    updateSoundBtnState();
+    if (isSoundEnabled) {
+        playClickFx();
+    }
+}
+
+function updateSoundBtnState() {
+    const btn = document.getElementById("soundToggleBtn");
+    const icon = document.getElementById("soundIcon");
+    if (!btn || !icon) return;
+
+    if (isSoundEnabled) {
+        btn.classList.remove("muted");
+        icon.className = "fas fa-volume-up";
+        btn.setAttribute("title", "সাউন্ড চালু (মিউট করতে ক্লিক করুন)");
+    } else {
+        btn.classList.add("muted");
+        icon.className = "fas fa-volume-mute";
+        btn.setAttribute("title", "সাউন্ড বন্ধ (চালু করতে ক্লিক করুন)");
+    }
+}
+
+// ৪. পেজ লোড হলে ইভেন্টগুলো যুক্ত করা
+document.addEventListener("DOMContentLoaded", function () {
+    updateSoundBtnState();
+
+    // থিম টগল বাটনে ক্লিক সাউন্ড
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", playClickFx);
+    }
+
+    // সাধারণ বাটন ও মোডাল বন্ধের বাটনে ক্লিক সাউন্ড
+    document.querySelectorAll(".btn, .close-modal, .filter-btn, .proj-filter-btn").forEach(item => {
+        item.addEventListener("click", playClickFx);
+    });
+
+    // কার্ডের ওপর মাউস আনলে হোভার সাউন্ড
+    const hoverElements = document.querySelectorAll(
+        ".project-card, .smart-skill-card, .education-card, .award-card, .leadership-card"
+    );
+
+    hoverElements.forEach(card => {
+        card.addEventListener("mouseenter", playHoverPopFx);
+    });
+});
 </script>
 </body>
 </html>
