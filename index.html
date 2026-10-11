@@ -2011,29 +2011,31 @@ function generateAiPortfolioResponse(query) {
     // সাধারণ ডিফল্ট উত্তর
     return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
 }
-        // ====================================================
-// ইউআই সাউন্ড এবং হ্যাপটিক অডিও ইঞ্জিন
+
+// ====================================================
+// আপডেটেড অডিও ইঞ্জিন (ব্রাউজার অটো-আনলক সহ)
 // ====================================================
 
-const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
-
-// লোকালস্টোরেজ থেকে ইউজারের সাউন্ড সেটিং যাচাই (ডিফল্ট: চালু)
 let isSoundEnabled = localStorage.getItem("sudipta_sound_enabled") !== "false";
 
-function initAudioContext() {
-    if (!audioCtx && AudioContextClass) {
-        audioCtx = new AudioContextClass();
+// অডিও কনটেক্সট নিশ্চিত ও আনলক করা
+function ensureAudioContext() {
+    if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+            audioCtx = new AudioContextClass();
+        }
     }
     if (audioCtx && audioCtx.state === "suspended") {
         audioCtx.resume();
     }
 }
 
-// ১. বাটনে ক্লিক করার সাউন্ড (সফট ক্লিক)
+// বাটনে ক্লিকের সাউন্ড
 function playClickFx() {
     if (!isSoundEnabled) return;
-    initAudioContext();
+    ensureAudioContext();
     if (!audioCtx) return;
 
     try {
@@ -2042,9 +2044,37 @@ function playClickFx() {
 
         osc.type = "sine";
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(350, audioCtx.currentTime + 0.05);
+        osc.frequency.exponentialRampToValueAtTime(350, audioCtx.currentTime + 0.06);
 
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        // ভলিউম একটু স্পষ্ট করা হলো
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.06);
+    } catch (err) {
+        console.warn("Audio play error:", err);
+    }
+}
+
+// কার্ডের ওপর মাউস নিলে পপ সাউন্ড
+function playHoverPopFx() {
+    if (!isSoundEnabled) return;
+    ensureAudioContext();
+    if (!audioCtx) return;
+
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(260, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(520, audioCtx.currentTime + 0.05);
+
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
 
         osc.connect(gain);
@@ -2053,47 +2083,23 @@ function playClickFx() {
         osc.start();
         osc.stop(audioCtx.currentTime + 0.05);
     } catch (err) {
-        console.warn("অডিও প্লে করতে সমস্যা:", err);
+        console.warn("Hover sound error:", err);
     }
 }
 
-// ২. কার্ডের ওপর মাউস নিলে লো-ফ্রিকোয়েন্সি পপ সাউন্ড
-function playHoverPopFx() {
-    if (!isSoundEnabled) return;
-    initAudioContext();
-    if (!audioCtx) return;
-
-    try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = "triangle";
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.04);
-
-        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.04);
-    } catch (err) {
-        console.warn("অডিও প্লে করতে সমস্যা:", err);
-    }
-}
-
-// ৩. সাউন্ড চালু/বন্ধ (Mute / Unmute) নিয়ন্ত্রণ
+// মিউট / আনমিউট টগল ফাংশন
 function toggleAudioFx() {
+    ensureAudioContext(); // ক্লিক করার সাথে সাথে ব্রাউজার অডিও অনুমতি পাবে
     isSoundEnabled = !isSoundEnabled;
     localStorage.setItem("sudipta_sound_enabled", isSoundEnabled);
     updateSoundBtnState();
+
     if (isSoundEnabled) {
         playClickFx();
     }
 }
 
+// আইকন ও বাটন স্টেট পরিবর্তন
 function updateSoundBtnState() {
     const btn = document.getElementById("soundToggleBtn");
     const icon = document.getElementById("soundIcon");
@@ -2102,25 +2108,28 @@ function updateSoundBtnState() {
     if (isSoundEnabled) {
         btn.classList.remove("muted");
         icon.className = "fas fa-volume-up";
-        btn.setAttribute("title", "সাউন্ড চালু (মিউট করতে ক্লিক করুন)");
+        btn.setAttribute("title", "Sound On (Click to Mute)");
     } else {
         btn.classList.add("muted");
         icon.className = "fas fa-volume-mute";
-        btn.setAttribute("title", "সাউন্ড বন্ধ (চালু করতে ক্লিক করুন)");
+        btn.setAttribute("title", "Sound Muted (Click to Unmute)");
     }
 }
 
-// ৪. পেজ লোড হলে ইভেন্টগুলো যুক্ত করা
+// পেজ লোড হলে ইভেন্ট ও লিসেনার সেট করা
 document.addEventListener("DOMContentLoaded", function () {
     updateSoundBtnState();
 
-    // থিম টগল বাটনে ক্লিক সাউন্ড
-    const themeBtn = document.getElementById("themeToggle");
-    if (themeBtn) {
-        themeBtn.addEventListener("click", playClickFx);
-    }
+    // পেজের যেকোনো জায়গায় প্রথম ক্লিকেই অডিও সিস্টেম আনলক হয়ে যাবে
+    document.addEventListener("click", function unlockAudio() {
+        ensureAudioContext();
+        document.removeEventListener("click", unlockAudio);
+    }, { once: true });
 
-    // সাধারণ বাটন ও মোডাল বন্ধের বাটনে ক্লিক সাউন্ড
+    // থিম ও সাধারণ বাটনে ক্লিকের সাউন্ড যোগ
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) themeBtn.addEventListener("click", playClickFx);
+
     document.querySelectorAll(".btn, .close-modal, .filter-btn, .proj-filter-btn").forEach(item => {
         item.addEventListener("click", playClickFx);
     });
