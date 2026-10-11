@@ -1415,18 +1415,52 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Copy To Clipboard Function
+// Updated Copy to Clipboard with Pulse & Tooltip Feedback
 function copyToClipboard(text, btnElement) {
+    if (!navigator.clipboard) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        triggerCopyFeedback(btnElement);
+        return;
+    }
+
     navigator.clipboard.writeText(text).then(() => {
-        const originalHtml = btnElement.innerHTML;
-        btnElement.innerHTML = '<i class="fas fa-check" style="color: #4ade80;"></i>';
-        setTimeout(() => {
-            btnElement.innerHTML = originalHtml;
-        }, 2000);
+        triggerCopyFeedback(btnElement);
     }).catch(err => {
         console.error("Failed to copy:", err);
     });
 }
 
+function triggerCopyFeedback(btnElement) {
+    const originalHtml = btnElement.innerHTML;
+    
+    btnElement.classList.add("copied-active");
+    btnElement.innerHTML = '<i class="fas fa-check" style="color: #4ade80;"></i>';
+
+    let tooltip = btnElement.querySelector(".copy-tooltip");
+    if (!tooltip) {
+        tooltip = document.createElement("span");
+        tooltip.className = "copy-tooltip";
+        tooltip.textContent = "Copied!";
+        btnElement.appendChild(tooltip);
+    }
+
+    requestAnimationFrame(() => {
+        tooltip.classList.add("show");
+    });
+
+    setTimeout(() => {
+        tooltip.classList.remove("show");
+        btnElement.classList.remove("copied-active");
+        setTimeout(() => {
+            btnElement.innerHTML = originalHtml;
+        }, 200);
+    }, 2000);
+}
 // Project Filtering Function
 function filterProjects(category, btnElement) {
     const filterButtons = document.querySelectorAll('.proj-filter-btn');
