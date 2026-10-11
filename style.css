@@ -5209,3 +5209,20 @@ section.personal-section .personal-row.address .personal-value {
     border-color: rgba(2, 132, 199, 0.3) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
 }
+/* =====================================================
+   SCROLL REVEAL & STAGGER ANIMATION STYLES
+===================================================== */
+
+/* ডিফল্ট লুক: স্ক্রিনে আসার আগে লুকিয়ে থাকবে এবং একটু নিচে থাকবে */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* যখন স্ক্রিনে আসবে তখন এই ক্লাসটি জাভাস্ক্রিপ্ট যুক্ত করবে */
+.reveal-on-scroll.active-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
