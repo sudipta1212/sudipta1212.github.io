@@ -1739,7 +1739,61 @@ document.addEventListener("DOMContentLoaded", function () {
         revealObserver.observe(el);
     });
 });
-    
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // শুধুমাত্র মাউস ব্যবহারকারী ডেস্কটপ ডিভাইসে ট্র্যাকার সক্রিয় হবে
+    if (window.matchMedia("(pointer: fine)").matches) {
+        const dot = document.createElement("div");
+        const follower = document.createElement("div");
+        
+        dot.className = "cursor-dot";
+        follower.className = "cursor-follower";
+        
+        document.body.appendChild(dot);
+        document.body.appendChild(follower);
+
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        // ফলোয়ারকে ল্যাগ দিয়ে স্মুথ রেন্ডার করার অ্যানিমেশন লুপ
+        function renderFollower() {
+            followerX += (mouseX - followerX) * 0.18;
+            followerY += (mouseY - followerY) * 0.18;
+
+            follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+            requestAnimationFrame(renderFollower);
+        }
+        renderFollower();
+
+        // বাটন, লিংক বা ক্লিকেবল কার্ডে হোভার করলে কার্সর এক্সপ্যান্ড হবে
+        const interactables = document.querySelectorAll(
+            "a, button, .clickable-card, .cert-card, .award-card, input, textarea"
+        );
+
+        interactables.forEach((el) => {
+            el.addEventListener("mouseenter", () => follower.classList.add("cursor-hover"));
+            el.addEventListener("mouseleave", () => follower.classList.remove("cursor-hover"));
+        });
+    }
+});
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script>
+if (window.matchMedia("(pointer: fine)").matches) {
+    VanillaTilt.init(document.querySelectorAll(".project-card, .award-card"), {
+        max: 8,              // সর্বোচ্চ টিল্ট ডিগ্রি
+        speed: 400,          // ট্রানজিশন স্পিড
+        glare: true,         // লাইট রিফ্লেকশন
+        "max-glare": 0.15,   // রিফ্লেকশনের ঘনত্ব
+        scale: 1.02          // হোভারের সময় হালকা জুম
+    });
+}
 </script>
 </body>
 </html>
