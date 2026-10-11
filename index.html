@@ -1700,6 +1700,46 @@ window.addEventListener('scroll', () => {
             });
         });
 })();
+    // =====================================================
+// SCROLL REVEAL & STAGGER ANIMATION ENGINE
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ১. যে সেকশন বা কার্ডগুলোতে অ্যানিমেশন চান, সেগুলোকে সিলেক্ট করা
+    // এখানে আপনার প্রজেক্ট কার্ড, এডুকেশন কার্ড, লিডারশিপ কার্ড এবং সেকশন টাইটেলগুলো ধরা হয়েছে
+    const animatedElements = document.querySelectorAll(
+        ".project-card, .education-card, .leadership-card, .smart-skill-card, .about-wrapper, .conference-paper-wrapper"
+    );
+
+    // প্রতিটি এলিমেন্টে আলাদা ক্লাস যুক্ত করা
+    animatedElements.forEach((el, index) => {
+        el.classList.add("reveal-on-scroll");
+        
+        // ৩. স্ট্যাগারড ইফেক্ট (Stagger Effect): একের পর এক কার্ড আসার জন্য ডিলে তৈরি করা
+        // প্রতিটা কার্ড তার আগের কার্ডের চেয়ে ০.১০ সেকেন্ড দেরিতে আসবে
+        const staggerDelay = (index % 4) * 0.12; 
+        el.style.transitionDelay = `${staggerDelay}s`;
+    });
+
+    // Intersection Observer দিয়ে স্ক্রোল ট্র্যাক করা
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active-reveal");
+                // একবার অ্যানিমেশন হয়ে গেলে অবজার্ভ করা বন্ধ করে দেওয়া (পারফরম্যান্স ভালো রাখার জন্য)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12, // এলিমেন্টের ১২% দৃশ্যমান হলেই অ্যানিমেশন শুরু হবে
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    animatedElements.forEach(el => {
+        revealObserver.observe(el);
+    });
+});
+    
 </script>
 </body>
 </html>
