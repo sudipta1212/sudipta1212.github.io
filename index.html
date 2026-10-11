@@ -53,27 +53,18 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-<!-- এই বাটনগুলো একসাথে লোগো ও ন্যাভ লিংকের পাশে বা বাইরে রাখুন -->
-<div class="nav-right-actions" style="display: flex; align-items: center; gap: 12px;">
+        <div class="nav-right-actions" style="display: flex; align-items: center; gap: 12px;">
+            <!-- Sound Toggle Button -->
+            <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle Sound" onclick="toggleAudioFx()">
+                <i class="fas fa-volume-up" id="soundIcon"></i>
+            </button>
 
-    <!-- ১. সাউন্ড চালু/বন্ধ করার বাটন (নতুন) -->
-    <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle Sound" onclick="toggleAudioFx()">
-        <i class="fas fa-volume-up" id="soundIcon"></i>
-    </button>
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
 
-    <!-- ২. থিম টগল বাটন (ডার্ক/লাইট) -->
-    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </button>
-
-    <!-- ৩. মোবাইল মেনু হ্যামবার্গার বাটন -->
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
-        <i class="fas fa-bars"></i>
-    </button>
-
-</div>
-
-            <!-- ২. মোবাইল মেনু হ্যামবার্গার বাটন (নতুন যোগ হবে) -->
+            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1735,19 +1726,19 @@ window.addEventListener('scroll', () => {
     </script>
 <!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE ===== -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- 🔻🔻🔻 এই অংশটি সঠিকভাবে সাজানো হয়েছে (Vanilla Tilt CDN) 🔻🔻🔻 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <script type="text/javascript">
 (function() {
     const EMAILJS_PUBLIC_KEY = "NJTucZB3vO1tLmTj7";
     const EMAILJS_SERVICE_ID = "service_w7vrcvx";
-    const EMAILJS_TEMPLATE_ID = "template_pkh3eth"; // 'e' diye template_pkh3eth kora hoyeche
+    const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
 
-    // 1. Init
     emailjs.init({
         publicKey: EMAILJS_PUBLIC_KEY,
     });
 
-    // 2. Session check: bar bar reload dile jeno email na pathay
     if (sessionStorage.getItem("portfolio_visitor_tracked")) {
         return;
     }
@@ -1766,14 +1757,12 @@ window.addEventListener('scroll', () => {
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
             .then(res => {
                 sessionStorage.setItem("portfolio_visitor_tracked", "true");
-                console.log("✅ Visitor Email Sent Successfully!", res.status);
             })
             .catch(err => {
-                console.error("❌ EmailJS Delivery Error:", err);
+                console.error("EmailJS Error:", err);
             });
     }
 
-    // IP & Location fetch
     fetch("https://ipwho.is/")
         .then(res => res.json())
         .then(data => sendVisitorAlert(data))
@@ -1786,38 +1775,30 @@ window.addEventListener('scroll', () => {
             });
         });
 })();
-    // =====================================================
-// SCROLL REVEAL & STAGGER ANIMATION ENGINE
-// =====================================================
 
+// =====================================================
+// SCROLL REVEAL ENGINE
+// =====================================================
 document.addEventListener("DOMContentLoaded", function () {
-    // ১. যে সেকশন বা কার্ডগুলোতে অ্যানিমেশন চান, সেগুলোকে সিলেক্ট করা
-    // এখানে আপনার প্রজেক্ট কার্ড, এডুকেশন কার্ড, লিডারশিপ কার্ড এবং সেকশন টাইটেলগুলো ধরা হয়েছে
     const animatedElements = document.querySelectorAll(
         ".project-card, .education-card, .leadership-card, .smart-skill-card, .about-wrapper, .conference-paper-wrapper"
     );
 
-    // প্রতিটি এলিমেন্টে আলাদা ক্লাস যুক্ত করা
     animatedElements.forEach((el, index) => {
         el.classList.add("reveal-on-scroll");
-        
-        // ৩. স্ট্যাগারড ইফেক্ট (Stagger Effect): একের পর এক কার্ড আসার জন্য ডিলে তৈরি করা
-        // প্রতিটা কার্ড তার আগের কার্ডের চেয়ে ০.১০ সেকেন্ড দেরিতে আসবে
         const staggerDelay = (index % 4) * 0.12; 
         el.style.transitionDelay = `${staggerDelay}s`;
     });
 
-    // Intersection Observer দিয়ে স্ক্রোল ট্র্যাক করা
     const revealObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active-reveal");
-                // একবার অ্যানিমেশন হয়ে গেলে অবজার্ভ করা বন্ধ করে দেওয়া (পারফরম্যান্স ভালো রাখার জন্য)
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.12, // এলিমেন্টের ১২% দৃশ্যমান হলেই অ্যানিমেশন শুরু হবে
+        threshold: 0.12,
         rootMargin: "0px 0px -50px 0px"
     });
 
@@ -1825,16 +1806,16 @@ document.addEventListener("DOMContentLoaded", function () {
         revealObserver.observe(el);
     });
 });
-   <script>
+
+// =====================================================
+// CUSTOM CURSOR & TILT ENGINE
+// =====================================================
 document.addEventListener("DOMContentLoaded", function () {
-    // শুধুমাত্র মাউস ব্যবহারকারী ডেস্কটপ ডিভাইসে ট্র্যাকার সক্রিয় হবে
     if (window.matchMedia("(pointer: fine)").matches) {
         const dot = document.createElement("div");
         const follower = document.createElement("div");
-        
         dot.className = "cursor-dot";
         follower.className = "cursor-follower";
-        
         document.body.appendChild(dot);
         document.body.appendChild(follower);
 
@@ -1844,47 +1825,43 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("mousemove", (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-
             dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
         });
 
-        // ফলোয়ারকে ল্যাগ দিয়ে স্মুথ রেন্ডার করার অ্যানিমেশন লুপ
         function renderFollower() {
             followerX += (mouseX - followerX) * 0.18;
             followerY += (mouseY - followerY) * 0.18;
-
             follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
             requestAnimationFrame(renderFollower);
         }
         renderFollower();
 
-        // বাটন, লিংক বা ক্লিকেবল কার্ডে হোভার করলে কার্সর এক্সপ্যান্ড হবে
         const interactables = document.querySelectorAll(
             "a, button, .clickable-card, .cert-card, .award-card, input, textarea"
         );
-
         interactables.forEach((el) => {
             el.addEventListener("mouseenter", () => follower.classList.add("cursor-hover"));
             el.addEventListener("mouseleave", () => follower.classList.remove("cursor-hover"));
         });
+
+        // 3D Tilt Initialization
+        if (typeof VanillaTilt !== "undefined") {
+            VanillaTilt.init(document.querySelectorAll(".project-card, .award-card"), {
+                max: 8,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.15,
+                scale: 1.02
+            });
+        }
     }
 });
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    <script>
-if (window.matchMedia("(pointer: fine)").matches) {
-    VanillaTilt.init(document.querySelectorAll(".project-card, .award-card"), {
-        max: 8,              // সর্বোচ্চ টিল্ট ডিগ্রি
-        speed: 400,          // ট্রানজিশন স্পিড
-        glare: true,         // লাইট রিফ্লেকশন
-        "max-glare": 0.15,   // রিফ্লেকশনের ঘনত্ব
-        scale: 1.02          // হোভারের সময় হালকা জুম
-    });
-}
-        // ====================================================
-// AI PORTFOLIO ASSISTANT LOGIC
-// ====================================================
 
+// ====================================================
+// AI PORTFOLIO CHATBOT LOGIC
+// ====================================================
 function toggleAiChat() {
+    playClickFx();
     const box = document.getElementById("aiChatBox");
     if (!box) return;
     if (box.style.display === "flex") {
@@ -1912,7 +1889,6 @@ function handleAiChatSubmit(e) {
     appendChatMessage(msg, "user");
     input.value = "";
 
-    // Show bot reply with realistic typing delay
     setTimeout(() => {
         const reply = generateAiPortfolioResponse(msg);
         appendChatMessage(reply, "bot");
@@ -1928,98 +1904,63 @@ function appendChatMessage(text, sender) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Knowledge Base & Intelligent Rule Matching
-// ====================================================
-// COMPLETE PORTFOLIO KNOWLEDGE BASE ENGINE
-// ====================================================
 function generateAiPortfolioResponse(query) {
     const q = query.toLowerCase();
 
-    // ১. কলেজ / এইচএসসি সংক্রান্ত (HSC / College)
     if (q.includes("clg") || q.includes("college") || q.includes("hsc") || q.includes("কলেজ") || q.includes("kazem ali")) {
         return "🏫 সুদীপ্ত তাঁর <strong>Higher Secondary Certificate (HSC)</strong> সম্পন্ন করেছেন <strong>Kazem Ali High School and College</strong> (বিজ্ঞান বিভাগ, চট্টগ্রাম বোর্ড) থেকে ২০২১ সালে।";
     }
-
-    // ২. স্কুল সংক্রান্ত (SSC / JSC / PSC / Schools)
     if (q.includes("school") || q.includes("স্কুল") || q.includes("ssc") || q.includes("jsc") || q.includes("psc") || q.includes("railway") || q.includes("lions")) {
         if (q.includes("psc") || q.includes("primary") || q.includes("lions")) {
             return "🏫 প্রাইমারি স্কুল (PSC): <strong>Lions School</strong> (২০১৩)।";
         }
-        return "🏫 সুদীপ্ত তাঁর <strong>SSC (২০১৯)</strong> এবং <strong>JSC (২০১৬)</strong> উভয়ই সম্পন্ন করেছেন <strong>Railway Public High School</strong> (চট্টগ্রাম বোর্ড, বিজ্ঞান বিভাগ) থেকে।";
+        return "🏫 সুদীপ্ত তাঁর <strong>SSC (২০১৯)</strong> এবং <strong>JSC (২০১৬)</strong> উভয়ই সম্পন্ন করেছেন <strong>Railway Public High School</strong> (চট্টগ্রাম বোর্ড, বিজ্ঞান বিভাগ) থেকে।";
     }
-
-    // ৩. ব্যাচেলর / স্নাতক (B.Sc. in EEE / Premier University)
     if (q.includes("bsc") || q.includes("b.sc") || q.includes("graduation") || q.includes("premier") || q.includes("গ্র্যাজুয়েশন") || q.includes("ভার্সিটি") || (q.includes("university") && !q.includes("cuet"))) {
         return "🎓 সুদীপ্ত <strong>Premier University</strong> থেকে <strong>Electrical & Electronic Engineering (EEE)</strong> বিভাগে B.Sc. সম্পন্ন করেছেন (পাসিং ডেট: ১৬ মে ২০২৬)।";
     }
-
-    // ৪. বর্তমান পড়াশোনা / মাস্টার্স (M.Sc. in Nuclear / CUET)
     if (q.includes("msc") || q.includes("m.sc") || q.includes("cuet") || q.includes("nuclear") || q.includes("current") || q.includes("পড়াশোনা") || q.includes("পড়াশোনা")) {
-        return "⚛️ সুদীপ্ত বর্তমানে <strong>Chittagong University of Engineering and Technology (CUET)</strong>-এ <strong>M.Sc. in Nuclear Engineering</strong> প্রোগ্রামে অধ্যয়নরত আছেন (জুলাই ২০২৬ – বর্তমান)।";
+        return "⚛️ সুদীপ্ত বর্তমানে <strong>Chittagong University of Engineering and Technology (CUET)</strong>-এ <strong>M.Sc. in Nuclear Engineering</strong> প্রোগ্রামে অধ্যয়নরত আছেন (জুলাই ২০২৬ – বর্তমান)।";
     }
-
-    // ৫. কনফারেন্স পেপার ও পাবলিকেশন (IEEE / iCONEECT 2026 / Paper ID 748)
     if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("ieee") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
-        return "📄 <strong>IEEE Conference Paper (ID: 748):</strong><br>• <strong>Title:</strong> A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints.<br>• <strong>Conference:</strong> iCONEECT 2026 (Premier University ও IEEE Bangladesh Section-এর যৌথ উদ্যোগে আয়োজিত, ২৫–২৬ সেপ্টেম্বর ২০২৬)।";
+        return "📄 <strong>IEEE Conference Paper (ID: 748):</strong><br>• <strong>Title:</strong> A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints.<br>• <strong>Conference:</strong> iCONEECT 2026 (Premier University ও IEEE Bangladesh Section-এর যৌথ উদ্যোগে আয়োজিত, ২৫–২৬ সেপ্টেম্বর ২০২৬)।";
     }
-
-    // ৬. থিসিস ও ডিপ লার্নিং মডেল (MobileNetV3, EfficientNet, ViT, XAI)
     if (q.includes("thesis") || q.includes("model") || q.includes("retinopathy") || q.includes("deep learning") || q.includes("vit") || q.includes("mobilenet") || q.includes("থিসিস") || q.includes("মডেল")) {
-        return "🧠 <strong>Diabetic Retinopathy Detection Thesis:</strong><br>• <strong>MobileNetV3-Large:</strong> ৯৮.৯১% ভ্যালিডেশন অ্যাকুরেসি (বাইনারি ডিটেকশন, মাত্র ৫.৪ মিলিয়ন প্যারামিটার)।<br>• <strong>EfficientNet-B0:</strong> ৯৮.১% অ্যাকুরেসি (৫টি ক্লিনিক্যাল স্টেজের মাল্টিক্লাস গ্রেডিং)।<br>• এছাড়াও ব্যবহৃত হয়েছে <strong>Vision Transformers (ViT-Base)</strong> এবং ক্লিনিক্যাল ব্যাখ্যার জন্য <strong>Explainable AI (LIME & Grad-CAM)</strong>।";
+        return "🧠 <strong>Diabetic Retinopathy Detection Thesis:</strong><br>• <strong>MobileNetV3-Large:</strong> ৯৮.৯১% ভ্যালিডেশন অ্যাকুরেসি (বাইনারি ডিটেকশন, মাত্র ৫.৪ মিলিয়ন প্যারামিটার)।<br>• <strong>EfficientNet-B0:</strong> ৯৮.১% অ্যাকুরেসি (৫টি ক্লিনিক্যাল স্টেজের মাল্টিক্লাস গ্রেডিং)।<br>• এছাড়াও ব্যবহৃত হয়েছে <strong>Vision Transformers (ViT-Base)</strong> এবং ক্লিনিক্যাল ব্যাখ্যার জন্য <strong>Explainable AI (LIME & Grad-CAM)</strong>।";
     }
-
-    // ৭. হার্ডওয়্যার ও ইঞ্জিনিয়ারিং প্রজেক্ট (IoT / Solar / PLC / Robotics)
-    if (q.includes("project") || q.includes("হার্ডওয়্যার") || q.includes("প্রজেক্ট") || q.includes("solar") || q.includes("plc") || q.includes("robot") || q.includes("water")) {
-        return "🛠️ <strong>সুদীপ্তর মূল ইঞ্জিনিয়ারিং প্রজেক্টসমূহ:</strong><br>১. Arduino-Based Single-Axis Solar Tracking System<br>২. Automatic Solar-Powered Street Light Controller<br>৩. PLC-Based Traffic Light Control System<br>৪. Autonomous Line Follower Robot<br>৫. Automated Water Level Indicator & Controller।";
+    if (q.includes("project") || q.includes("হার্ডওয়্যার") || q.includes("প্রজেক্ট") || q.includes("solar") || q.includes("plc") || q.includes("robot") || q.includes("water")) {
+        return "🛠️ <strong>সুদীপ্তর মূল ইঞ্জিনিয়ারিং প্রজেক্টসমূহ:</strong><br>১. Arduino-Based Single-Axis Solar Tracking System<br>২. Automatic Solar-Powered Street Light Controller<br>৩. PLC-Based Traffic Light Control System<br>৪. Autonomous Line Follower Robot<br>৫. Automated Water Level Indicator & Controller।";
     }
-
-    // ৮. লিডারশিপ ও এক্সট্রা কারিকুলার (Hult Prize, IEEE SB, Futurenation)
     if (q.includes("leadership") || q.includes("hult") || q.includes("ambassador") || q.includes("club") || q.includes("লিডারশিপ") || q.includes("ক্লাব")) {
         return "🌟 <strong>লিডারশিপ ও অর্গানাইজেশনাল রোলস:</strong><br>• <strong>Head of Media & Communications:</strong> Hult Prize at Premier University (২০২৫–২০২৬)<br>• <strong>Campus Ambassador:</strong> iCONEECT 2026 ও Futurenation (৫০০+ স্টুডেন্টদের সাথে কানেক্টেড)<br>• <strong>সদস্য:</strong> IEEE Student Branch ও Premier University Robotics Club।";
     }
-
-    // ৯. অ্যাওয়ার্ড ও প্রতিযোগিতা (Awards / Competitions)
     if (q.includes("award") || q.includes("competition") || q.includes("পুরস্কার") || q.includes("অ্যাওয়ার্ড") || q.includes("best presenter")) {
-        return "🏆 <strong>অর্জন ও অ্যাওয়ার্ড:</strong><br>• <strong>Best Presenter Award:</strong> Project Day 2023 (Premier University)<br>• <strong>Line Follower Robot Race:</strong> Bangabandhu Innovation Fair 2024 (পার্টিসিপেশন সার্টিফিকেট)<br>• <strong>Poster Presentation:</strong> Bangabandhu Innovation Fair 2024।";
+        return "🏆 <strong>অর্জন ও অ্যাওয়ার্ড:</strong><br>• <strong>Best Presenter Award:</strong> Project Day 2023 (Premier University)<br>• <strong>Line Follower Robot Race:</strong> Bangabandhu Innovation Fair 2024 (পার্টিসিপেশন সার্টিফিকেট)<br>• <strong>Poster Presentation:</strong> Bangabandhu Innovation Fair 2024।";
     }
-
-    // ১০. টেকনিক্যাল স্কিল ও সফটওয়্যার (Programming, Software tools)
     if (q.includes("skill") || q.includes("python") || q.includes("software") || q.includes("matlab") || q.includes("programming") || q.includes("স্কিল")) {
-        return "💻 <strong>টেকনিক্যাল স্কিলস:</strong><br>• <strong>প্রোগ্রামিং:</strong> Python (PyTorch, Flask), C, Basic Java<br>• <strong>ইঞ্জিনিয়ারিং ও সিমুলেশন টুলস:</strong> MATLAB, Arduino IDE, Siemens S7-1200, LOGO PLC, AutoCAD, MicroWind<br>• <strong>ডিজিটাল ও অন্যান্য:</strong> UI/UX Design, Data Analysis (Excel), Video Editing।";
+        return "💻 <strong>টেকনিক্যাল স্কিলস:</strong><br>• <strong>প্রোগ্রামিং:</strong> Python (PyTorch, Flask), C, Basic Java<br>• <strong>ইঞ্জিনিয়ারিং ও সিমুলেশন টুলস:</strong> MATLAB, Arduino IDE, Siemens S7-1200, LOGO PLC, AutoCAD, MicroWind<br>• <strong>ডিজিটাল ও অন্যান্য:</strong> UI/UX Design, Data Analysis (Excel), Video Editing।";
     }
-
-    // ১১. ব্যক্তিগত শখ ও আগ্রহ (Hobbies / Interests)
     if (q.includes("hobby") || q.includes("interest") || q.includes("শখ") || q.includes("free time") || q.includes("পছন্দ")) {
-        return "🎨 সুদীপ্ত অবসর সময়ে বই পড়া, লেখালেখি, কবিতা, নেচার ফটোগ্রাফি, খেলাধুলা, বাগান করা এবং স্কেচিং করতে পছন্দ করেন।";
+        return "🎨 সুদীপ্ত অবসর সময়ে বই পড়া, লেখালেখি, কবিতা, নেচার ফটোগ্রাফি, খেলাধুলা, বাগান করা এবং স্কেচিং করতে পছন্দ করেন।";
     }
-
-    // ১২. সার্টিফিকেশন (Certificates)
     if (q.includes("certificate") || q.includes("সার্টিফিকেট") || q.includes("কোর্স") || q.includes("training")) {
-        return "📜 সুদীপ্তর প্রোফাইলে ৭০+ ভেরিফায়েড সার্টিফিকেশন ও ব্যাজ রয়েছে—যার মধ্যে IEEE, Futurenation/UNDP, UNICEF Passport to Earning, The Asia Foundation, এবং British Council-এর কোর্স অন্তর্ভুক্ত।";
+        return "📜 সুদীপ্তর প্রোফাইলে ৭০+ ভেরিফায়েড সার্টিফিকেশন ও ব্যাজ রয়েছে—যার মধ্যে IEEE, Futurenation/UNDP, UNICEF Passport to Earning, The Asia Foundation, এবং British Council-এর কোর্স অন্তর্ভুক্ত।";
     }
-
-    // ১৩. যোগাযোগ সংক্রান্ত (Contact / Phone / Email / Meeting)
     if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("whatsapp") || q.includes("যোগাযোগ") || q.includes("কথা")) {
         return "📬 <strong>সুদীপ্তর সাথে যোগাযোগের মাধ্যম:</strong><br>• <strong>ইমেইল:</strong> sudipta1212das32@gmail.com<br>• <strong>ফোন/হোয়াটসঅ্যাপ:</strong> +880 1580-485253<br>• সাইটের Contact সেকশন থেকে সরাসরি মেসেজ পাঠাতে বা Calendly-এর মাধ্যমে মিটিং শিডিউল করতে পারেন।";
     }
-
-    // ১৪. সিভি (CV / Resume)
     if (q.includes("cv") || q.includes("resume") || q.includes("সিভি") || q.includes("রেজুমে")) {
-        return "🔒 সুদীপ্তর সিভিটি নেভিগেশন বারের '🔒 CV' বাটনে ক্লিক করে ডাউনলোড করা যাবে। তবে সুরক্ষার স্বার্থে ফাইলটি পাসওয়ার্ড প্রটেক্টেড—পাসওয়ার্ড পেতে তাঁর সাথে সরাসরি যোগাযোগ করুন।";
+        return "🔒 সুদীপ্তর সিভিটি নেভিগেশন বারের '🔒 CV' বাটনে ক্লিক করে ডাউনলোড করা যাবে। তবে সুরক্ষার স্বার্থে ফাইলটি পাসওয়ার্ড প্রটেক্টেড—পাসওয়ার্ড পেতে তাঁর সাথে সরাসরি যোগাযোগ করুন।";
     }
-
-    // সাধারণ ডিফল্ট উত্তর
     return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
 }
 
 // ====================================================
-// আপডেটেড অডিও ইঞ্জিন (ব্রাউজার অটো-আনলক সহ)
+// আপডেটেড অডিও ইঞ্জিন (সরাসরি ব্রাউজার সাউন্ড)
 // ====================================================
-
 let audioCtx = null;
 let isSoundEnabled = localStorage.getItem("sudipta_sound_enabled") !== "false";
 
-// অডিও কনটেক্সট নিশ্চিত ও আনলক করা
 function ensureAudioContext() {
     if (!audioCtx) {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -2032,7 +1973,6 @@ function ensureAudioContext() {
     }
 }
 
-// বাটনে ক্লিকের সাউন্ড
 function playClickFx() {
     if (!isSoundEnabled) return;
     ensureAudioContext();
@@ -2044,23 +1984,21 @@ function playClickFx() {
 
         osc.type = "sine";
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(350, audioCtx.currentTime + 0.06);
+        osc.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.08);
 
-        // ভলিউম একটু স্পষ্ট করা হলো
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
+        gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
 
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.06);
+        osc.stop(audioCtx.currentTime + 0.08);
     } catch (err) {
-        console.warn("Audio play error:", err);
+        console.warn("Audio error:", err);
     }
 }
 
-// কার্ডের ওপর মাউস নিলে পপ সাউন্ড
 function playHoverPopFx() {
     if (!isSoundEnabled) return;
     ensureAudioContext();
@@ -2074,7 +2012,7 @@ function playHoverPopFx() {
         osc.frequency.setValueAtTime(260, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(520, audioCtx.currentTime + 0.05);
 
-        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
 
         osc.connect(gain);
@@ -2083,13 +2021,12 @@ function playHoverPopFx() {
         osc.start();
         osc.stop(audioCtx.currentTime + 0.05);
     } catch (err) {
-        console.warn("Hover sound error:", err);
+        console.warn("Hover error:", err);
     }
 }
 
-// মিউট / আনমিউট টগল ফাংশন
 function toggleAudioFx() {
-    ensureAudioContext(); // ক্লিক করার সাথে সাথে ব্রাউজার অডিও অনুমতি পাবে
+    ensureAudioContext();
     isSoundEnabled = !isSoundEnabled;
     localStorage.setItem("sudipta_sound_enabled", isSoundEnabled);
     updateSoundBtnState();
@@ -2099,7 +2036,6 @@ function toggleAudioFx() {
     }
 }
 
-// আইকন ও বাটন স্টেট পরিবর্তন
 function updateSoundBtnState() {
     const btn = document.getElementById("soundToggleBtn");
     const icon = document.getElementById("soundIcon");
@@ -2116,30 +2052,27 @@ function updateSoundBtnState() {
     }
 }
 
-// পেজ লোড হলে ইভেন্ট ও লিসেনার সেট করা
+// 🔻🔻🔻 সব ক্লিকের জন্য সাউন্ড ইভেন্ট লিসেনার সেট করা হলো 🔻🔻🔻
 document.addEventListener("DOMContentLoaded", function () {
     updateSoundBtnState();
 
-    // পেজের যেকোনো জায়গায় প্রথম ক্লিকেই অডিও সিস্টেম আনলক হয়ে যাবে
-    document.addEventListener("click", function unlockAudio() {
+    window.addEventListener("click", function unlockAudio() {
         ensureAudioContext();
-        document.removeEventListener("click", unlockAudio);
+        window.removeEventListener("click", unlockAudio);
     }, { once: true });
 
-    // থিম ও সাধারণ বাটনে ক্লিকের সাউন্ড যোগ
-    const themeBtn = document.getElementById("themeToggle");
-    if (themeBtn) themeBtn.addEventListener("click", playClickFx);
-
-    document.querySelectorAll(".btn, .close-modal, .filter-btn, .proj-filter-btn").forEach(item => {
+    // পেজের সব বাটন ও লিংকে সাউন্ড যুক্ত করা হলো
+    const clickTargets = document.querySelectorAll(
+        ".btn, #themeToggle, .close-modal, .filter-btn, .proj-filter-btn, .nav-links a, .clickable-card, .clickable-msg-card, .cert-card"
+    );
+    clickTargets.forEach(item => {
         item.addEventListener("click", playClickFx);
     });
 
-    // কার্ডের ওপর মাউস আনলে হোভার সাউন্ড
-    const hoverElements = document.querySelectorAll(
+    const hoverTargets = document.querySelectorAll(
         ".project-card, .smart-skill-card, .education-card, .award-card, .leadership-card"
     );
-
-    hoverElements.forEach(card => {
+    hoverTargets.forEach(card => {
         card.addEventListener("mouseenter", playHoverPopFx);
     });
 });
