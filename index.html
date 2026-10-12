@@ -7,7 +7,10 @@
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
-
+<!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#38bdf8">
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -58,6 +61,10 @@
             <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle Sound" onclick="toggleAudioFx()">
                 <i class="fas fa-volume-up" id="soundIcon"></i>
             </button>
+            <!-- PWA Install Button -->
+    <button id="pwaInstallBtn" class="sound-toggle-btn" aria-label="Install App" style="display: none;" title="Install App">
+        <i class="fas fa-download"></i>
+    </button>
 
             <!-- Theme Toggle Button -->
             <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
@@ -2076,6 +2083,33 @@ document.addEventListener("DOMContentLoaded", function () {
         card.addEventListener("mouseenter", playHoverPopFx);
     });
 });
+    // Service Worker Registration
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+
+// Install Prompt Logic
+let deferredPrompt;
+const installBtn = document.getElementById("pwaInstallBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (installBtn) {
+    installBtn.style.display = "inline-flex";
+  }
+});
+
+if (installBtn) {
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    installBtn.style.display = "none";
+    deferredPrompt.prompt();
+    deferredPrompt = null;
+  });
+}
 </script>
 </body>
 </html>
