@@ -282,11 +282,16 @@
                     Also developed an interactive, full-stack Web Application for real-time model deployment and clinical fundus image diagnosis.
                 </p>
 
-                <div class="thesis-action-btns">
-                    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
-                </div>
-            </div>
+               <div class="thesis-action-btns" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
+    <!-- আগের বাটন -->
+    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
 
+    <!-- 🟢 নতুন বাটনটি এখানে বসবে 🟢 -->
+    <button class="btn btn-outline" style="padding: 10px 18px; font-size: 13px;" onclick="openCaseStudy()">
+        <i class="fas fa-book-open"></i> Read Full Case Study
+    </button>
+</div>
+</div>
             <div class="thesis-right-videos">
                 <div class="thesis-video-box">
                     <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
@@ -2231,11 +2236,9 @@ if (installBtn) {
     deferredPrompt = null;
   });
 }
-    // ====================================================
-// CASE STUDY MODAL & READING PROGRESS ENGINE
-// ====================================================
+// ===== CASE STUDY MODAL FUNCTIONS =====
 function openCaseStudy() {
-    playClickFx();
+    if (typeof playClickFx === "function") playClickFx();
     const modal = document.getElementById("caseStudyModal");
     if (modal) {
         modal.style.display = "flex";
@@ -2245,7 +2248,7 @@ function openCaseStudy() {
 }
 
 function closeCaseStudy() {
-    playClickFx();
+    if (typeof playClickFx === "function") playClickFx();
     const modal = document.getElementById("caseStudyModal");
     if (modal) {
         modal.style.display = "none";
@@ -2253,19 +2256,15 @@ function closeCaseStudy() {
     }
 }
 
-// রিডিং টাইম হিসাব করা (শব্দ সংখ্যার ভিত্তিতে)
 function calculateReadTime() {
     const content = document.querySelector(".case-study-content");
     const readDisplay = document.getElementById("csReadTime");
     if (!content || !readDisplay) return;
-
     const words = content.innerText.trim().split(/\s+/).length;
-    const minutes = Math.ceil(words / 200); // প্রতি মিনিটে ২০০ শব্দ
+    const minutes = Math.ceil(words / 200);
     readDisplay.innerHTML = `<i class="far fa-clock"></i> ${minutes} min read`;
 }
-
-// স্ক্রোলিং প্রগ্রেস ও TOC ট্র্যাকিং
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     const scrollContainer = document.getElementById("csScrollContainer");
     const progressBar = document.getElementById("csProgressBar");
     const sections = document.querySelectorAll(".cs-section");
@@ -2275,10 +2274,8 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollContainer.addEventListener("scroll", () => {
             const scrollTop = scrollContainer.scrollTop;
             const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            progressBar.style.width = progress + "%";
+            progressBar.style.width = ((scrollTop / scrollHeight) * 100) + "%";
 
-            // Active TOC Highlighting
             let currentSec = "";
             sections.forEach(sec => {
                 const top = sec.offsetTop - scrollContainer.offsetTop - 80;
