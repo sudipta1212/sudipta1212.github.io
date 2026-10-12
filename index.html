@@ -440,6 +440,127 @@
     </div>
 </div>
 
+<!-- ===== CASE STUDY READER MODAL ===== -->
+<div id="caseStudyModal" class="project-modal case-study-modal-backdrop">
+    <div class="case-study-window">
+        <!-- Top Sticky Header with Reading Progress -->
+        <div class="case-study-header">
+            <div class="case-study-meta">
+                <span class="cs-badge"><i class="fas fa-microscope"></i> ENGINEERING CASE STUDY</span>
+                <span class="cs-read-time" id="csReadTime"><i class="far fa-clock"></i> 3 min read</span>
+            </div>
+            <button class="close-modal" onclick="closeCaseStudy()">×</button>
+            <div class="case-study-progress-bar" id="csProgressBar"></div>
+        </div>
+
+        <div class="case-study-body" id="csScrollContainer">
+            <!-- Main Content Area -->
+            <article class="case-study-content">
+                <span class="cs-tag">DEEP LEARNING & EDGE AI</span>
+                <h1 class="cs-title">Automated Diabetic Retinopathy Detection & Clinical Severity Grading Under Edge Constraints</h1>
+                <p class="cs-subtitle">Lightweight CNN architectures and Vision Transformers benchmarked on 103,020 fundus images for resource-constrained diagnostics.</p>
+
+                <div class="cs-divider"></div>
+
+                <section id="problem-statement" class="cs-section">
+                    <h2><span class="sec-num">01.</span> Problem Statement</h2>
+                    <p>
+                        Diabetic Retinopathy (DR) is one of the leading causes of preventable blindness globally. Early diagnosis requires direct evaluation by trained ophthalmologists via fundus imaging. However, rural clinics and resource-limited health centers face acute shortages of specialists and dedicated high-performance computing clusters.
+                    </p>
+                    <p>
+                        Most state-of-the-art vision models require hundreds of megabytes of GPU memory, rendering automated edge deployment in mobile screening vans and embedded devices impractical.
+                    </p>
+                </section>
+
+                <section id="engineering-constraints" class="cs-section">
+                    <h2><span class="sec-num">02.</span> Engineering Constraints</h2>
+                    <ul>
+                        <li><strong>Inference Latency:</strong> Must run near real-time on edge devices (under $100\text{ ms}$ per sample).</li>
+                        <li><strong>Model Footprint:</strong> Target memory under $25\text{ MB}$ without sacrificing diagnostic sensitivity.</li>
+                        <li><strong>Clinical Class Imbalance:</strong> Heavily skewed datasets across early non-proliferative versus advanced proliferative stages.</li>
+                        <li><strong>Clinical Transparency:</strong> Black-box predictions are unacceptable in medical triage; pixel-level attribution is mandatory.</li>
+                    </ul>
+                </section>
+
+                <section id="system-architecture" class="cs-section">
+                    <h2><span class="sec-num">03.</span> System & Pipeline Architecture</h2>
+                    <p>
+                        The dataset was expanded to <strong>103,020 augmented retinal fundus images</strong> using contrast-limited adaptive histogram equalization (CLAHE) and geometric transforms. The pipeline evaluates both lightweight convolutional neural networks and transformer backbones:
+                    </p>
+                    <div class="cs-tech-grid">
+                        <div class="cs-tech-card">
+                            <h4>MobileNetV3-Large</h4>
+                            <p>Hard-swish activations & inverted residual bottlenecks for binary screening (~5.4M params).</p>
+                        </div>
+                        <div class="cs-tech-card">
+                            <h4>EfficientNet-B0</h4>
+                            <p>Compound coefficient scaling balancing depth, width, and resolution for 5-stage grading.</p>
+                        </div>
+                        <div class="cs-tech-card">
+                            <h4>Explainable AI (XAI)</h4>
+                            <p>Grad-CAM and LIME heatmaps integrated to highlight microaneurysms and hemorrhages for clinician verification.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="final-results" class="cs-section">
+                    <h2><span class="sec-num">04.</span> Final Results & Metrics</h2>
+                    <div class="cs-results-table-wrap">
+                        <table class="cs-results-table">
+                            <thead>
+                                <tr>
+                                    <th>Architecture</th>
+                                    <th>Parameters</th>
+                                    <th>Val Accuracy</th>
+                                    <th>Test Accuracy</th>
+                                    <th>Target Task</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>MobileNetV3-Large</strong></td>
+                                    <td>~5.4M</td>
+                                    <td><strong>98.91%</strong></td>
+                                    <td>98.50%</td>
+                                    <td>Binary Detection</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EfficientNet-B0</strong></td>
+                                    <td>~5.3M</td>
+                                    <td><strong>98.10%</strong></td>
+                                    <td><strong>98.30%</strong></td>
+                                    <td>5-Stage Severity</td>
+                                </tr>
+                                <tr>
+                                    <td>Vision Transformer (ViT-Base)</td>
+                                    <td>~86.0M</td>
+                                    <td>96.40%</td>
+                                    <td>95.80%</td>
+                                    <td>Multiclass Benchmark</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="cs-conclusion">
+                        MobileNetV3-Large surpassed heavy transformer alternatives on resource-constrained binary tasks, delivering an ideal balance of compute efficiency and accuracy for real-world deployment.
+                    </p>
+                </section>
+            </article>
+
+            <!-- Sticky Mini Table of Contents (TOC) -->
+            <aside class="case-study-toc">
+                <span class="toc-heading">CONTENTS</span>
+                <nav>
+                    <a href="#problem-statement" class="toc-link active">1. Problem Statement</a>
+                    <a href="#engineering-constraints" class="toc-link">2. Constraints</a>
+                    <a href="#system-architecture" class="toc-link">3. Architecture</a>
+                    <a href="#final-results" class="toc-link">4. Results & Metrics</a>
+                </nav>
+            </aside>
+        </div>
+    </div>
+</div>
+
 <!-- ===== OTHER PROJECT MODALS ===== -->
 <div id="solarModal" class="project-modal">
     <div class="modal-content">
@@ -2110,6 +2231,71 @@ if (installBtn) {
     deferredPrompt = null;
   });
 }
+    // ====================================================
+// CASE STUDY MODAL & READING PROGRESS ENGINE
+// ====================================================
+function openCaseStudy() {
+    playClickFx();
+    const modal = document.getElementById("caseStudyModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        calculateReadTime();
+    }
+}
+
+function closeCaseStudy() {
+    playClickFx();
+    const modal = document.getElementById("caseStudyModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+// রিডিং টাইম হিসাব করা (শব্দ সংখ্যার ভিত্তিতে)
+function calculateReadTime() {
+    const content = document.querySelector(".case-study-content");
+    const readDisplay = document.getElementById("csReadTime");
+    if (!content || !readDisplay) return;
+
+    const words = content.innerText.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / 200); // প্রতি মিনিটে ২০০ শব্দ
+    readDisplay.innerHTML = `<i class="far fa-clock"></i> ${minutes} min read`;
+}
+
+// স্ক্রোলিং প্রগ্রেস ও TOC ট্র্যাকিং
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollContainer = document.getElementById("csScrollContainer");
+    const progressBar = document.getElementById("csProgressBar");
+    const sections = document.querySelectorAll(".cs-section");
+    const tocLinks = document.querySelectorAll(".toc-link");
+
+    if (scrollContainer && progressBar) {
+        scrollContainer.addEventListener("scroll", () => {
+            const scrollTop = scrollContainer.scrollTop;
+            const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Active TOC Highlighting
+            let currentSec = "";
+            sections.forEach(sec => {
+                const top = sec.offsetTop - scrollContainer.offsetTop - 80;
+                if (scrollTop >= top) {
+                    currentSec = sec.getAttribute("id");
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${currentSec}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    }
+});
 </script>
 </body>
 </html>
