@@ -7,7 +7,8 @@
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
-<!-- PWA Manifest -->
+    
+    <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#38bdf8">
     
@@ -32,6 +33,13 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+        /* ইনপুট ও সিলেক্টেবল কনটেন্টে সিলেকশন সচল রাখা */
+        input, textarea, .contact-value, .case-study-body {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
         }
     </style>
 </head>
@@ -61,10 +69,11 @@
             <button id="soundToggleBtn" class="sound-toggle-btn" aria-label="Toggle Sound" onclick="toggleAudioFx()">
                 <i class="fas fa-volume-up" id="soundIcon"></i>
             </button>
+            
             <!-- PWA Install Button -->
-    <button id="pwaInstallBtn" class="sound-toggle-btn" aria-label="Install App" style="display: none;" title="Install App">
-        <i class="fas fa-download"></i>
-    </button>
+            <button id="pwaInstallBtn" class="sound-toggle-btn" aria-label="Install App" style="display: none;" title="Install App">
+                <i class="fas fa-download"></i>
+            </button>
 
             <!-- Theme Toggle Button -->
             <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
@@ -104,7 +113,8 @@
         </div>
     </div>
 </section>
-    <div class="stats-counter-banner">
+
+<div class="stats-counter-banner">
     <div class="container stats-flex">
         <div class="stat-box">
             <h3 class="counter" data-target="1">0</h3>
@@ -131,7 +141,6 @@
         <h2 class="section-title">About <span>Me</span></h2>
         
         <div class="about-wrapper">
-            <!-- বামপাশে ছবির অটো স্লাইডার -->
             <div class="about-image-slider">
                 <div class="about-slider-track">
                     <img src="about1.png" class="about-slide active" alt="Sudipta Das">
@@ -146,7 +155,6 @@
                     <img src="about10.jpg" class="about-slide" alt="Sudipta Das Project Day">
                 </div>
 
-                <!-- নেভিগেশন ডট -->
                 <div class="about-slider-dots">
                     <span class="dot active" onclick="setSlide(0)"></span>
                     <span class="dot" onclick="setSlide(1)"></span>
@@ -161,7 +169,6 @@
                 </div>
             </div>
 
-            <!-- বিবরণ -->
             <div class="about-text-content">
                 <p>
                     I am Sudipta Das, an Electrical and Electronic Engineering graduate and currently pursuing my M.Sc. in Nuclear Engineering. I am driven by a passion for engineering, emerging technologies, innovation, and real-world problem solving.
@@ -267,7 +274,7 @@
     <div class="container">
         <h2 class="section-title">Research & Projects</h2>
 
-        <!-- ===== 1. UNDERGRADUATE THESIS & DUAL VIDEOS ===== -->
+        <!-- 1. UNDERGRADUATE THESIS -->
         <div class="thesis-split-wrapper">
             <div class="thesis-left-details">
                 <div class="project-icon">🎓</div>
@@ -282,16 +289,14 @@
                     Also developed an interactive, full-stack Web Application for real-time model deployment and clinical fundus image diagnosis.
                 </p>
 
-               <div class="thesis-action-btns" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
-    <!-- আগের বাটন -->
-    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
-
-    <!-- 🟢 নতুন বাটনটি এখানে বসবে 🟢 -->
-    <button class="btn btn-outline" style="padding: 10px 18px; font-size: 13px;" onclick="openCaseStudy()">
-        <i class="fas fa-book-open"></i> Read Full Case Study
-    </button>
-</div>
-</div>
+                <div class="thesis-action-btns" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
+                    <button class="btn-thesis-modal" onclick="openProject('thesisModal')">View Thesis Details →</button>
+                    <button class="btn btn-outline" style="padding: 10px 18px; font-size: 13px;" onclick="openCaseStudy()">
+                        <i class="fas fa-book-open"></i> Read Full Case Study
+                    </button>
+                </div>
+            </div>
+            
             <div class="thesis-right-videos">
                 <div class="thesis-video-box">
                     <span class="video-label"><i class="fas fa-chalkboard-teacher"></i> Presentation</span>
@@ -315,7 +320,7 @@
             </div>
         </div>
 
-        <!-- ===== 2. CONFERENCE PAPER & ORAL PRESENTATION (iCONEECT 2026) ===== -->
+        <!-- 2. CONFERENCE PAPER -->
         <div id="publications" class="conference-paper-wrapper" style="margin: 45px 0 40px 0;">
             <div style="background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 20px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.35);">
                 
@@ -350,11 +355,10 @@
 
                 <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #38bdf8; padding: 14px 18px; border-radius: 8px; margin-bottom: 24px; font-size: 13.5px; color: #cbd5e1; line-height: 1.7;">
                     <strong>Key Benchmarks:</strong> Evaluated on 103,020 augmented fundus images across 5 clinical severity stages. 
-                    <strong>MobileNetV3-Large</strong> achieved <strong>98.91% validation accuracy</strong> for binary detection with only ~5.4M parameters (outperforming ViT-Base's 86M parameters). 
+                    <strong>MobileNetV3-Large</strong> achieved <strong>98.91% validation accuracy</strong> for binary detection with only ~5.4M parameters. 
                     For 5-class severity grading, <strong>EfficientNet-B0</strong> achieved top performance with <strong>98.1% validation accuracy</strong> and <strong>98.3% test accuracy</strong>.
                 </div>
 
-                <!-- Action Buttons: updated to .jpeg -->
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                     <a href="iCONEECT_presentation_slides.pdf" target="_blank" class="btn" style="text-decoration: none; padding: 10px 18px; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fas fa-file-powerpoint"></i> View Presentation Slides (PDF)
@@ -371,10 +375,9 @@
             </div>
         </div>
 
-        <!-- ===== 3. HARDWARE & ENGINEERING PROJECTS ===== -->
+        <!-- 3. HARDWARE & ENGINEERING PROJECTS -->
         <h3 class="project-category-title">Engineering Projects</h3>
         
-        <!-- Project Filter Buttons -->
         <div class="project-filters">
             <button class="proj-filter-btn active" onclick="filterProjects('all', this)">All</button>
             <button class="proj-filter-btn" onclick="filterProjects('embedded', this)">Embedded Systems</button>
@@ -382,7 +385,7 @@
             <button class="proj-filter-btn" onclick="filterProjects('robotics', this)">Robotics & PLC</button>
         </div>
 
-       <div class="projects-container">
+        <div class="projects-container">
             <div class="project-card clickable-card" data-category="embedded" onclick="openProject('solarModal')">
                 <div class="project-icon">☀</div>
                 <span class="project-type">EMBEDDED SYSTEM</span>
@@ -440,7 +443,7 @@
         <p>Explainable AI (XAI) techniques were also integrated for visual decision-mapping to improve clinical reliability.</p>
         <div class="github-box">
             <span>💻 GitHub</span>
-            <a href="https://github.com" target="_blank">View on GitHub →</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
         </div>
     </div>
 </div>
@@ -448,7 +451,6 @@
 <!-- ===== CASE STUDY READER MODAL ===== -->
 <div id="caseStudyModal" class="project-modal case-study-modal-backdrop">
     <div class="case-study-window">
-        <!-- Top Sticky Header with Reading Progress -->
         <div class="case-study-header">
             <div class="case-study-meta">
                 <span class="cs-badge"><i class="fas fa-microscope"></i> ENGINEERING CASE STUDY</span>
@@ -459,7 +461,6 @@
         </div>
 
         <div class="case-study-body" id="csScrollContainer">
-            <!-- Main Content Area -->
             <article class="case-study-content">
                 <span class="cs-tag">DEEP LEARNING & EDGE AI</span>
                 <h1 class="cs-title">Automated Diabetic Retinopathy Detection & Clinical Severity Grading Under Edge Constraints</h1>
@@ -480,8 +481,8 @@
                 <section id="engineering-constraints" class="cs-section">
                     <h2><span class="sec-num">02.</span> Engineering Constraints</h2>
                     <ul>
-                        <li><strong>Inference Latency:</strong> Must run near real-time on edge devices (under $100\text{ ms}$ per sample).</li>
-                        <li><strong>Model Footprint:</strong> Target memory under $25\text{ MB}$ without sacrificing diagnostic sensitivity.</li>
+                        <li><strong>Inference Latency:</strong> Must run near real-time on edge devices (under 100 ms per sample).</li>
+                        <li><strong>Model Footprint:</strong> Target memory under 25 MB without sacrificing diagnostic sensitivity.</li>
                         <li><strong>Clinical Class Imbalance:</strong> Heavily skewed datasets across early non-proliferative versus advanced proliferative stages.</li>
                         <li><strong>Clinical Transparency:</strong> Black-box predictions are unacceptable in medical triage; pixel-level attribution is mandatory.</li>
                     </ul>
@@ -552,7 +553,7 @@
                 </section>
             </article>
 
-            <!-- Sticky Mini Table of Contents (TOC) -->
+            <!-- Sticky Mini TOC -->
             <aside class="case-study-toc">
                 <span class="toc-heading">CONTENTS</span>
                 <nav>
@@ -683,7 +684,7 @@
     </div>
 </section>
 
-<!-- ===== EXTRA CURRICULAR ACTIVITIES & LEADERSHIP ===== -->
+<!-- ===== ACTIVITIES & LEADERSHIP ===== -->
 <section id="activities">
     <div class="container">
         <h2 class="section-title">Extra Curricular Activities & Leadership</h2>
@@ -807,7 +808,7 @@
 </section>
 
 <style>
-/* PREMIUM AWARDS SECTION */
+/* AWARDS SECTION */
 #awards {
     position: relative;
     padding: 90px 20px;
@@ -901,23 +902,6 @@
 }
 </style>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".award-card");
-    const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-            }
-        });
-    }, { threshold: 0.15 });
-
-    cards.forEach(function (card) {
-        observer.observe(card);
-    });
-});
-</script>
-
 <!-- ===== CERTIFICATIONS & WORKSHOPS ===== -->
 <section id="certifications">
     <div class="container">
@@ -974,7 +958,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="cert-modal-img-wrapper" id="modalImgContainer">
             <img id="modalCertImg" src="" alt="Certificate Preview">
         </div>
-   <div class="cert-modal-actions">
+        <div class="cert-modal-actions">
             <button id="downloadCertBtn" onclick="triggerDownloadCert()" class="cert-action-btn"><i class="fas fa-download"></i> Download Image</button>
             <button id="viewFullBtn" onclick="toggleFullScreenImg()" class="cert-action-btn view-btn"><i class="fas fa-expand"></i> View Full Screen</button>
         </div>
@@ -1018,7 +1002,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <div class="contact-card">
-                <a href="https://wa.me/8801580485253" target="_blank" class="contact-main-link">
+                <a href="https://wa.me/8801580485253" target="_blank" rel="noopener noreferrer" class="contact-main-link">
                     <div class="contact-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="contact-info">
                         <span class="contact-label">WHATSAPP</span>
@@ -1030,7 +1014,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </button>
             </div>
     
-            <!-- 4th Card: Send Direct Message -->
             <div class="contact-card clickable-msg-card" onclick="openContactModal()" style="cursor: pointer;">
                 <div class="contact-main-link">
                     <div class="contact-icon msg-icon"><i class="fas fa-paper-plane"></i></div>
@@ -1044,8 +1027,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
 
-<!-- 👇 ঠিক এখানে ৫ম কার্ডটি বসবে (Calendly Integration) 👇 -->
-            <div class="contact-card clickable-msg-card" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/sudipta1212das32/30min'});return false;" style="cursor: pointer;">
+            <div class="contact-card clickable-msg-card" onclick="if(window.Calendly){Calendly.initPopupWidget({url: 'https://calendly.com/sudipta1212das32/30min'});}return false;" style="cursor: pointer;">
                 <div class="contact-main-link">
                     <div class="contact-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; font-size: 20px;">
                         <i class="fas fa-calendar-check"></i>
@@ -1061,8 +1043,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
 
-        <!-- Direct Contact Form -->
-        <!-- Modal Popup Form -->
+        <!-- Contact Modal -->
         <div id="contactMsgModal" class="project-modal">
             <div class="modal-content contact-popup-card">
                 <button class="close-modal" onclick="closeContactModal()">×</button>
@@ -1093,22 +1074,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 </form>
             </div>
         </div>
+
         <div class="social-section">
             <p class="social-title"><i class="fas fa-share-nodes"></i> FIND ME ONLINE</p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/engr-sudipta-das-73861b394/" target="_blank" class="social-btn linkedin">
+                <a href="https://www.linkedin.com/in/engr-sudipta-das-73861b394/" target="_blank" rel="noopener noreferrer" class="social-btn linkedin">
                     <i class="fab fa-linkedin-in"></i>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://www.facebook.com/shudipta.shudipta.3" target="_blank" class="social-btn facebook">
+                <a href="https://www.facebook.com/shudipta.shudipta.3" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
                     <i class="fab fa-facebook-f"></i>
                     <span>Facebook</span>
                 </a>
-                <a href="https://t.me/sudipta_das1212" target="_blank" class="social-btn telegram">
+                <a href="https://t.me/sudipta_das1212" target="_blank" rel="noopener noreferrer" class="social-btn telegram">
                     <i class="fab fa-telegram-plane"></i>
                     <span>Telegram</span>
                 </a>
-                <a href="https://www.instagram.com/sudipta_das_420/" target="_blank" class="social-btn instagram">
+                <a href="https://www.instagram.com/sudipta_das_420/" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </a>
@@ -1126,14 +1108,14 @@ document.addEventListener("DOMContentLoaded", function () {
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
 </footer>
-    <!-- 🚀 এখানে বাটনটি বসিয়ে দিন -->
+
 <!-- ===== SCROLL TO TOP BUTTON ===== -->
 <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
 </button>
+
 <!-- ===== AI PORTFOLIO CHATBOT WIDGET ===== -->
 <div id="aiChatWidget" class="ai-chat-widget">
-    <!-- Chat Window -->
     <div id="aiChatBox" class="ai-chat-box">
         <div class="ai-chat-header">
             <div class="ai-chat-header-info">
@@ -1150,7 +1132,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="ai-msg bot">
                 <span>👋 Hi! I'm Sudipta's portfolio assistant. You can ask me about his research, thesis models, publications, or background!</span>
             </div>
-            <!-- Quick Chips -->
             <div class="ai-chips">
                 <button onclick="quickAsk('Publication details')">📄 Publications</button>
                 <button onclick="quickAsk('Thesis models')">🧠 Deep Learning Models</button>
@@ -1165,12 +1146,12 @@ document.addEventListener("DOMContentLoaded", function () {
         </form>
     </div>
 
-    <!-- Floating Toggle Button -->
     <button id="aiChatToggleBtn" class="ai-chat-toggle-btn" onclick="toggleAiChat()" aria-label="Open AI Assistant">
         <i class="fas fa-robot"></i>
         <span class="ai-chat-badge">AI</span>
     </button>
 </div>
+
 <!-- ===== CV NOTICE MODAL ===== -->
 <div id="cvModal" class="modal-overlay">
   <div class="modal-card">
@@ -1180,19 +1161,24 @@ document.addEventListener("DOMContentLoaded", function () {
         This CV is password-protected for security purposes. Please contact me to obtain the password to open the file.
     </p>
     <div class="modal-actions">
-      <a href="Sudipta%20CV2026_protected.pdf" target="_blank" class="btn-download" onclick="closeCvNotice()">Open / Download PDF</a>
+      <a href="Sudipta%20CV2026_protected.pdf" target="_blank" rel="noopener noreferrer" class="btn-download" onclick="closeCvNotice()">Open / Download PDF</a>
       <a href="#contact" class="btn-contact" onclick="closeCvNotice()">Contact Authority</a>
     </div>
     <button class="btn-close" onclick="closeCvNotice()">✕</button>
   </div>
 </div>
 
-<script src="script.js"></script>
-
-<!-- Calendly Pop-up Widget JS -->
+<!-- Calendly Script -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- Vanilla Tilt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
 <script>
+// =====================================================
+// CORE UI & MODAL HANDLERS
+// =====================================================
 function openCvNotice() {
     const modal = document.getElementById("cvModal");
     if (modal) {
@@ -1225,7 +1211,22 @@ function closeProject(modalId) {
     }
 }
 
-// মডালের বাইরে ক্লিক করলে যাতে বন্ধ হয় (CV ও অন্যান্য সব প্রজেক্ট মডাল সহ)
+function openContactModal() {
+    const modal = document.getElementById("contactMsgModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeContactModal() {
+    const modal = document.getElementById("contactMsgModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
 window.addEventListener("click", function(event) {
     if (event.target.classList.contains("project-modal") || event.target.classList.contains("modal-overlay")) {
         event.target.style.display = "none";
@@ -1233,11 +1234,10 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// কীবোর্ডের Escape বাটন চাপলে যাতে বন্ধ হয়
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
-        const modals = document.querySelectorAll(".project-modal, .modal-overlay");
-        modals.forEach(function(modal) {
+        const modals = document.querySelectorAll(".project-modal, .modal-overlay, #certPreviewModal");
+        modals.forEach(modal => {
             modal.style.display = "none";
         });
         document.body.style.overflow = "auto";
@@ -1247,27 +1247,9 @@ document.addEventListener("keydown", function(event) {
 // =====================================================
 // COMPLETE CERTIFICATIONS LIST & DYNAMIC ENGINE
 // =====================================================
-
 const certificatesData = [
-    // ⭐️ iCONEECT 2026 Conference Certificates (Updated strictly to .jpeg)
-    { 
-        title: "Certificate of Presentation (Paper ID: 748) - iCONEECT 2026", 
-        org: "IEEE Bangladesh Section & Premier University", 
-        date: "September 25–26, 2026", 
-        year: "2026", 
-        category: "ieee programming", 
-        img: "01.jpeg" 
-    },
-    { 
-        title: "Certificate of Appreciation (Paper ID: 748) - iCONEECT 2026", 
-        org: "IEEE Bangladesh Section & Premier University", 
-        date: "September 25–26, 2026", 
-        year: "2026", 
-        category: "ieee programming", 
-        img: "02.jpeg" 
-    },
-
-    // Verified Credentials
+    { title: "Certificate of Presentation (Paper ID: 748) - iCONEECT 2026", org: "IEEE Bangladesh Section & Premier University", date: "September 25–26, 2026", year: "2026", category: "ieee programming", img: "01.jpeg" },
+    { title: "Certificate of Appreciation (Paper ID: 748) - iCONEECT 2026", org: "IEEE Bangladesh Section & Premier University", date: "September 25–26, 2026", year: "2026", category: "ieee programming", img: "02.jpeg" },
     { title: "The SDG Primer", org: "Futurenation", date: "February 23, 2025", year: "2025", category: "workshop", img: "1.jpg" },
     { title: "Professional Video Editing", org: "Futurenation", date: "February 26, 2025", year: "2025", category: "workshop", img: "2.jpg" },
     { title: "Motion Graphics", org: "Futurenation", date: "January 11, 2025", year: "2025", category: "workshop", img: "3.jpg" },
@@ -1503,53 +1485,9 @@ function closeCertModal() {
     }
 }
 
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('certPreviewModal');
-    if (event.target === modal) closeCertModal();
-});
-
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") closeCertModal();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const yearElem = document.getElementById('year');
-    if (yearElem) yearElem.textContent = new Date().getFullYear();
-    renderCertificates(certificatesData);
-
-    const searchInput = document.getElementById('certSearch');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const yearSelect = document.getElementById('certYearSelect');
-
-    function executeFilter() {
-        const query = searchInput.value.toLowerCase().trim();
-        const activeBtn = document.querySelector('.filter-btn.active');
-        const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
-        const selectedYear = yearSelect.value;
-
-        const filtered = certificatesData.filter(item => {
-            const matchesSearch = item.title.toLowerCase().includes(query) || item.org.toLowerCase().includes(query);
-            const matchesCat = (activeCategory === 'all') || item.category.includes(activeCategory);
-            const matchesYear = (selectedYear === 'all') || (item.year === selectedYear);
-            return matchesSearch && matchesCat && matchesYear;
-        });
-
-        renderCertificates(filtered);
-    }
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            executeFilter();
-        });
-    });
-
-    if (searchInput) searchInput.addEventListener('input', executeFilter);
-    if (yearSelect) yearSelect.addEventListener('change', executeFilter);
-});
-
-// ===== ABOUT IMAGE AUTO-SLIDER ENGINE =====
+// =====================================================
+// ABOUT AUTO-SLIDER ENGINE
+// =====================================================
 let currentSlideIndex = 0;
 let slideTimer;
 
@@ -1586,12 +1524,9 @@ function setSlide(index) {
     slideTimer = setInterval(nextSlide, 3500);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    slideTimer = setInterval(nextSlide, 3500);
-});
-
-// Copy To Clipboard Function
-// Updated Copy to Clipboard with Pulse & Tooltip Feedback
+// =====================================================
+// CLIPBOARD & FEEDBACK
+// =====================================================
 function copyToClipboard(text, btnElement) {
     if (!navigator.clipboard) {
         const textArea = document.createElement("textarea");
@@ -1613,7 +1548,6 @@ function copyToClipboard(text, btnElement) {
 
 function triggerCopyFeedback(btnElement) {
     const originalHtml = btnElement.innerHTML;
-    
     btnElement.classList.add("copied-active");
     btnElement.innerHTML = '<i class="fas fa-check" style="color: #4ade80;"></i>';
 
@@ -1637,7 +1571,10 @@ function triggerCopyFeedback(btnElement) {
         }, 200);
     }, 2000);
 }
-// Project Filtering Function
+
+// =====================================================
+// PROJECT FILTERING
+// =====================================================
 function filterProjects(category, btnElement) {
     const filterButtons = document.querySelectorAll('.proj-filter-btn');
     filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -1654,443 +1591,9 @@ function filterProjects(category, btnElement) {
     });
 }
 
-function openContactModal() {
-    const modal = document.getElementById("contactMsgModal");
-    if (modal) {
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-    }
-}
-
-function closeContactModal() {
-    const modal = document.getElementById("contactMsgModal");
-    if (modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-}
-
-// ===== THEME TOGGLE ENGINE (DARK / LIGHT MODE) =====
-const themeToggleBtn = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-
-// ব্রাউজারে আগে থেকে কোনো থিম সেভ করা আছে কিনা চেক করা
-const savedTheme = localStorage.getItem('sudipta_theme') || 'dark';
-
-if (savedTheme === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    if (themeIcon) {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    }
-}
-
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function () {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        
-        if (currentTheme === 'light') {
-            // ডার্ক মোডে সুইচ করা
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('sudipta_theme', 'dark');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        } else {
-            // লাইট মোডে সুইচ করা
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('sudipta_theme', 'light');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-    });
-}
-
-// 🚀 ===== SCROLL TO TOP ENGINE (এখানে যোগ করুন) =====
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-window.addEventListener("scroll", function () {
-    if (scrollTopBtn) {
-        if (window.scrollY > 400) {
-            scrollTopBtn.classList.add("show");
-        } else {
-            scrollTopBtn.classList.remove("show");
-        }
-    }
-});
-
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-// ===== ১. টপ স্ক্রোল প্রগ্রেস বার =====
-const progressBar = document.createElement("div");
-progressBar.id = "scrollProgressBar";
-progressBar.style.cssText = "position:fixed;top:0;left:0;height:4px;background:#38bdf8;z-index:99999;transition:width 0.1s;";
-document.body.appendChild(progressBar);
-
-window.addEventListener("scroll", () => {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    progressBar.style.width = ((winScroll / height) * 100) + "%";
-});
-
-// ===== ২. একটিভ ন্যাভবার ইন্ডিকেটর =====
-const sections = document.querySelectorAll("section[id]");
-window.addEventListener("scroll", () => {
-    let scrollY = window.pageYOffset;
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 150;
-        const sectionId = current.getAttribute("id");
-        const navItem = document.querySelector(`.nav-links a[href*=${sectionId}]`);
-        if (navItem) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navItem.classList.add("active-nav");
-            } else {
-                navItem.classList.remove("active-nav");
-            }
-        }
-    });
-});
-
-// ===== ৩. হিরো সেকশনে টাইপিং অ্যানিমেশন =====
-const typingRoles = [
-    "Electrical & Electronic Engineer",
-    "Nuclear Engineering Researcher",
-    "IoT & Embedded Systems Enthusiast",
-    "Deep Learning Researcher"
-];
-let roleIdx = 0;
-let charIdx = 0;
-let isDeleting = false;
-const heroSub = document.querySelector(".hero-text h2");
-
-function typeEffect() {
-    if (!heroSub) return;
-    const currentText = typingRoles[roleIdx];
-    
-    if (isDeleting) {
-        heroSub.textContent = currentText.substring(0, charIdx - 1);
-        charIdx--;
-    } else {
-        heroSub.textContent = currentText.substring(0, charIdx + 1);
-        charIdx++;
-    }
-
-    let typeSpeed = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIdx === currentText.length) {
-        typeSpeed = 1800; // পুরো শব্দ লেখার পর বিরতি
-        isDeleting = true;
-    } else if (isDeleting && charIdx === 0) {
-        isDeleting = false;
-        roleIdx = (roleIdx + 1) % typingRoles.length;
-        typeSpeed = 400;
-    }
-
-    setTimeout(typeEffect, typeSpeed);
-}
-
-document.addEventListener("DOMContentLoaded", typeEffect);
-// ===== 📱 MOBILE RESPONSIVE HAMBURGER MENU ENGINE =====
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const navLinks = document.querySelector(".nav-links");
-
-if (mobileMenuBtn && navLinks) {
-    mobileMenuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active-menu");
-        const icon = mobileMenuBtn.querySelector("i");
-        
-        if (icon) {
-            // আইকন পরিবর্তন (বার থেকে ক্রস এবং ক্রস থেকে বার)
-            icon.classList.toggle("fa-bars");
-            icon.classList.toggle("fa-times");
-        }
-    });
-
-    // মোবাইল মেনুর যেকোনো লিংকে ক্লিক করলে মেনু অটো বন্ধ হয়ে যাবে
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active-menu");
-            const icon = mobileMenuBtn.querySelector("i");
-            if (icon) {
-                icon.classList.add("fa-bars");
-                icon.classList.remove("fa-times");
-            }
-        });
-    });
-}
-const counters = document.querySelectorAll('.counter');
-let counterStarted = false;
-
-function startCounterAnimation() {
-    counters.forEach(counter => {
-        counter.innerText = '0';
-        const target = +counter.getAttribute('data-target');
-        const increment = target / 60; // গতি নিয়ন্ত্রণ
-
-        const updateCounter = () => {
-            const current = +counter.innerText.replace('+', '');
-            if (current < target) {
-                counter.innerText = `${Math.ceil(current + increment)}`;
-                setTimeout(updateCounter, 25);
-            } else {
-                counter.innerText = target + (target >= 50 ? "+" : "");
-            }
-        };
-        updateCounter();
-    });
-}
-
-// স্ক্রোল করে যখন স্ট্যাটাস সেকশন আসবে তখন স্টার্ট হবে
-window.addEventListener('scroll', () => {
-    const statsSection = document.querySelector('.stats-counter-banner');
-    if (statsSection) {
-        const top = statsSection.getBoundingClientRect().top;
-        if (top < window.innerHeight && !counterStarted) {
-            startCounterAnimation();
-            counterStarted = true;
-        }
-    }
-});
-    </script>
-<!-- ===== REAL-TIME EMAIL NOTIFICATION ENGINE ===== -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<!-- 🔻🔻🔻 এই অংশটি সঠিকভাবে সাজানো হয়েছে (Vanilla Tilt CDN) 🔻🔻🔻 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-
-<script type="text/javascript">
-(function() {
-    const EMAILJS_PUBLIC_KEY = "NJTucZB3vO1tLmTj7";
-    const EMAILJS_SERVICE_ID = "service_w7vrcvx";
-    const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
-
-    emailjs.init({
-        publicKey: EMAILJS_PUBLIC_KEY,
-    });
-
-    if (sessionStorage.getItem("portfolio_visitor_tracked")) {
-        return;
-    }
-
-    function sendVisitorAlert(data) {
-        const templateParams = {
-            visitor_city: data.city || "Unknown City",
-            visitor_country: data.country || data.country_name || "Unknown Country",
-            visitor_ip: data.ip || "Hidden",
-            visitor_org: data.connection ? data.connection.isp : (data.org || "Internet User"),
-            visitor_device: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "📱 Mobile Device" : "💻 Desktop / PC",
-            visit_time: new Date().toLocaleTimeString(),
-            page_url: window.location.href
-        };
-
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-            .then(res => {
-                sessionStorage.setItem("portfolio_visitor_tracked", "true");
-            })
-            .catch(err => {
-                console.error("EmailJS Error:", err);
-            });
-    }
-
-    fetch("https://ipwho.is/")
-        .then(res => res.json())
-        .then(data => sendVisitorAlert(data))
-        .catch(() => {
-            sendVisitorAlert({
-                city: "Direct Visitor",
-                country: "Unknown",
-                ip: "Protected",
-                org: "Unknown ISP"
-            });
-        });
-})();
-
 // =====================================================
-// SCROLL REVEAL ENGINE
+// AUDIO FX ENGINE (SYNTHESIZED)
 // =====================================================
-document.addEventListener("DOMContentLoaded", function () {
-    const animatedElements = document.querySelectorAll(
-        ".project-card, .education-card, .leadership-card, .smart-skill-card, .about-wrapper, .conference-paper-wrapper"
-    );
-
-    animatedElements.forEach((el, index) => {
-        el.classList.add("reveal-on-scroll");
-        const staggerDelay = (index % 4) * 0.12; 
-        el.style.transitionDelay = `${staggerDelay}s`;
-    });
-
-    const revealObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active-reveal");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.12,
-        rootMargin: "0px 0px -50px 0px"
-    });
-
-    animatedElements.forEach(el => {
-        revealObserver.observe(el);
-    });
-});
-
-// =====================================================
-// CUSTOM CURSOR & TILT ENGINE
-// =====================================================
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.matchMedia("(pointer: fine)").matches) {
-        const dot = document.createElement("div");
-        const follower = document.createElement("div");
-        dot.className = "cursor-dot";
-        follower.className = "cursor-follower";
-        document.body.appendChild(dot);
-        document.body.appendChild(follower);
-
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
-        window.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-        });
-
-        function renderFollower() {
-            followerX += (mouseX - followerX) * 0.18;
-            followerY += (mouseY - followerY) * 0.18;
-            follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
-            requestAnimationFrame(renderFollower);
-        }
-        renderFollower();
-
-        const interactables = document.querySelectorAll(
-            "a, button, .clickable-card, .cert-card, .award-card, input, textarea"
-        );
-        interactables.forEach((el) => {
-            el.addEventListener("mouseenter", () => follower.classList.add("cursor-hover"));
-            el.addEventListener("mouseleave", () => follower.classList.remove("cursor-hover"));
-        });
-
-        // 3D Tilt Initialization
-        if (typeof VanillaTilt !== "undefined") {
-            VanillaTilt.init(document.querySelectorAll(".project-card, .award-card"), {
-                max: 8,
-                speed: 400,
-                glare: true,
-                "max-glare": 0.15,
-                scale: 1.02
-            });
-        }
-    }
-});
-
-// ====================================================
-// AI PORTFOLIO CHATBOT LOGIC
-// ====================================================
-function toggleAiChat() {
-    playClickFx();
-    const box = document.getElementById("aiChatBox");
-    if (!box) return;
-    if (box.style.display === "flex") {
-        box.style.display = "none";
-    } else {
-        box.style.display = "flex";
-        document.getElementById("aiUserInput").focus();
-    }
-}
-
-function quickAsk(text) {
-    const input = document.getElementById("aiUserInput");
-    if (input) {
-        input.value = text;
-        handleAiChatSubmit(new Event('submit'));
-    }
-}
-
-function handleAiChatSubmit(e) {
-    e.preventDefault();
-    const input = document.getElementById("aiUserInput");
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    appendChatMessage(msg, "user");
-    input.value = "";
-
-    setTimeout(() => {
-        const reply = generateAiPortfolioResponse(msg);
-        appendChatMessage(reply, "bot");
-    }, 450);
-}
-
-function appendChatMessage(text, sender) {
-    const chatContainer = document.getElementById("aiChatMessages");
-    const div = document.createElement("div");
-    div.className = `ai-msg ${sender}`;
-    div.innerHTML = `<span>${text}</span>`;
-    chatContainer.appendChild(div);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-}
-
-function generateAiPortfolioResponse(query) {
-    const q = query.toLowerCase();
-
-    if (q.includes("clg") || q.includes("college") || q.includes("hsc") || q.includes("কলেজ") || q.includes("kazem ali")) {
-        return "🏫 সুদীপ্ত তাঁর <strong>Higher Secondary Certificate (HSC)</strong> সম্পন্ন করেছেন <strong>Kazem Ali High School and College</strong> (বিজ্ঞান বিভাগ, চট্টগ্রাম বোর্ড) থেকে ২০২১ সালে।";
-    }
-    if (q.includes("school") || q.includes("স্কুল") || q.includes("ssc") || q.includes("jsc") || q.includes("psc") || q.includes("railway") || q.includes("lions")) {
-        if (q.includes("psc") || q.includes("primary") || q.includes("lions")) {
-            return "🏫 প্রাইমারি স্কুল (PSC): <strong>Lions School</strong> (২০১৩)।";
-        }
-        return "🏫 সুদীপ্ত তাঁর <strong>SSC (২০১৯)</strong> এবং <strong>JSC (২০১৬)</strong> উভয়ই সম্পন্ন করেছেন <strong>Railway Public High School</strong> (চট্টগ্রাম বোর্ড, বিজ্ঞান বিভাগ) থেকে।";
-    }
-    if (q.includes("bsc") || q.includes("b.sc") || q.includes("graduation") || q.includes("premier") || q.includes("গ্র্যাজুয়েশন") || q.includes("ভার্সিটি") || (q.includes("university") && !q.includes("cuet"))) {
-        return "🎓 সুদীপ্ত <strong>Premier University</strong> থেকে <strong>Electrical & Electronic Engineering (EEE)</strong> বিভাগে B.Sc. সম্পন্ন করেছেন (পাসিং ডেট: ১৬ মে ২০২৬)।";
-    }
-    if (q.includes("msc") || q.includes("m.sc") || q.includes("cuet") || q.includes("nuclear") || q.includes("current") || q.includes("পড়াশোনা") || q.includes("পড়াশোনা")) {
-        return "⚛️ সুদীপ্ত বর্তমানে <strong>Chittagong University of Engineering and Technology (CUET)</strong>-এ <strong>M.Sc. in Nuclear Engineering</strong> প্রোগ্রামে অধ্যয়নরত আছেন (জুলাই ২০২৬ – বর্তমান)।";
-    }
-    if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("ieee") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
-        return "📄 <strong>IEEE Conference Paper (ID: 748):</strong><br>• <strong>Title:</strong> A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints.<br>• <strong>Conference:</strong> iCONEECT 2026 (Premier University ও IEEE Bangladesh Section-এর যৌথ উদ্যোগে আয়োজিত, ২৫–২৬ সেপ্টেম্বর ২০২৬)।";
-    }
-    if (q.includes("thesis") || q.includes("model") || q.includes("retinopathy") || q.includes("deep learning") || q.includes("vit") || q.includes("mobilenet") || q.includes("থিসিস") || q.includes("মডেল")) {
-        return "🧠 <strong>Diabetic Retinopathy Detection Thesis:</strong><br>• <strong>MobileNetV3-Large:</strong> ৯৮.৯১% ভ্যালিডেশন অ্যাকুরেসি (বাইনারি ডিটেকশন, মাত্র ৫.৪ মিলিয়ন প্যারামিটার)।<br>• <strong>EfficientNet-B0:</strong> ৯৮.১% অ্যাকুরেসি (৫টি ক্লিনিক্যাল স্টেজের মাল্টিক্লাস গ্রেডিং)।<br>• এছাড়াও ব্যবহৃত হয়েছে <strong>Vision Transformers (ViT-Base)</strong> এবং ক্লিনিক্যাল ব্যাখ্যার জন্য <strong>Explainable AI (LIME & Grad-CAM)</strong>।";
-    }
-    if (q.includes("project") || q.includes("হার্ডওয়্যার") || q.includes("প্রজেক্ট") || q.includes("solar") || q.includes("plc") || q.includes("robot") || q.includes("water")) {
-        return "🛠️ <strong>সুদীপ্তর মূল ইঞ্জিনিয়ারিং প্রজেক্টসমূহ:</strong><br>১. Arduino-Based Single-Axis Solar Tracking System<br>২. Automatic Solar-Powered Street Light Controller<br>৩. PLC-Based Traffic Light Control System<br>৪. Autonomous Line Follower Robot<br>৫. Automated Water Level Indicator & Controller।";
-    }
-    if (q.includes("leadership") || q.includes("hult") || q.includes("ambassador") || q.includes("club") || q.includes("লিডারশিপ") || q.includes("ক্লাব")) {
-        return "🌟 <strong>লিডারশিপ ও অর্গানাইজেশনাল রোলস:</strong><br>• <strong>Head of Media & Communications:</strong> Hult Prize at Premier University (২০২৫–২০২৬)<br>• <strong>Campus Ambassador:</strong> iCONEECT 2026 ও Futurenation (৫০০+ স্টুডেন্টদের সাথে কানেক্টেড)<br>• <strong>সদস্য:</strong> IEEE Student Branch ও Premier University Robotics Club।";
-    }
-    if (q.includes("award") || q.includes("competition") || q.includes("পুরস্কার") || q.includes("অ্যাওয়ার্ড") || q.includes("best presenter")) {
-        return "🏆 <strong>অর্জন ও অ্যাওয়ার্ড:</strong><br>• <strong>Best Presenter Award:</strong> Project Day 2023 (Premier University)<br>• <strong>Line Follower Robot Race:</strong> Bangabandhu Innovation Fair 2024 (পার্টিসিপেশন সার্টিফিকেট)<br>• <strong>Poster Presentation:</strong> Bangabandhu Innovation Fair 2024।";
-    }
-    if (q.includes("skill") || q.includes("python") || q.includes("software") || q.includes("matlab") || q.includes("programming") || q.includes("স্কিল")) {
-        return "💻 <strong>টেকনিক্যাল স্কিলস:</strong><br>• <strong>প্রোগ্রামিং:</strong> Python (PyTorch, Flask), C, Basic Java<br>• <strong>ইঞ্জিনিয়ারিং ও সিমুলেশন টুলস:</strong> MATLAB, Arduino IDE, Siemens S7-1200, LOGO PLC, AutoCAD, MicroWind<br>• <strong>ডিজিটাল ও অন্যান্য:</strong> UI/UX Design, Data Analysis (Excel), Video Editing।";
-    }
-    if (q.includes("hobby") || q.includes("interest") || q.includes("শখ") || q.includes("free time") || q.includes("পছন্দ")) {
-        return "🎨 সুদীপ্ত অবসর সময়ে বই পড়া, লেখালেখি, কবিতা, নেচার ফটোগ্রাফি, খেলাধুলা, বাগান করা এবং স্কেচিং করতে পছন্দ করেন।";
-    }
-    if (q.includes("certificate") || q.includes("সার্টিফিকেট") || q.includes("কোর্স") || q.includes("training")) {
-        return "📜 সুদীপ্তর প্রোফাইলে ৭০+ ভেরিফায়েড সার্টিফিকেশন ও ব্যাজ রয়েছে—যার মধ্যে IEEE, Futurenation/UNDP, UNICEF Passport to Earning, The Asia Foundation, এবং British Council-এর কোর্স অন্তর্ভুক্ত।";
-    }
-    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("whatsapp") || q.includes("যোগাযোগ") || q.includes("কথা")) {
-        return "📬 <strong>সুদীপ্তর সাথে যোগাযোগের মাধ্যম:</strong><br>• <strong>ইমেইল:</strong> sudipta1212das32@gmail.com<br>• <strong>ফোন/হোয়াটসঅ্যাপ:</strong> +880 1580-485253<br>• সাইটের Contact সেকশন থেকে সরাসরি মেসেজ পাঠাতে বা Calendly-এর মাধ্যমে মিটিং শিডিউল করতে পারেন।";
-    }
-    if (q.includes("cv") || q.includes("resume") || q.includes("সিভি") || q.includes("রেজুমে")) {
-        return "🔒 সুদীপ্তর সিভিটি নেভিগেশন বারের '🔒 CV' বাটনে ক্লিক করে ডাউনলোড করা যাবে। তবে সুরক্ষার স্বার্থে ফাইলটি পাসওয়ার্ড প্রটেক্টেড—পাসওয়ার্ড পেতে তাঁর সাথে সরাসরি যোগাযোগ করুন।";
-    }
-    return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
-}
-
-// ====================================================
-// আপডেটেড অডিও ইঞ্জিন (সরাসরি ব্রাউজার সাউন্ড)
-// ====================================================
 let audioCtx = null;
 let isSoundEnabled = localStorage.getItem("sudipta_sound_enabled") !== "false";
 
@@ -2185,60 +1688,11 @@ function updateSoundBtnState() {
     }
 }
 
-// 🔻🔻🔻 সব ক্লিকের জন্য সাউন্ড ইভেন্ট লিসেনার সেট করা হলো 🔻🔻🔻
-document.addEventListener("DOMContentLoaded", function () {
-    updateSoundBtnState();
-
-    window.addEventListener("click", function unlockAudio() {
-        ensureAudioContext();
-        window.removeEventListener("click", unlockAudio);
-    }, { once: true });
-
-    // পেজের সব বাটন ও লিংকে সাউন্ড যুক্ত করা হলো
-    const clickTargets = document.querySelectorAll(
-        ".btn, #themeToggle, .close-modal, .filter-btn, .proj-filter-btn, .nav-links a, .clickable-card, .clickable-msg-card, .cert-card"
-    );
-    clickTargets.forEach(item => {
-        item.addEventListener("click", playClickFx);
-    });
-
-    const hoverTargets = document.querySelectorAll(
-        ".project-card, .smart-skill-card, .education-card, .award-card, .leadership-card"
-    );
-    hoverTargets.forEach(card => {
-        card.addEventListener("mouseenter", playHoverPopFx);
-    });
-});
-    // Service Worker Registration
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js");
-  });
-}
-
-// Install Prompt Logic
-let deferredPrompt;
-const installBtn = document.getElementById("pwaInstallBtn");
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  if (installBtn) {
-    installBtn.style.display = "inline-flex";
-  }
-});
-
-if (installBtn) {
-  installBtn.addEventListener("click", async () => {
-    if (!deferredPrompt) return;
-    installBtn.style.display = "none";
-    deferredPrompt.prompt();
-    deferredPrompt = null;
-  });
-}
-// ===== CASE STUDY MODAL FUNCTIONS =====
+// =====================================================
+// CASE STUDY MODAL & READING ENGINE
+// =====================================================
 function openCaseStudy() {
-    if (typeof playClickFx === "function") playClickFx();
+    playClickFx();
     const modal = document.getElementById("caseStudyModal");
     if (modal) {
         modal.style.display = "flex";
@@ -2248,7 +1702,7 @@ function openCaseStudy() {
 }
 
 function closeCaseStudy() {
-    if (typeof playClickFx === "function") playClickFx();
+    playClickFx();
     const modal = document.getElementById("caseStudyModal");
     if (modal) {
         modal.style.display = "none";
@@ -2264,20 +1718,403 @@ function calculateReadTime() {
     const minutes = Math.ceil(words / 200);
     readDisplay.innerHTML = `<i class="far fa-clock"></i> ${minutes} min read`;
 }
-    document.addEventListener("DOMContentLoaded", function () {
+
+// =====================================================
+// AI ASSISTANT CHATBOT
+// =====================================================
+function toggleAiChat() {
+    playClickFx();
+    const box = document.getElementById("aiChatBox");
+    if (!box) return;
+    if (box.style.display === "flex") {
+        box.style.display = "none";
+    } else {
+        box.style.display = "flex";
+        document.getElementById("aiUserInput").focus();
+    }
+}
+
+function quickAsk(text) {
+    const input = document.getElementById("aiUserInput");
+    if (input) {
+        input.value = text;
+        handleAiChatSubmit(new Event('submit'));
+    }
+}
+
+function handleAiChatSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById("aiUserInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    appendChatMessage(msg, "user");
+    input.value = "";
+
+    setTimeout(() => {
+        const reply = generateAiPortfolioResponse(msg);
+        appendChatMessage(reply, "bot");
+    }, 450);
+}
+
+function appendChatMessage(text, sender) {
+    const chatContainer = document.getElementById("aiChatMessages");
+    const div = document.createElement("div");
+    div.className = `ai-msg ${sender}`;
+    div.innerHTML = `<span>${text}</span>`;
+    chatContainer.appendChild(div);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+function generateAiPortfolioResponse(query) {
+    const q = query.toLowerCase();
+
+    if (q.includes("clg") || q.includes("college") || q.includes("hsc") || q.includes("কলেজ") || q.includes("kazem ali")) {
+        return "🏫 সুদীপ্ত তাঁর <strong>Higher Secondary Certificate (HSC)</strong> সম্পন্ন করেছেন <strong>Kazem Ali High School and College</strong> (বিজ্ঞান বিভাগ, চট্টগ্রাম বোর্ড) থেকে ২০২১ সালে।";
+    }
+    if (q.includes("school") || q.includes("স্কুল") || q.includes("ssc") || q.includes("jsc") || q.includes("psc") || q.includes("railway") || q.includes("lions")) {
+        if (q.includes("psc") || q.includes("primary") || q.includes("lions")) {
+            return "🏫 প্রাইমারি স্কুল (PSC): <strong>Lions School</strong> (২০১৩)।";
+        }
+        return "🏫 সুদীপ্ত তাঁর <strong>SSC (২০১৯)</strong> এবং <strong>JSC (২০১৬)</strong> উভয়ই সম্পন্ন করেছেন <strong>Railway Public High School</strong> (চট্টগ্রাম বোর্ড, বিজ্ঞান বিভাগ) থেকে।";
+    }
+    if (q.includes("bsc") || q.includes("b.sc") || q.includes("graduation") || q.includes("premier") || q.includes("গ্র্যাজুয়েশন") || q.includes("ভার্সিটি") || (q.includes("university") && !q.includes("cuet"))) {
+        return "🎓 সুদীপ্ত <strong>Premier University</strong> থেকে <strong>Electrical & Electronic Engineering (EEE)</strong> বিভাগে B.Sc. সম্পন্ন করেছেন (পাসিং ডেট: ১৬ মে ২০২৬)।";
+    }
+    if (q.includes("msc") || q.includes("m.sc") || q.includes("cuet") || q.includes("nuclear") || q.includes("current") || q.includes("পড়াশোনা")) {
+        return "⚛️ সুদীপ্ত বর্তমানে <strong>Chittagong University of Engineering and Technology (CUET)</strong>-এ <strong>M.Sc. in Nuclear Engineering</strong> প্রোগ্রামে অধ্যয়নরত আছেন (জুলাই ২০২৬ – বর্তমান)।";
+    }
+    if (q.includes("publication") || q.includes("conference") || q.includes("paper") || q.includes("iconeect") || q.includes("ieee") || q.includes("পাবলিকেশন") || q.includes("কনফারেন্স")) {
+        return "📄 <strong>IEEE Conference Paper (ID: 748):</strong><br>• <strong>Title:</strong> A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints.<br>• <strong>Conference:</strong> iCONEECT 2026 (Premier University ও IEEE Bangladesh Section-এর যৌথ উদ্যোগে আয়োজিত, ২৫–২৬ সেপ্টেম্বর ২০২৬)।";
+    }
+    if (q.includes("thesis") || q.includes("model") || q.includes("retinopathy") || q.includes("deep learning") || q.includes("vit") || q.includes("mobilenet") || q.includes("থিসিস") || q.includes("মডেল")) {
+        return "🧠 <strong>Diabetic Retinopathy Detection Thesis:</strong><br>• <strong>MobileNetV3-Large:</strong> ৯৮.৯১% ভ্যালিডেশন অ্যাকুরেসি (বাইনারি ডিটেকশন, মাত্র ৫.৪ মিলিয়ন প্যারামিটার)।<br>• <strong>EfficientNet-B0:</strong> ৯৮.১% অ্যাকুরেসি (৫টি ক্লিনিক্যাল স্টেজের মাল্টিক্লাস গ্রেডিং)।<br>• এছাড়াও ব্যবহৃত হয়েছে <strong>Vision Transformers (ViT-Base)</strong> এবং ক্লিনিক্যাল ব্যাখ্যার জন্য <strong>Explainable AI (LIME & Grad-CAM)</strong>।";
+    }
+    if (q.includes("project") || q.includes("হার্ডওয়্যার") || q.includes("প্রজেক্ট") || q.includes("solar") || q.includes("plc") || q.includes("robot") || q.includes("water")) {
+        return "🛠️ <strong>সুদীপ্তর মূল ইঞ্জিনিয়ারিং প্রজেক্টসমূহ:</strong><br>১. Arduino-Based Single-Axis Solar Tracking System<br>২. Automatic Solar-Powered Street Light Controller<br>৩. PLC-Based Traffic Light Control System<br>৪. Autonomous Line Follower Robot<br>৫. Automated Water Level Indicator & Controller।";
+    }
+    if (q.includes("leadership") || q.includes("hult") || q.includes("ambassador") || q.includes("club") || q.includes("লিডারশিপ") || q.includes("ক্লাব")) {
+        return "🌟 <strong>লিডারশিপ ও অর্গানাইজেশনাল রোলস:</strong><br>• <strong>Head of Media & Communications:</strong> Hult Prize at Premier University (২০২৫–২০২৬)<br>• <strong>Campus Ambassador:</strong> iCONEECT 2026 ও Futurenation (৫০০+ স্টুডেন্টদের সাথে কানেক্টেড)<br>• <strong>সদস্য:</strong> IEEE Student Branch ও Premier University Robotics Club।";
+    }
+    if (q.includes("award") || q.includes("competition") || q.includes("পুরস্কার") || q.includes("অ্যাওয়ার্ড") || q.includes("best presenter")) {
+        return "🏆 <strong>অর্জন ও অ্যাওয়ার্ড:</strong><br>• <strong>Best Presenter Award:</strong> Project Day 2023 (Premier University)<br>• <strong>Line Follower Robot Race:</strong> Bangabandhu Innovation Fair 2024 (পার্টিসিপেশন সার্টিফিকেট)<br>• <strong>Poster Presentation:</strong> Bangabandhu Innovation Fair 2024।";
+    }
+    if (q.includes("skill") || q.includes("python") || q.includes("software") || q.includes("matlab") || q.includes("programming") || q.includes("স্কিল")) {
+        return "💻 <strong>টেকনিক্যাল স্কিলস:</strong><br>• <strong>প্রোগ্রামিং:</strong> Python (PyTorch, Flask), C, Basic Java<br>• <strong>ইঞ্জিনিয়ারিং ও সিমুলেশন টুলস:</strong> MATLAB, Arduino IDE, Siemens S7-1200, LOGO PLC, AutoCAD, MicroWind<br>• <strong>ডিজিটাল ও অন্যান্য:</strong> UI/UX Design, Data Analysis (Excel), Video Editing।";
+    }
+    if (q.includes("hobby") || q.includes("interest") || q.includes("শখ") || q.includes("free time") || q.includes("পছন্দ")) {
+        return "🎨 সুদীপ্ত অবসর সময়ে বই পড়া, লেখালেখি, কবিতা, নেচার ফটোগ্রাফি, খেলাধুলা, বাগান করা এবং স্কেচিং করতে পছন্দ করেন।";
+    }
+    if (q.includes("certificate") || q.includes("সার্টিফিকেট") || q.includes("কোর্স") || q.includes("training")) {
+        return "📜 সুদীপ্তর প্রোফাইলে ৭০+ ভেরিফায়েড সার্টিফিকেশন ও ব্যাজ রয়েছে—যার মধ্যে IEEE, Futurenation/UNDP, UNICEF Passport to Earning, The Asia Foundation, এবং British Council-এর কোর্স অন্তর্ভুক্ত।";
+    }
+    if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("whatsapp") || q.includes("যোগাযোগ") || q.includes("কথা")) {
+        return "📬 <strong>সুদীপ্তর সাথে যোগাযোগের মাধ্যম:</strong><br>• <strong>ইমেইল:</strong> sudipta1212das32@gmail.com<br>• <strong>ফোন/হোয়াটসঅ্যাপ:</strong> +880 1580-485253<br>• সাইটের Contact সেকশন থেকে সরাসরি মেসেজ পাঠাতে বা Calendly-এর মাধ্যমে মিটিং শিডিউল করতে পারেন।";
+    }
+    if (q.includes("cv") || q.includes("resume") || q.includes("সিভি") || q.includes("রেজুমে")) {
+        return "🔒 সুদীপ্তর সিভিটি নেভিগেশন বারের '🔒 CV' বাটনে ক্লিক করে ডাউনলোড করা যাবে। তবে সুরক্ষার স্বার্থে ফাইলটি পাসওয়ার্ড প্রটেক্টেড—পাসওয়ার্ড পেতে তাঁর সাথে সরাসরি যোগাযোগ করুন।";
+    }
+    return "💡 আপনি সুদীপ্তর স্কুল/কলেজ (HSC/SSC), আন্ডারগ্র্যাড (Premier University), বর্তমান মাস্টার্স (CUET), IEEE পেপার (iCONEECT 2026), প্রজেক্ট, টেকনিক্যাল স্কিল কিংবা যোগাযোগ সম্পর্কে যেকোনো প্রশ্ন করতে পারেন!";
+}
+
+// =====================================================
+// SCROLL TO TOP
+// =====================================================
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// =====================================================
+// DOM INITIALIZATION
+// =====================================================
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Current Year
+    const yearElem = document.getElementById('year');
+    if (yearElem) yearElem.textContent = new Date().getFullYear();
+
+    // 2. Render Certificates
+    renderCertificates(certificatesData);
+
+    // 3. Certificate Search & Filter
+    const searchInput = document.getElementById('certSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const yearSelect = document.getElementById('certYearSelect');
+
+    function executeFilter() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const activeBtn = document.querySelector('.filter-btn.active');
+        const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+        const selectedYear = yearSelect ? yearSelect.value : 'all';
+
+        const filtered = certificatesData.filter(item => {
+            const matchesSearch = item.title.toLowerCase().includes(query) || item.org.toLowerCase().includes(query);
+            const matchesCat = (activeCategory === 'all') || item.category.includes(activeCategory);
+            const matchesYear = (selectedYear === 'all') || (item.year === selectedYear);
+            return matchesSearch && matchesCat && matchesYear;
+        });
+
+        renderCertificates(filtered);
+    }
+
+    if (filterButtons.length) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                executeFilter();
+            });
+        });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', executeFilter);
+    if (yearSelect) yearSelect.addEventListener('change', executeFilter);
+
+    // 4. About Slider Auto
+    slideTimer = setInterval(nextSlide, 3500);
+
+    // 5. Theme Setup
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const savedTheme = localStorage.getItem('sudipta_theme') || 'dark';
+
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function () {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('sudipta_theme', 'dark');
+                if (themeIcon) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('sudipta_theme', 'light');
+                if (themeIcon) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+            }
+        });
+    }
+
+    // 6. Sound Setup
+    updateSoundBtnState();
+    window.addEventListener("click", function unlockAudio() {
+        ensureAudioContext();
+        window.removeEventListener("click", unlockAudio);
+    }, { once: true });
+
+    const clickTargets = document.querySelectorAll(
+        ".btn, #themeToggle, .close-modal, .filter-btn, .proj-filter-btn, .nav-links a, .clickable-card, .clickable-msg-card, .cert-card"
+    );
+    clickTargets.forEach(item => {
+        item.addEventListener("click", playClickFx);
+    });
+
+    const hoverTargets = document.querySelectorAll(
+        ".project-card, .smart-skill-card, .education-card, .award-card, .leadership-card"
+    );
+    hoverTargets.forEach(card => {
+        card.addEventListener("mouseenter", playHoverPopFx);
+    });
+
+    // 7. Scroll Progress Bar
+    const progressBar = document.createElement("div");
+    progressBar.id = "scrollProgressBar";
+    progressBar.style.cssText = "position:fixed;top:0;left:0;height:4px;background:#38bdf8;z-index:99999;transition:width 0.1s;";
+    document.body.appendChild(progressBar);
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    const sections = document.querySelectorAll("section[id]");
+
+    window.addEventListener("scroll", () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        progressBar.style.width = ((winScroll / height) * 100) + "%";
+
+        // Scroll Top Button Visibility
+        if (scrollTopBtn) {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        }
+
+        // Active Navbar Link Indicator
+        let scrollY = window.pageYOffset;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 150;
+            const sectionId = current.getAttribute("id");
+            const navItem = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+            if (navItem) {
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navItem.classList.add("active-nav");
+                } else {
+                    navItem.classList.remove("active-nav");
+                }
+            }
+        });
+    });
+
+    // 8. Typing Animation
+    const typingRoles = [
+        "Electrical & Electronic Engineer",
+        "Nuclear Engineering Researcher",
+        "IoT & Embedded Systems Enthusiast",
+        "Deep Learning Researcher"
+    ];
+    let roleIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const heroSub = document.querySelector(".hero-text h2");
+
+    function typeEffect() {
+        if (!heroSub) return;
+        const currentText = typingRoles[roleIdx];
+        
+        if (isDeleting) {
+            heroSub.textContent = currentText.substring(0, charIdx - 1);
+            charIdx--;
+        } else {
+            heroSub.textContent = currentText.substring(0, charIdx + 1);
+            charIdx++;
+        }
+
+        let typeSpeed = isDeleting ? 40 : 80;
+
+        if (!isDeleting && charIdx === currentText.length) {
+            typeSpeed = 1800;
+            isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+            isDeleting = false;
+            roleIdx = (roleIdx + 1) % typingRoles.length;
+            typeSpeed = 400;
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+    }
+    typeEffect();
+
+    // 9. Mobile Menu
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active-menu");
+            const icon = mobileMenuBtn.querySelector("i");
+            if (icon) {
+                icon.classList.toggle("fa-bars");
+                icon.classList.toggle("fa-times");
+            }
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active-menu");
+                const icon = mobileMenuBtn.querySelector("i");
+                if (icon) {
+                    icon.classList.add("fa-bars");
+                    icon.classList.remove("fa-times");
+                }
+            });
+        });
+    }
+
+    // 10. Counters Animation
+    const counters = document.querySelectorAll('.counter');
+    let counterStarted = false;
+
+    function startCounterAnimation() {
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const target = +counter.getAttribute('data-target');
+            const increment = target / 60;
+
+            const updateCounter = () => {
+                const current = +counter.innerText.replace('+', '');
+                if (current < target) {
+                    counter.innerText = `${Math.ceil(current + increment)}`;
+                    setTimeout(updateCounter, 25);
+                } else {
+                    counter.innerText = target + (target >= 50 ? "+" : "");
+                }
+            };
+            updateCounter();
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        const statsSection = document.querySelector('.stats-counter-banner');
+        if (statsSection) {
+            const top = statsSection.getBoundingClientRect().top;
+            if (top < window.innerHeight && !counterStarted) {
+                startCounterAnimation();
+                counterStarted = true;
+            }
+        }
+    });
+
+    // 11. Awards Intersection Observer
+    const awardCards = document.querySelectorAll(".award-card");
+    const awardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    awardCards.forEach(card => awardObserver.observe(card));
+
+    // 12. General Scroll Reveal
+    const animatedElements = document.querySelectorAll(
+        ".project-card, .education-card, .leadership-card, .smart-skill-card, .about-wrapper, .conference-paper-wrapper"
+    );
+    animatedElements.forEach((el, index) => {
+        el.classList.add("reveal-on-scroll");
+        el.style.transitionDelay = `${(index % 4) * 0.12}s`;
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active-reveal");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+
+    animatedElements.forEach(el => revealObserver.observe(el));
+
+    // 13. Case Study Scroll & TOC In-Modal Navigation
     const scrollContainer = document.getElementById("csScrollContainer");
-    const progressBar = document.getElementById("csProgressBar");
-    const sections = document.querySelectorAll(".cs-section");
+    const csProgressBar = document.getElementById("csProgressBar");
+    const csSections = document.querySelectorAll(".cs-section");
     const tocLinks = document.querySelectorAll(".toc-link");
 
-    if (scrollContainer && progressBar) {
+    if (scrollContainer && csProgressBar) {
         scrollContainer.addEventListener("scroll", () => {
             const scrollTop = scrollContainer.scrollTop;
             const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-            progressBar.style.width = ((scrollTop / scrollHeight) * 100) + "%";
+            csProgressBar.style.width = ((scrollTop / scrollHeight) * 100) + "%";
 
             let currentSec = "";
-            sections.forEach(sec => {
+            csSections.forEach(sec => {
                 const top = sec.offsetTop - scrollContainer.offsetTop - 80;
                 if (scrollTop >= top) {
                     currentSec = sec.getAttribute("id");
@@ -2292,7 +2129,144 @@ function calculateReadTime() {
             });
         });
     }
+
+    // In-modal smooth scroll for Case Study TOC
+    document.querySelectorAll('.case-study-toc a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl && scrollContainer) {
+                const targetOffset = targetEl.offsetTop - scrollContainer.offsetTop;
+                scrollContainer.scrollTo({
+                    top: targetOffset,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 14. Custom Cursor & Tilt
+    if (window.matchMedia("(pointer: fine)").matches) {
+        const dot = document.createElement("div");
+        const follower = document.createElement("div");
+        dot.className = "cursor-dot";
+        follower.className = "cursor-follower";
+        document.body.appendChild(dot);
+        document.body.appendChild(follower);
+
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        });
+
+        function renderFollower() {
+            followerX += (mouseX - followerX) * 0.18;
+            followerY += (mouseY - followerY) * 0.18;
+            follower.style.transform = `translate(${followerX}px, ${followerY}px)`;
+            requestAnimationFrame(renderFollower);
+        }
+        renderFollower();
+
+        const interactables = document.querySelectorAll("a, button, .clickable-card, .cert-card, .award-card, input, textarea");
+        interactables.forEach((el) => {
+            el.addEventListener("mouseenter", () => follower.classList.add("cursor-hover"));
+            el.addEventListener("mouseleave", () => follower.classList.remove("cursor-hover"));
+        });
+
+        if (typeof VanillaTilt !== "undefined") {
+            VanillaTilt.init(document.querySelectorAll(".project-card, .award-card"), {
+                max: 8,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.15,
+                scale: 1.02
+            });
+        }
+    }
 });
+
+// =====================================================
+// SERVICE WORKER & PWA INSTALL
+// =====================================================
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(err => console.log("SW registration skipped/failed:", err));
+    });
+}
+
+let deferredPrompt;
+const installBtn = document.getElementById("pwaInstallBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) {
+        installBtn.style.display = "inline-flex";
+    }
+});
+
+if (installBtn) {
+    installBtn.addEventListener("click", async () => {
+        if (!deferredPrompt) return;
+        installBtn.style.display = "none";
+        deferredPrompt.prompt();
+        deferredPrompt = null;
+    });
+}
+
+// =====================================================
+// VISITOR ANALYTICS ALERT (EMAILJS)
+// =====================================================
+(function() {
+    if (typeof emailjs === "undefined") return;
+
+    const EMAILJS_PUBLIC_KEY = "NJTucZB3vO1tLmTj7";
+    const EMAILJS_SERVICE_ID = "service_w7vrcvx";
+    const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    if (sessionStorage.getItem("portfolio_visitor_tracked")) {
+        return;
+    }
+
+    function sendVisitorAlert(data) {
+        const templateParams = {
+            visitor_city: data.city || "Unknown City",
+            visitor_country: data.country || data.country_name || "Unknown Country",
+            visitor_ip: data.ip || "Hidden",
+            visitor_org: data.connection ? data.connection.isp : (data.org || "Internet User"),
+            visitor_device: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "📱 Mobile Device" : "💻 Desktop / PC",
+            visit_time: new Date().toLocaleTimeString(),
+            page_url: window.location.href
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(() => {
+                sessionStorage.setItem("portfolio_visitor_tracked", "true");
+            })
+            .catch(err => {
+                console.warn("EmailJS notification skipped:", err);
+            });
+    }
+
+    fetch("https://ipwho.is/")
+        .then(res => res.json())
+        .then(data => sendVisitorAlert(data))
+        .catch(() => {
+            sendVisitorAlert({
+                city: "Direct Visitor",
+                country: "Unknown",
+                ip: "Protected",
+                org: "Unknown ISP"
+            });
+        });
+})();
 </script>
 </body>
 </html>
