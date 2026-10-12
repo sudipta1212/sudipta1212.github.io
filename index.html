@@ -61,6 +61,7 @@
             <li><a href="#awards">Awards</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="javascript:void(0)" onclick="openCvNotice()" class="nav-cv-btn">🔒 CV</a></li>
+            <li><a href="javascript:void(0)" onclick="openResumeDocModal()" class="nav-doc-btn" style="color: #38bdf8; font-weight: 600;"><i class="fas fa-file-alt"></i> Resume View</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -1167,15 +1168,148 @@
     <button class="btn-close" onclick="closeCvNotice()">✕</button>
   </div>
 </div>
+<!-- ===== INTERACTIVE RESUME DOC VIEWER MODAL ===== -->
+<div id="resumeDocModal" class="project-modal" style="display: none; align-items: center; justify-content: center; z-index: 999999;">
+    <div class="resume-modal-container">
+        <!-- Floating Action Bar -->
+        <div class="resume-action-bar">
+            <div class="resume-bar-title">
+                <i class="fas fa-file-invoice" style="color: #38bdf8;"></i>
+                <span>Interactive Resume Document Mode</span>
+            </div>
+            <div class="resume-bar-controls">
+                <button class="resume-ctrl-btn print-btn" onclick="printResumeDoc()">
+                    <i class="fas fa-print"></i> Print / Save as PDF
+                </button>
+                <button class="resume-ctrl-btn close-btn" onclick="closeResumeDocModal()" title="Close Viewer">
+                    ✕
+                </button>
+            </div>
+        </div>
 
+        <!-- Scrollable Document Viewport -->
+        <div class="resume-viewport">
+            <div class="resume-paper" id="resumePrintArea">
+                <!-- Resume Header -->
+                <header class="doc-header">
+                    <div>
+                        <h1 class="doc-name">SUDIPTA DAS</h1>
+                        <p class="doc-role">Electrical & Electronic Engineer | M.Sc. in Nuclear Engineering (CUET)</p>
+                    </div>
+                    <div class="doc-contacts">
+                        <span><i class="fas fa-envelope"></i> sudipta1212das32@gmail.com</span>
+                        <span><i class="fas fa-phone"></i> +880 1580-485253</span>
+                        <span><i class="fas fa-location-dot"></i> Chattogram, Bangladesh</span>
+                        <span><i class="fab fa-linkedin"></i> linkedin.com/in/engr-sudipta-das</span>
+                    </div>
+                </header>
+
+                <hr class="doc-divider">
+
+                <!-- Education -->
+                <section class="doc-sec">
+                    <h2 class="doc-sec-title">EDUCATION</h2>
+                    
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>M.Sc. in Nuclear Engineering</strong>
+                            <span class="doc-date">July 2026 – Present</span>
+                        </div>
+                        <div class="doc-sub">Chittagong University of Engineering and Technology (CUET)</div>
+                    </div>
+
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>B.Sc. in Electrical & Electronic Engineering</strong>
+                            <span class="doc-date">Passing: May 2026</span>
+                        </div>
+                        <div class="doc-sub">Premier University, Chattogram</div>
+                    </div>
+
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>Higher Secondary Certificate (HSC) — Science</strong>
+                            <span class="doc-date">Passing: 2021</span>
+                        </div>
+                        <div class="doc-sub">Kazem Ali High School and College | Chattogram Board</div>
+                    </div>
+                </section>
+
+                <!-- Publications -->
+                <section class="doc-sec">
+                    <h2 class="doc-sec-title">CONFERENCE PUBLICATIONS</h2>
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>A Performance Benchmarking of Lightweight CNNs and Vision Transformers for Automated Diabetic Retinopathy Grading Under Resource Constraints</strong>
+                            <span class="doc-date">Sept 2026</span>
+                        </div>
+                        <div class="doc-sub">2026 1st International Conference on Next-Generation Electrical & Electronics, Computer Systems, and Technologies (iCONEECT 2026)</div>
+                        <p class="doc-desc">• Technically Co-Sponsored by IEEE Bangladesh Section (Paper ID: 748). Evaluated on 103,020 fundus images. MobileNetV3 achieved 98.91% validation accuracy; EfficientNet-B0 scored 98.1% on 5-class severity triage.</p>
+                    </div>
+                </section>
+
+                <!-- Technical Skills -->
+                <section class="doc-sec">
+                    <h2 class="doc-sec-title">TECHNICAL SKILLS</h2>
+                    <div class="doc-skills-list">
+                        <p><strong>Programming & Frameworks:</strong> Python (PyTorch, Flask), C, Basic Java, HTML/CSS, REST APIs</p>
+                        <p><strong>Engineering & Simulation Tools:</strong> MATLAB, Arduino IDE, LOGO PLC, Siemens S7-1200, AutoCAD, MicroWind, DSCH2</p>
+                        <p><strong>AI & Explainable AI (XAI):</strong> Deep Learning (CNNs, Vision Transformers), Transfer Learning, Grad-CAM, LIME</p>
+                        <p><strong>Productivity & Digital:</strong> MS Office (Excel, Word, PowerPoint), UI/UX Design, Video Editing</p>
+                    </div>
+                </section>
+
+                <!-- Key Projects -->
+                <section class="doc-sec">
+                    <h2 class="doc-sec-title">CORE ENGINEERING PROJECTS</h2>
+                    
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>Automated Diabetic Retinopathy Detection & Screening Web App</strong>
+                            <span class="doc-date">Thesis & Full-Stack</span>
+                        </div>
+                        <p class="doc-desc">• Implemented MobileNetV3 and EfficientNet-B0 with an interactive web portal for real-time ophthalmology fundus screening.</p>
+                    </div>
+
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>Arduino-Based Single-Axis Solar Tracking System</strong>
+                            <span class="doc-date">Embedded System</span>
+                        </div>
+                        <p class="doc-desc">• Programmed LDR array feedback with servo actuators to maximize solar panel irradiance.</p>
+                    </div>
+
+                    <div class="doc-item">
+                        <div class="doc-row">
+                            <strong>PLC-Based Industrial Traffic Light Control System</strong>
+                            <span class="doc-date">Automation</span>
+                        </div>
+                        <p class="doc-desc">• Programmed sequential ladder logic for automated, collision-free junction traffic flow control.</p>
+                    </div>
+                </section>
+
+                <!-- Leadership & Credentials -->
+                <section class="doc-sec">
+                    <h2 class="doc-sec-title">LEADERSHIP & RECOGNITION</h2>
+                    <ul class="doc-bullets">
+                        <li><strong>Head of Media & Communication:</strong> Hult Prize at Premier University (2025–2026).</li>
+                        <li><strong>Campus Ambassador:</strong> iCONEECT 2026 (IEEE Bangladesh Section & Premier University).</li>
+                        <li><strong>Best Presenter Award:</strong> Project Day 2023, Premier University.</li>
+                        <li><strong>Member:</strong> IEEE Student Branch (Member ID: 101156607) & PU Robotics Club.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Calendly Script -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <!-- EmailJS -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <!-- Vanilla Tilt -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-
 <script>
+    
 // =====================================================
 // CORE UI & MODAL HANDLERS
 // =====================================================
@@ -1226,7 +1360,22 @@ function closeContactModal() {
         document.body.style.overflow = "auto";
     }
 }
+window.addEventListener("click", function(event) {
+    if (event.target.classList.contains("project-modal") || event.target.classList.contains("modal-overlay")) {
+        event.target.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+});
 
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        const modals = document.querySelectorAll(".project-modal, .modal-overlay, #certPreviewModal, #resumeDocModal");
+        modals.forEach(modal => {
+            modal.style.display = "none";
+        });
+        document.body.style.overflow = "auto";
+    }
+});
 window.addEventListener("click", function(event) {
     if (event.target.classList.contains("project-modal") || event.target.classList.contains("modal-overlay")) {
         event.target.style.display = "none";
@@ -2267,6 +2416,55 @@ if (installBtn) {
             });
         });
 })();
+    // =====================================================
+// CORE UI & MODAL HANDLERS
+// =====================================================
+function openCvNotice() {
+    const modal = document.getElementById("cvModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeCvNotice() {
+    const modal = document.getElementById("cvModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+    // 👉 ঠিক এই খালি জায়গায় নতুন কোডটি পেস্ট করবেন:
+function openResumeDocModal() {
+    if (typeof playClickFx === "function") playClickFx();
+    const modal = document.getElementById("resumeDocModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeResumeDocModal() {
+    if (typeof playClickFx === "function") playClickFx();
+    const modal = document.getElementById("resumeDocModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+function printResumeDoc() {
+    window.print();
+}
+// 👈 নতুন কোড শেষ
+
+function openProject(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
 </script>
 </body>
 </html>
