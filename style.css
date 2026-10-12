@@ -2369,3 +2369,70 @@ header {
         right: -10px;
     }
 }
+/* =========================================
+   LIVE TELEMETRY PANEL STYLES
+   ========================================= */
+.telemetry-bar-wrapper {
+    width: 100%;
+    background: rgba(11, 17, 32, 0.95);
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.telemetry-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.telemetry-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(17, 24, 39, 0.6);
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.telemetry-status-pulse {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+    animation: telePulse 1.8s infinite;
+}
+
+@keyframes telePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.telemetry-label {
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.telemetry-val {
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .telemetry-flex {
+        justify-content: center;
+        gap: 8px;
+    }
+    .telemetry-item {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
