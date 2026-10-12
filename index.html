@@ -2135,7 +2135,7 @@ function handleAiChatSubmit(e) {
     input.value = "";
 
     setTimeout(() => {
-        const reply = generateAiPortfolioResponse(query);
+        const reply = generateAiPortfolioResponse(msg);
         appendChatMessage(reply, "bot");
     }, 450);
 }
