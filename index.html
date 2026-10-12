@@ -1329,6 +1329,40 @@
     </div>
 </section>
 
+    <!-- ===== LIVE TELEMETRY WIDGET ===== -->
+<div class="telemetry-bar-wrapper">
+    <div class="container telemetry-flex">
+        <div class="telemetry-item">
+            <span class="telemetry-status-pulse"></span>
+            <span class="telemetry-label">SYSTEM TELEMETRY:</span>
+            <span class="telemetry-val" style="color: #4ade80;">ONLINE</span>
+        </div>
+        
+        <div class="telemetry-item">
+            <i class="fas fa-stopwatch" style="color: #38bdf8;"></i>
+            <span class="telemetry-label">DOM LOAD:</span>
+            <span class="telemetry-val" id="telemetryDomLoad">Calculating...</span>
+        </div>
+
+        <div class="telemetry-item">
+            <i class="fas fa-gauge-high" style="color: #facc15;"></i>
+            <span class="telemetry-label">FPS:</span>
+            <span class="telemetry-val" id="telemetryFps">60</span>
+        </div>
+
+        <div class="telemetry-item">
+            <i class="fas fa-wifi" style="color: #a855f7;"></i>
+            <span class="telemetry-label">NET:</span>
+            <span class="telemetry-val" id="telemetryNet">Detecting...</span>
+        </div>
+
+        <div class="telemetry-item">
+            <i class="fas fa-memory" style="color: #f43f5e;"></i>
+            <span class="telemetry-label">HEAP:</span>
+            <span class="telemetry-val" id="telemetryMemory">N/A</span>
+        </div>
+    </div>
+</div>
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
@@ -2650,6 +2684,60 @@ if (installBtn) {
             });
         });
 })();
+    // =====================================================
+// LIVE CLIENT TELEMETRY & PERFORMANCE TRACKER
+// =====================================================
+window.addEventListener("load", function () {
+    // ১. DOM Load Time ক্যালকুলেশন
+    const perfTiming = performance.getEntriesByType("navigation")[0];
+    const domLoadEl = document.getElementById("telemetryDomLoad");
+    if (perfTiming && domLoadEl) {
+        const domTime = Math.round(perfTiming.domContentLoadedEventEnd - perfTiming.startTime);
+        domLoadEl.textContent = `${domTime}ms`;
+    }
+
+    // ২. Network Connection টাইপ
+    const netEl = document.getElementById("telemetryNet");
+    if (netEl) {
+        if (navigator.connection) {
+            const netType = navigator.connection.effectiveType ? navigator.connection.effectiveType.toUpperCase() : "Wi-Fi";
+            netEl.textContent = netType;
+        } else {
+            netEl.textContent = navigator.onLine ? "Online" : "Offline";
+        }
+    }
+
+    // ৩. Live FPS Tracker
+    let frameCount = 0;
+    let lastTime = performance.now();
+    const fpsEl = document.getElementById("telemetryFps");
+
+    function calcFps(currentTime) {
+        frameCount++;
+        if (currentTime - lastTime >= 1000) {
+            const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+            if (fpsEl) {
+                fpsEl.textContent = fps;
+                fpsEl.style.color = fps >= 50 ? "#4ade80" : fps >= 30 ? "#facc15" : "#f43f5e";
+            }
+            frameCount = 0;
+            lastTime = currentTime;
+        }
+        requestAnimationFrame(calcFps);
+    }
+    requestAnimationFrame(calcFps);
+
+    // ৪. JS Memory Heap Usage (Chromium ব্রাউজারের জন্য)
+    const memEl = document.getElementById("telemetryMemory");
+    function updateMemory() {
+        if (performance.memory && memEl) {
+            const usedMB = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
+            memEl.textContent = `~${usedMB}MB`;
+        }
+    }
+    updateMemory();
+    setInterval(updateMemory, 3000);
+});
 </script>
 </body>
 </html>
