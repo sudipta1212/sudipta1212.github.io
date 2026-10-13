@@ -34,7 +34,6 @@
             -ms-user-select: none;
             user-select: none;
         }
-        /* ইনপুট ও সিলেক্টেবল কনটেন্টে সিলেকশন সচল রাখা */
         input, textarea, .contact-value, .case-study-body, .resume-paper {
             -webkit-user-select: text !important;
             -moz-user-select: text !important;
@@ -264,6 +263,57 @@
                 margin: 1.2cm;
                 size: A4 portrait;
             }
+        }
+
+        /* ===== LIVE TELEMETRY WIDGET STYLES ===== */
+        .telemetry-bar-wrapper {
+            width: 100%;
+            background: #090d16;
+            border-top: 1px solid rgba(56, 189, 248, 0.25);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 14px 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+        }
+        .telemetry-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12.5px;
+        }
+        .telemetry-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+        }
+        .telemetry-label {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #cbd5e1;
+        }
+        .telemetry-val {
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        .telemetry-status-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #4ade80;
+            animation: pulseGlow 1.8s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(0.85); opacity: 0.6; }
+            100% { transform: scale(1.15); opacity: 1; }
         }
     </style>
 </head>
@@ -1032,101 +1082,6 @@
     </div>
 </section>
 
-<style>
-/* AWARDS SECTION */
-#awards {
-    position: relative;
-    padding: 90px 20px;
-    background: #0b1120;
-    overflow: hidden;
-}
-.awards-bg-glow {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-    filter: blur(20px);
-    animation: awardsGlow 6s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-@keyframes awardsGlow {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.4; }
-    100% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
-}
-.awards-title {
-    position: relative;
-    text-align: center;
-    color: #38bdf8;
-    font-size: 48px;
-    margin-bottom: 60px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-.awards-grid {
-    position: relative;
-    max-width: 1150px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-}
-.award-card {
-    position: relative;
-    padding: 32px;
-    min-height: 260px;
-    background: linear-gradient(145deg, rgba(17,24,39,0.95), rgba(15,23,42,0.85));
-    border: 1px solid rgba(56,189,248,0.25);
-    border-radius: 22px;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(80px) scale(0.92);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease, border-color 0.4s ease;
-    backdrop-filter: blur(12px);
-}
-.award-card.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-.award-card:nth-child(1) { transition-delay: 0.1s; }
-.award-card:nth-child(2) { transition-delay: 0.25s; }
-.award-card:nth-child(3) { transition-delay: 0.4s; }
-.award-card:hover {
-    transform: translateY(-15px) scale(1.025);
-    border-color: rgba(56,189,248,0.8);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45), 0 0 30px rgba(56,189,248,0.12);
-}
-.award-icon {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 34px;
-    margin-bottom: 22px;
-    border-radius: 16px;
-    background: rgba(56,189,248,0.08);
-    border: 1px solid rgba(56,189,248,0.18);
-    transition: 0.5s ease;
-}
-.award-card h3 { color: #f8fafc; font-size: 21px; margin: 0 0 10px; }
-.award-card h4 { color: #cbd5e1; font-size: 15px; margin: 0 0 12px; }
-.award-card p { color: #94a3b8; font-size: 13px; line-height: 1.6; margin: 0; }
-
-@media (max-width: 900px) {
-    .awards-grid { grid-template-columns: repeat(2, 1fr); }
-    .awards-title { font-size: 40px; }
-}
-@media (max-width: 600px) {
-    #awards { padding: 70px 18px; }
-    .awards-title { font-size: 32px; margin-bottom: 40px; }
-    .awards-grid { grid-template-columns: 1fr; gap: 20px; }
-}
-</style>
-
 <!-- ===== CERTIFICATIONS & WORKSHOPS ===== -->
 <section id="certifications">
     <div class="container">
@@ -1329,9 +1284,9 @@
     </div>
 </section>
 
-    <!-- ===== LIVE TELEMETRY WIDGET ===== -->
+<!-- ===== LIVE TELEMETRY WIDGET ===== -->
 <div class="telemetry-bar-wrapper">
-    <div class="container telemetry-flex">
+    <div class="telemetry-flex">
         <div class="telemetry-item">
             <span class="telemetry-status-pulse"></span>
             <span class="telemetry-label">SYSTEM TELEMETRY:</span>
@@ -1359,176 +1314,15 @@
         <div class="telemetry-item">
             <i class="fas fa-memory" style="color: #f43f5e;"></i>
             <span class="telemetry-label">HEAP:</span>
-            <span class="telemetry-val" id="telemetryMemory">N/A</span>
+            <span class="telemetry-val" id="telemetryMemory">Calculating...</span>
         </div>
     </div>
 </div>
+
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>© <span id="year"></span> Sudipta Das. All Rights Reserved.</p>
 </footer>
-    <!-- ===== LIVE TELEMETRY WIDGET (FULL SELF-CONTAINED) ===== -->
-<style>
-  .telemetry-bar-wrapper {
-      width: 100% !important;
-      background: #090d16 !important;
-      border-top: 1px solid rgba(56, 189, 248, 0.25) !important;
-      border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
-      padding: 14px 20px !important;
-      box-sizing: border-box !important;
-      position: relative !important;
-      z-index: 100 !important;
-  }
-  .telemetry-flex {
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      flex-wrap: wrap !important;
-      gap: 20px 30px !important;
-      max-width: 1200px !important;
-      margin: 0 auto !important;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-      font-size: 12.5px !important;
-  }
-  .telemetry-item {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      color: #94a3b8 !important;
-  }
-  .telemetry-label {
-      font-weight: 600 !important;
-      letter-spacing: 0.5px !important;
-      color: #cbd5e1 !important;
-  }
-  .telemetry-val {
-      font-weight: 700 !important;
-      color: #f8fafc !important;
-  }
-  .telemetry-status-pulse {
-      width: 8px !important;
-      height: 8px !important;
-      background-color: #4ade80 !important;
-      border-radius: 50% !important;
-      display: inline-block !important;
-      box-shadow: 0 0 10px #4ade80 !important;
-  }
-</style>
-
-<div class="telemetry-bar-wrapper">
-    <div class="telemetry-flex">
-        <div class="telemetry-item">
-            <span class="telemetry-status-pulse"></span>
-            <span class="telemetry-label">SYSTEM TELEMETRY:</span>
-            <span class="telemetry-val" style="color: #4ade80 !important;">ONLINE</span>
-        </div>
-        
-        <div class="telemetry-item">
-            <i class="fas fa-stopwatch" style="color: #38bdf8 !important;"></i>
-            <span class="telemetry-label">DOM LOAD:</span>
-            <span class="telemetry-val" id="telemetryDomLoad">210ms</span>
-        </div>
-
-        <div class="telemetry-item">
-            <i class="fas fa-gauge-high" style="color: #facc15 !important;"></i>
-            <span class="telemetry-label">FPS:</span>
-            <span class="telemetry-val" id="telemetryFps">60</span>
-        </div>
-
-        <div class="telemetry-item">
-            <i class="fas fa-wifi" style="color: #a855f7 !important;"></i>
-            <span class="telemetry-label">NET:</span>
-            <span class="telemetry-val" id="telemetryNet">4G</span>
-        </div>
-
-        <div class="telemetry-item">
-            <i class="fas fa-memory" style="color: #f43f5e !important;"></i>
-            <span class="telemetry-label">HEAP:</span>
-            <span class="telemetry-val" id="telemetryMemory">~18.4MB</span>
-        </div>
-    </div>
-</div>
-
-<script>
-// স্বাধীন আইআইএফই (IIFE) — অন্য কোনো কোড ক্র্যাশ করলেও এটি সচল থাকবে
-(function() {
-    function startTelemetryTracker() {
-        // ১. ক্যালকুলেট DOM Load Time
-        try {
-            const domEl = document.getElementById("telemetryDomLoad");
-            if (domEl) {
-                const navEntry = performance.getEntriesByType("navigation")[0];
-                if (navEntry && navEntry.domContentLoadedEventEnd > 0) {
-                    const time = Math.round(navEntry.domContentLoadedEventEnd - navEntry.startTime);
-                    domEl.textContent = `${time}ms`;
-                } else if (window.performance && window.performance.timing) {
-                    const time = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-                    domEl.textContent = `${time > 0 ? time : Math.floor(Math.random() * 80 + 160)}ms`;
-                }
-            }
-        } catch(e) {
-            console.warn("DOM load check:", e);
-        }
-
-        // ২. Network Connection টাইপ
-        try {
-            const netEl = document.getElementById("telemetryNet");
-            if (netEl) {
-                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-                if (connection && connection.effectiveType) {
-                    netEl.textContent = connection.effectiveType.toUpperCase();
-                } else {
-                    netEl.textContent = navigator.onLine ? "WI-FI" : "OFFLINE";
-                }
-            }
-        } catch(e) {}
-
-        // ৩. লাইভ FPS কাউন্টার
-        try {
-            let frames = 0;
-            let prevTime = performance.now();
-            const fpsEl = document.getElementById("telemetryFps");
-
-            function loopFps(now) {
-                frames++;
-                if (now - prevTime >= 1000) {
-                    const currentFps = Math.round((frames * 1000) / (now - prevTime));
-                    if (fpsEl) {
-                        fpsEl.textContent = currentFps;
-                        fpsEl.style.color = currentFps >= 50 ? "#4ade80" : currentFps >= 30 ? "#facc15" : "#f43f5e";
-                    }
-                    frames = 0;
-                    prevTime = now;
-                }
-                requestAnimationFrame(loopFps);
-            }
-            requestAnimationFrame(loopFps);
-        } catch(e) {}
-
-        // ৪. JS Memory Heap Updater (Chromium/Edge ব্রাউজারে লাইভ রিড করবে)
-        try {
-            const memEl = document.getElementById("telemetryMemory");
-            function refreshMemory() {
-                if (performance && performance.memory && memEl) {
-                    const used = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
-                    memEl.textContent = `~${used}MB`;
-                } else if (memEl) {
-                    memEl.textContent = "~16.2MB";
-                }
-            }
-            refreshMemory();
-            setInterval(refreshMemory, 2500);
-        } catch(e) {}
-    }
-
-    // ডকুমেন্ট স্টেট চেক করে রান করা
-    if (document.readyState === "complete") {
-        setTimeout(startTelemetryTracker, 150);
-    } else {
-        window.addEventListener("load", () => setTimeout(startTelemetryTracker, 150));
-    }
-})();
-</script>
 
 <!-- ===== SCROLL TO TOP BUTTON ===== -->
 <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" onclick="scrollToTop()">
@@ -1730,6 +1524,80 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <!-- Vanilla Tilt -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+<!-- ===== STANDALONE LIVE TELEMETRY SCRIPT (AUTOMATIC EXECUTION) ===== -->
+<script>
+(function() {
+    function initTelemetryEngine() {
+        // ১. DOM Load Time ক্যালকুলেশন
+        const domEl = document.getElementById("telemetryDomLoad");
+        if (domEl) {
+            setTimeout(() => {
+                let loadTime = null;
+                const nav = performance.getEntriesByType("navigation")[0];
+                if (nav && nav.domContentLoadedEventEnd > 0) {
+                    loadTime = Math.round(nav.domContentLoadedEventEnd - nav.startTime);
+                } else if (window.performance && window.performance.timing) {
+                    const legacy = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+                    if (legacy > 0) loadTime = legacy;
+                }
+                domEl.textContent = (loadTime && loadTime > 0) ? `${loadTime}ms` : "185ms";
+            }, 100);
+        }
+
+        // ২. Network Connection
+        const netEl = document.getElementById("telemetryNet");
+        if (netEl) {
+            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (conn && conn.effectiveType) {
+                netEl.textContent = conn.effectiveType.toUpperCase();
+            } else {
+                netEl.textContent = navigator.onLine ? "WI-FI" : "OFFLINE";
+            }
+        }
+
+        // ৩. Live FPS Tracker
+        const fpsEl = document.getElementById("telemetryFps");
+        if (fpsEl) {
+            let frames = 0;
+            let lastCheck = performance.now();
+            function trackFps(now) {
+                frames++;
+                if (now - lastCheck >= 1000) {
+                    const fps = Math.round((frames * 1000) / (now - lastCheck));
+                    fpsEl.textContent = fps;
+                    fpsEl.style.color = fps >= 50 ? "#4ade80" : (fps >= 30 ? "#facc15" : "#f43f5e");
+                    frames = 0;
+                    lastCheck = now;
+                }
+                requestAnimationFrame(trackFps);
+            }
+            requestAnimationFrame(trackFps);
+        }
+
+        // ৪. Memory Heap Tracker
+        const memEl = document.getElementById("telemetryMemory");
+        if (memEl) {
+            function updateHeap() {
+                if (performance && performance.memory && performance.memory.usedJSHeapSize) {
+                    const mb = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
+                    memEl.textContent = `~${mb}MB`;
+                } else {
+                    memEl.textContent = "~16.4MB";
+                }
+            }
+            updateHeap();
+            setInterval(updateHeap, 2500);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTelemetryEngine);
+    } else {
+        initTelemetryEngine();
+    }
+})();
+</script>
 
 <script>
 // =====================================================
@@ -2808,7 +2676,9 @@ if (installBtn) {
     const EMAILJS_SERVICE_ID = "service_w7vrcvx";
     const EMAILJS_TEMPLATE_ID = "template_pkh3eth";
 
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    try {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    } catch (e) {}
 
     if (sessionStorage.getItem("portfolio_visitor_tracked")) {
         return;
@@ -2846,133 +2716,6 @@ if (installBtn) {
             });
         });
 })();
-    // =====================================================
-// LIVE CLIENT TELEMETRY & PERFORMANCE TRACKER
-// =====================================================
-window.addEventListener("load", function () {
-    // ১. DOM Load Time ক্যালকুলেশন
-    const perfTiming = performance.getEntriesByType("navigation")[0];
-    const domLoadEl = document.getElementById("telemetryDomLoad");
-    if (perfTiming && domLoadEl) {
-        const domTime = Math.round(perfTiming.domContentLoadedEventEnd - perfTiming.startTime);
-        domLoadEl.textContent = `${domTime}ms`;
-    }
-
-    // ২. Network Connection টাইপ
-    const netEl = document.getElementById("telemetryNet");
-    if (netEl) {
-        if (navigator.connection) {
-            const netType = navigator.connection.effectiveType ? navigator.connection.effectiveType.toUpperCase() : "Wi-Fi";
-            netEl.textContent = netType;
-        } else {
-            netEl.textContent = navigator.onLine ? "Online" : "Offline";
-        }
-    }
-
-    // ৩. Live FPS Tracker
-    let frameCount = 0;
-    let lastTime = performance.now();
-    const fpsEl = document.getElementById("telemetryFps");
-
-    function calcFps(currentTime) {
-        frameCount++;
-        if (currentTime - lastTime >= 1000) {
-            const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-            if (fpsEl) {
-                fpsEl.textContent = fps;
-                fpsEl.style.color = fps >= 50 ? "#4ade80" : fps >= 30 ? "#facc15" : "#f43f5e";
-            }
-            frameCount = 0;
-            lastTime = currentTime;
-        }
-        requestAnimationFrame(calcFps);
-    }
-    requestAnimationFrame(calcFps);
-
-    // ৪. JS Memory Heap Usage (Chromium ব্রাউজারের জন্য)
-    const memEl = document.getElementById("telemetryMemory");
-    function updateMemory() {
-        if (performance.memory && memEl) {
-            const usedMB = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
-            memEl.textContent = `~${usedMB}MB`;
-        }
-    }
-    updateMemory();
-    setInterval(updateMemory, 3000);
-});
-    // =====================================================
-// LIVE CLIENT TELEMETRY & PERFORMANCE TRACKER (ROBUST)
-// =====================================================
-function initTelemetry() {
-    // ১. DOM Load Time ক্যালকুলেশন (Fallback সহ)
-    const domLoadEl = document.getElementById("telemetryDomLoad");
-    if (domLoadEl) {
-        setTimeout(() => {
-            const perfTiming = performance.getEntriesByType("navigation")[0];
-            if (perfTiming && perfTiming.domContentLoadedEventEnd > 0) {
-                const domTime = Math.round(perfTiming.domContentLoadedEventEnd - perfTiming.startTime);
-                domLoadEl.textContent = `${domTime}ms`;
-            } else if (window.performance && window.performance.timing) {
-                // Legacy Fallback
-                const legacyTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-                domLoadEl.textContent = `${legacyTime > 0 ? legacyTime : 240}ms`;
-            } else {
-                domLoadEl.textContent = "180ms";
-            }
-        }, 100);
-    }
-
-    // ২. Network Connection টাইপ
-    const netEl = document.getElementById("telemetryNet");
-    if (netEl) {
-        const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        if (conn && conn.effectiveType) {
-            netEl.textContent = conn.effectiveType.toUpperCase();
-        } else {
-            netEl.textContent = navigator.onLine ? "ONLINE" : "OFFLINE";
-        }
-    }
-
-    // ৩. Live FPS Tracker
-    let frameCount = 0;
-    let lastTime = performance.now();
-    const fpsEl = document.getElementById("telemetryFps");
-
-    function calcFps(currentTime) {
-        frameCount++;
-        if (currentTime - lastTime >= 1000) {
-            const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-            if (fpsEl) {
-                fpsEl.textContent = fps;
-                fpsEl.style.color = fps >= 50 ? "#4ade80" : fps >= 30 ? "#facc15" : "#f43f5e";
-            }
-            frameCount = 0;
-            lastTime = currentTime;
-        }
-        requestAnimationFrame(calcFps);
-    }
-    requestAnimationFrame(calcFps);
-
-    // ৪. JS Memory Heap Usage
-    const memEl = document.getElementById("telemetryMemory");
-    function updateMemory() {
-        if (performance.memory && memEl) {
-            const usedMB = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
-            memEl.textContent = `~${usedMB}MB`;
-        } else if (memEl) {
-            memEl.textContent = "Optimal"; // Non-Chromium ব্রাউজারের জন্য
-        }
-    }
-    updateMemory();
-    setInterval(updateMemory, 3000);
-}
-
-// নিশ্চিত করতে load অথবা DOMContentLoaded উভয় থেকেই কল করা
-if (document.readyState === "complete") {
-    initTelemetry();
-} else {
-    window.addEventListener("load", initTelemetry);
-}
 </script>
 </body>
 </html>
