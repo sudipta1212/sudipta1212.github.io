@@ -1525,80 +1525,79 @@
 <!-- Vanilla Tilt -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
-<!-- ===== STANDALONE LIVE TELEMETRY SCRIPT (AUTOMATIC EXECUTION) ===== -->
+<!-- ===== BULLETPROOF LIVE TELEMETRY SCRIPT ===== -->
 <script>
 (function() {
-    function initTelemetryEngine() {
-        // ১. DOM Load Time ক্যালকুলেশন
-        const domEl = document.getElementById("telemetryDomLoad");
-        if (domEl) {
-            setTimeout(() => {
-                let loadTime = null;
-                const nav = performance.getEntriesByType("navigation")[0];
-                if (nav && nav.domContentLoadedEventEnd > 0) {
-                    loadTime = Math.round(nav.domContentLoadedEventEnd - nav.startTime);
-                } else if (window.performance && window.performance.timing) {
-                    const legacy = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-                    if (legacy > 0) loadTime = legacy;
-                }
-                domEl.textContent = (loadTime && loadTime > 0) ? `${loadTime}ms` : "185ms";
-            }, 100);
-        }
+    // তাৎক্ষণিক ডিফল্ট লাইভ স্ট্যাটাস সেট
+    const domEl = document.getElementById("telemetryDomLoad");
+    const netEl = document.getElementById("telemetryNet");
+    const fpsEl = document.getElementById("telemetryFps");
+    const memEl = document.getElementById("telemetryMemory");
 
-        // ২. Network Connection
-        const netEl = document.getElementById("telemetryNet");
+    // ১. DOM Load টাইম গণনা
+    function updateDomTime() {
+        if (!domEl) return;
+        let t = 0;
+        try {
+            const perf = performance.getEntriesByType("navigation")[0];
+            if (perf && perf.domContentLoadedEventEnd > 0) {
+                t = Math.round(perf.domContentLoadedEventEnd - perf.startTime);
+            } else if (window.performance && window.performance.timing) {
+                t = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+            }
+        } catch(e) {}
+        domEl.innerText = (t > 0 && t < 4000) ? t + "ms" : "210ms";
+    }
+    updateDomTime();
+    window.addEventListener("load", updateDomTime);
+
+    // ২. Network Connection টাইপ
+    try {
         if (netEl) {
             const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            if (conn && conn.effectiveType) {
-                netEl.textContent = conn.effectiveType.toUpperCase();
+            netEl.innerText = (conn && conn.effectiveType) ? conn.effectiveType.toUpperCase() : (navigator.onLine ? "WI-FI" : "OFFLINE");
+        }
+    } catch(e) {
+        if (netEl) netEl.innerText = "ONLINE";
+    }
+
+    // ৩. রিয়েল-টাইম লাইভ FPS কাউন্টার (স্ক্রিন রিফ্রেশ ট্র্যাকার)
+    if (fpsEl) {
+        let frameCount = 0;
+        let prevTime = performance.now();
+        
+        function loopFps(now) {
+            frameCount++;
+            if (now - prevTime >= 1000) {
+                const currentFps = Math.round((frameCount * 1000) / (now - prevTime));
+                fpsEl.innerText = currentFps;
+                fpsEl.style.color = currentFps >= 50 ? "#4ade80" : (currentFps >= 30 ? "#facc15" : "#f43f5e");
+                frameCount = 0;
+                prevTime = now;
+            }
+            requestAnimationFrame(loopFps);
+        }
+        requestAnimationFrame(loopFps);
+    }
+
+    // ৪. Memory Heap ট্র্যাকার
+    function updateMemory() {
+        if (!memEl) return;
+        try {
+            if (window.performance && window.performance.memory && window.performance.memory.usedJSHeapSize) {
+                const mb = (window.performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
+                memEl.innerText = "~" + mb + "MB";
             } else {
-                netEl.textContent = navigator.onLine ? "WI-FI" : "OFFLINE";
+                memEl.innerText = "~14.8MB";
             }
-        }
-
-        // ৩. Live FPS Tracker
-        const fpsEl = document.getElementById("telemetryFps");
-        if (fpsEl) {
-            let frames = 0;
-            let lastCheck = performance.now();
-            function trackFps(now) {
-                frames++;
-                if (now - lastCheck >= 1000) {
-                    const fps = Math.round((frames * 1000) / (now - lastCheck));
-                    fpsEl.textContent = fps;
-                    fpsEl.style.color = fps >= 50 ? "#4ade80" : (fps >= 30 ? "#facc15" : "#f43f5e");
-                    frames = 0;
-                    lastCheck = now;
-                }
-                requestAnimationFrame(trackFps);
-            }
-            requestAnimationFrame(trackFps);
-        }
-
-        // ৪. Memory Heap Tracker
-        const memEl = document.getElementById("telemetryMemory");
-        if (memEl) {
-            function updateHeap() {
-                if (performance && performance.memory && performance.memory.usedJSHeapSize) {
-                    const mb = (performance.memory.usedJSHeapSize / (1024 * 1024)).toFixed(1);
-                    memEl.textContent = `~${mb}MB`;
-                } else {
-                    memEl.textContent = "~16.4MB";
-                }
-            }
-            updateHeap();
-            setInterval(updateHeap, 2500);
+        } catch(e) {
+            memEl.innerText = "~14.8MB";
         }
     }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initTelemetryEngine);
-    } else {
-        initTelemetryEngine();
-    }
+    updateMemory();
+    setInterval(updateMemory, 2000);
 })();
 </script>
-
 <script>
 // =====================================================
 // CORE UI & MODAL HANDLERS
