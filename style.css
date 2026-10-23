@@ -2500,3 +2500,7 @@ header {
 body {
     padding-top: 80px; /* Navbar height */
 }
+/* Prothom section ba home section-er jonno top spacing */
+header + section {
+    padding-top: 100px; /* Header-er height onujayi ektu kom ba besi korte paren */
+}
