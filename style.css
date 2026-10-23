@@ -2494,3 +2494,9 @@ header {
     display: flex;
     align-items: center; /* Content majhane rakhar jonno */
 }
+#home {
+    scroll-margin-top: 90px; /* Navbar height-er soman Space rakhibe */
+}
+body {
+    padding-top: 80px; /* Navbar height */
+}
