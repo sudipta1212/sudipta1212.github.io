@@ -2487,3 +2487,10 @@ header {
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(0.9); opacity: 0.7; }
 }
+/* Hero / Home Section CSS */
+.hero-section { /* Ba aponar home section-er container class/id */
+    min-height: 100vh;
+    padding-top: 100px; /* Navbar-er height-er chaite ektu beshi din */
+    display: flex;
+    align-items: center; /* Content majhane rakhar jonno */
+}
