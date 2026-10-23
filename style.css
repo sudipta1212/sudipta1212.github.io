@@ -2504,3 +2504,7 @@ body {
 header + section {
     padding-top: 100px; /* Header-er height onujayi ektu kom ba besi korte paren */
 }
+/* Prothom section ba home section-er jonno top spacing */
+header + section {
+    padding-top: 100px; /* Header-er height onujayi ektu kom ba besi korte paren */
+}
