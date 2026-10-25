@@ -2370,20 +2370,20 @@ header {
     }
 }
 #certPreviewModal, 
-.cert-modal-backdrop {
+.project-modal {
     display: none;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(11, 17, 32, 0.9) !important;
-    backdrop-filter: blur(8px);
+    background: rgba(11, 17, 32, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
     z-index: 999999 !important;
+    overflow-y: auto !important;
     align-items: center !important;
     justify-content: center !important;
     padding: 20px !important;
-    overflow-y: auto !important;
 }
 
 .cert-modal-box {
@@ -2397,5 +2397,5 @@ header {
     max-height: 90vh !important;
     overflow-y: auto !important;
     margin: auto !important;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
 }
