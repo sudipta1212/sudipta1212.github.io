@@ -1838,7 +1838,6 @@ function renderCertificates(data) {
     if (totalDisplay) totalDisplay.innerText = data.length + "+";
 }
 let currentCertImgSrc = "";
-
 function openCertModal(title, org, date, imgSrc) {
     const modal = document.getElementById('certPreviewModal');
     const modalTitle = document.getElementById('modalCertTitle');
@@ -1846,27 +1845,26 @@ function openCertModal(title, org, date, imgSrc) {
     const modalDate = document.getElementById('modalCertDate');
     const downloadBtn = document.getElementById('downloadCertBtn');
     const viewFullBtn = document.getElementById('viewFullBtn');
-    const imgContainer = document.getElementById('modalImgContainer');
-
+    const imgContainer = document.getElementById('modallmgContainer');
+    
     currentCertImgSrc = imgSrc;
-
     modalTitle.textContent = title;
     modalOrg.textContent = org;
     modalDate.textContent = date;
-
+    
     imgContainer.innerHTML = `<img id="modalCertImg" src="${imgSrc}" alt="${title}" style="max-width:100%; max-height:68vh; border-radius:8px; display:block; margin:auto; background:#fff;">`;
+    
     const modalImg = document.getElementById('modalCertImg');
-
     downloadBtn.style.display = 'inline-flex';
     viewFullBtn.style.display = 'inline-flex';
-
+    
     modalImg.onerror = function() {
         modalImg.style.display = 'none';
         imgContainer.innerHTML = '<div style="padding: 40px; text-align: center; color: #94a3b8;"><i class="fas fa-image" style="font-size: 50px; color: #38bdf8; margin-bottom: 10px; display: block;"></i> Certificate verified & stored in portfolio credentials.</div>';
         downloadBtn.style.display = 'none';
         viewFullBtn.style.display = 'none';
     };
-
+    
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
