@@ -1794,7 +1794,7 @@ const certificatesData = [
     { title: "Content Creation with AI Workshop", org: "Ostad (Certificate ID: C26747)", date: "2025", year: "2025", category: "programming", img: "40.jpg" },
     { title: "Microelectronics & Robotics: From Silicon to Software", org: "IEEE RAS Premier University SB Chapter", date: "17 Jan, 2026", year: "2026", category: "ieee engineering", img: "80.jpg" },
     { title: "Beyond the Syllabus: Where Student Research Finds Its Voice", org: "IEEE Computer Society Premier University SB Chapter", date: "16 Feb, 2026", year: "2026", category: "ieee", img: "81.jpg" },
-    { title: "WorkWave Mentorship Programme in Graphic Design", org: "Futurenation", date: "February 16, 2026", year: "2026", category: "workshop", img: "82.jpg" }
+    {title: "WorkWave Mentorship Programme in Graphic Design", org: "Futurenation", date: "February 16, 2026", year: "2026", category: "workshop", img: "82.jpg"}
 ];
 
 function getPrimaryCategory(cat) {
@@ -1806,28 +1806,26 @@ function getPrimaryCategory(cat) {
     if (cat.includes("workshop")) return { name: "Workshop", class: "workshop" };
     return { name: "Other", class: "other" };
 }
-
 function renderCertificates(data) {
     const grid = document.getElementById('certGrid');
     if (!grid) return;
     grid.innerHTML = '';
-
+    
     data.forEach(item => {
-        const catInfo = getPrimaryCategory(item.category);
+        const catinfo = getPrimaryCategory(item.category);
         const card = document.createElement('div');
         card.className = 'cert-card';
         card.setAttribute('data-category', item.category);
         card.setAttribute('data-year', item.year);
-        
         card.onclick = () => openCertModal(item.title, item.org, item.date, item.img);
-
+        
         card.innerHTML = `
             <div class="cert-thumb">
-                <img src="${item.img}" alt="${item.title}" onerror="this.onerror=null; this.parentElement.classList.add('default-thumb'); this.parentElement.innerHTML='<i class=\\'fas fa-award\\'></i>';">
+                <img src="${item.img}" alt="${item.title}" onerror="this.onerror=null; this.parentElement.classList.add('default-thumb'); this.parentElement.innerHTML='<i class=\'fas fa-award\'></i>';">
                 <div class="cert-overlay"><i class="fas fa-eye"></i></div>
             </div>
             <div class="cert-info">
-                <span class="cert-tag ${catInfo.class}">${catInfo.name}</span>
+                <span class="cert-tag ${catinfo.class}">${catinfo.name}</span>
                 <h3>${item.title}</h3>
                 <p class="cert-org"><i class="fas fa-building"></i> ${item.org}</p>
                 <span class="cert-date"><i class="far fa-calendar-alt"></i> ${item.date}</span>
@@ -1835,11 +1833,10 @@ function renderCertificates(data) {
         `;
         grid.appendChild(card);
     });
-
+    
     const totalDisplay = document.getElementById('certTotalDisplay');
     if (totalDisplay) totalDisplay.innerText = data.length + "+";
 }
-
 let currentCertImgSrc = "";
 
 function openCertModal(title, org, date, imgSrc) {
