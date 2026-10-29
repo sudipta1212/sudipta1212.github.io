@@ -1,4 +1,4 @@
-      background: rgba(11, 17, 32, 0.98);
+background: rgba(11, 17, 32, 0.98);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.2);
       padding: 25px 0;
@@ -61,107 +61,54 @@
     }
 }
 
-```css
 /* =========================================================
-   CERTIFICATE PREVIEW MODAL — FIXED
+   CERTIFICATE PREVIEW MODAL — CONSOLIDATED OVERRIDE
+   Keep this block at the VERY END of style.css.
    ========================================================= */
-
 #certPreviewModal {
     display: none;
     position: fixed !important;
     inset: 0;
-    z-index: 999999 !important;
-
     width: 100%;
-    height: 100%;
+    height: 100vh;
     height: 100dvh;
-
     padding: 16px;
     box-sizing: border-box;
-
     align-items: center;
     justify-content: center;
-
-    overflow-x: hidden;
     overflow-y: auto;
-
     background: rgba(3, 7, 18, 0.94);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999 !important;
 }
 
 #certPreviewModal .cert-modal-box {
     position: relative;
-
     display: flex;
     flex-direction: column;
-    gap: 10px;
-
+    gap: 8px;
     width: 100%;
     max-width: 850px;
-    max-height: calc(100vh - 32px);
     max-height: calc(100dvh - 32px);
-
     margin: auto;
     padding: 24px;
     box-sizing: border-box;
-
-    overflow-x: hidden;
     overflow-y: auto;
-
     color: #f8fafc;
     background: #111827;
-
     border: 1px solid rgba(56, 189, 248, 0.45);
     border-radius: 18px;
-
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
-}
-
-#certPreviewModal .cert-modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 10;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    padding: 0;
-    border: none;
-    border-radius: 8px;
-
-    background: #ef4444;
-    color: #fff;
-
-    font-size: 26px;
-    line-height: 1;
-    cursor: pointer;
-}
-
-#certPreviewModal .cert-modal-close:hover {
-    background: #dc2626;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
 }
 
 #certPreviewModal #modalCertTitle {
-    margin: 8px 45px 4px 0;
+    margin: 8px 38px 0 0;
     color: #f8fafc;
-    font-size: 24px;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
 }
 
 #certPreviewModal .modal-cert-org,
 #certPreviewModal .modal-cert-date {
     margin: 0;
     color: #cbd5e1;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-wrap: anywhere;
 }
 
 #certPreviewModal #modalImgContainer,
@@ -169,49 +116,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     min-height: 120px;
     max-height: 70vh;
-
-    margin-top: 8px;
     padding: 10px;
     box-sizing: border-box;
-
     overflow: auto;
-
     background: rgba(2, 6, 23, 0.45);
     border-radius: 10px;
 }
 
 #certPreviewModal #modalCertImg {
     display: block;
-
     width: auto;
     height: auto;
-
     max-width: 100%;
     max-height: 65vh;
-
     object-fit: contain;
-    object-position: center;
-
     margin: auto;
     border-radius: 8px;
     background: #fff;
 }
 
-/* Action buttons */
 #certPreviewModal .cert-modal-actions {
     display: flex !important;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
-
     width: 100%;
     margin-top: 12px;
-
     position: relative;
     z-index: 5;
 }
@@ -221,80 +155,6 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     min-height: 44px;
     padding: 11px 18px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #0284c7;
     color: #fff !important;
-
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
-
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-#certPreviewModal .cert-action-btn:hover {
-    background: #0369a1;
-    transform: translateY(-1px);
-}
-
-#certPreviewModal .view-btn {
-    background: #0891b2;
-}
-
-#certPreviewModal .view-btn:hover {
-    background: #0e7490;
-}
-
-/* Mobile responsive */
-@media (max-width: 600px) {
-    #certPreviewModal {
-        padding: 10px;
-        align-items: center;
-    }
-
-    #certPreviewModal .cert-modal-box {
-        width: 100%;
-        max-height: calc(100vh - 20px);
-        max-height: calc(100dvh - 20px);
-        padding: 18px 14px;
-        border-radius: 12px;
-    }
-
-    #certPreviewModal #modalCertTitle {
-        font-size: 20px;
-        margin-right: 38px;
-    }
-
-    #certPreviewModal .modal-cert-org,
-    #certPreviewModal .modal-cert-date {
-        font-size: 14px;
-    }
-
-    #certPreviewModal #modalImgContainer,
-    #certPreviewModal .cert-modal-img-wrapper {
-        min-height: 100px;
-        max-height: 60vh;
-        padding: 6px;
-    }
-
-    #certPreviewModal #modalCertImg {
-        max-height: 55vh;
-    }
-
-    #certPreviewModal .cert-modal-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    #certPreviewModal .cert-action-btn {
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
