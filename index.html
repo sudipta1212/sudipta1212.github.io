@@ -1842,7 +1842,8 @@ function openCertModal(title, org, date, imgSrc) {
     document.body.style.overflow = "hidden";
 }
 
-async function toggleFullScreenImg() {
+
+function toggleFullScreenImg() {
     const img = document.getElementById("modalCertImg");
 
     if (!img || !img.complete || img.naturalWidth === 0) {
@@ -1850,20 +1851,18 @@ async function toggleFullScreenImg() {
         return;
     }
 
-    try {
-        if (document.fullscreenElement) {
-            await document.exitFullscreen();
-        } else if (img.requestFullscreen) {
-            await img.requestFullscreen();
-        } else {
-            // Fallback: open the original image in a new tab.
-            window.open(img.src, "_blank", "noopener");
-        }
-    } catch (error) {
-        console.error("Fullscreen error:", error);
-        window.open(img.src, "_blank", "noopener");
+    // Browser fullscreen নয়, শুধু ছবিটি বড়/ছোট হবে
+    if (img.dataset.zoomed === "true") {
+        img.style.maxHeight = "68vh";
+        img.style.maxWidth = "100%";
+        img.dataset.zoomed = "false";
+    } else {
+        img.style.maxHeight = "80vh";
+        img.style.maxWidth = "100%";
+        img.dataset.zoomed = "true";
     }
 }
+
 
 function triggerDownloadCert() {
     if (!currentCertImgSrc) {
