@@ -2473,3 +2473,69 @@ header {
         width: 100%;
     }
 }
+
+/* Certificate preview: centered modal */
+#certPreviewModal {
+    display: none;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow-y: auto !important;
+    z-index: 999999 !important;
+    background: rgba(5, 10, 20, 0.92) !important;
+}
+
+#certPreviewModal .cert-modal-box {
+    position: relative !important;
+    width: min(650px, 100%) !important;
+    max-width: 650px !important;
+    max-height: calc(100dvh - 32px) !important;
+    margin: auto !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+
+#certPreviewModal .cert-modal-img-wrapper {
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+#certPreviewModal #modalCertImg {
+    display: block;
+    max-width: 100%;
+    max-height: 68vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: auto;
+}
+
+#certPreviewModal .cert-modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    z-index: 10;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #certPreviewModal {
+        padding: 10px !important;
+    }
+
+    #certPreviewModal .cert-modal-box {
+        padding: 18px !important;
+        max-height: calc(100dvh - 20px) !important;
+    }
+}
+
