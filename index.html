@@ -1881,7 +1881,6 @@ function triggerDownloadCert() {
     link.click();
     link.remove();
 }
-
 function closeCertModal() {
     const modal = document.getElementById("certPreviewModal");
 
@@ -1891,18 +1890,10 @@ function closeCertModal() {
 
     if (modal) {
         modal.style.display = "none";
-        document.body.style.overflow = "";
     }
-}
 
-function closeCertModal() {
-    const modal = document.getElementById('certPreviewModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = "auto";
 }
-
 // =====================================================
 // ABOUT AUTO-SLIDER ENGINE
 // =====================================================
@@ -2161,12 +2152,15 @@ function quickAsk(text) {
 }
 
 function handleAiChatSubmit(e) {
-    e.preventDefault();
-    const input = document.getElementById("aiUserInput");
-    const msg = input.value.trim();
-    if (!msg) return;
+    if (e) e.preventDefault();
 
-    appendChatMessage(msg, "user");
+    const input = document.getElementById("aiUserInput");
+    if (!input) return;
+
+    const query = input.value.trim();
+    if (!query) return;
+
+    appendChatMessage(query, "user");
     input.value = "";
 
     setTimeout(() => {
@@ -2269,8 +2263,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const filtered = certificatesData.filter(item => {
             const matchesSearch = item.title.toLowerCase().includes(query) || item.org.toLowerCase().includes(query);
-            const matchesCat = (activeCategory === 'all') || item.category.includes(activeCategory);
-            const matchesYear = (selectedYear === 'all') || (item.year === selectedYear);
+            const matchesCat =
+                (activeCategory === 'all') ||
+                item.category.split(/\s+/).includes(activeCategory);
+            const matchesYear =
+                (selectedYear === 'all') ||
+                (String(item.year) === String(selectedYear));
             return matchesSearch && matchesCat && matchesYear;
         });
 
