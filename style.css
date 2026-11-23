@@ -2881,3 +2881,71 @@ header {
         box-sizing: border-box;
     }
 }
+
+/* ==========================================
+   ICON VISIBILITY & CONTRAST FIX
+========================================== */
+
+.nav-links i,
+.nav-right-actions i,
+.section-title i,
+.skill-icon i,
+.project-icon i,
+.interest-icon i,
+.leadership-icon i,
+.award-icon i,
+.contact-icon i,
+.social-btn i,
+.industrial-icon i,
+.industrial-detail-item i,
+.industrial-status i,
+.certificate-top-label i,
+.certificate-bottom-label i,
+.resume-paper i,
+.modal-card i,
+button i,
+a i {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Restore icons inside dark portfolio cards */
+.smart-skill-card .skill-icon i,
+.project-card .project-icon i,
+.interest-card .interest-icon i,
+.leadership-card .leadership-icon i,
+.industrial-card .industrial-icon i {
+    color: inherit;
+}
+
+/* Industrial icons */
+.industrial-icon {
+    color: #38bdf8 !important;
+}
+
+.industrial-detail-item > i {
+    color: #38bdf8 !important;
+    background: rgba(56, 189, 248, 0.12) !important;
+}
+
+/* Social/contact icon visibility */
+.social-btn i,
+.contact-icon i {
+    opacity: 1 !important;
+}
+
+/* Resume document icon visibility */
+.resume-paper i {
+    color: #0284c7 !important;
+}
+
+/* Prevent invisible icons caused by accidental CSS */
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.fas,
+.far,
+.fab {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
