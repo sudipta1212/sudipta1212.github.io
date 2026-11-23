@@ -2949,3 +2949,138 @@ a i {
     opacity: 1 !important;
     visibility: visible !important;
 }
+
+/* ==========================================
+   EUROPASS-INSPIRED RESUME VIEW FIX
+========================================== */
+
+#resumeDocModal {
+    background: rgba(2, 6, 23, 0.88) !important;
+    backdrop-filter: blur(8px);
+}
+
+.resume-modal-container {
+    background: #e5e7eb !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.45) !important;
+}
+
+.resume-action-bar {
+    background: #0f2747 !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #334e70 !important;
+}
+
+.resume-bar-title,
+.resume-bar-title span {
+    color: #ffffff !important;
+}
+
+.resume-bar-title i {
+    color: #38bdf8 !important;
+}
+
+.resume-viewport {
+    background: #dbe4ee !important;
+}
+
+.resume-paper {
+    background: #ffffff !important;
+    color: #263445 !important;
+    width: 100% !important;
+    max-width: 850px !important;
+    padding: 42px 48px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12) !important;
+    overflow: visible !important;
+}
+
+.resume-paper * {
+    color: inherit;
+}
+
+.doc-name {
+    color: #15365b !important;
+    font-size: 30px !important;
+    letter-spacing: 1px !important;
+}
+
+.doc-role {
+    color: #1673a5 !important;
+}
+
+.doc-contacts {
+    color: #34495e !important;
+}
+
+.doc-contacts i {
+    color: #1673a5 !important;
+}
+
+.doc-divider {
+    background: #1673a5 !important;
+}
+
+.doc-sec-title {
+    color: #15365b !important;
+    border-bottom: 2px solid #1673a5 !important;
+    font-size: 14px !important;
+    letter-spacing: 1px !important;
+}
+
+.doc-row,
+.doc-row strong {
+    color: #243447 !important;
+}
+
+.doc-date {
+    color: #475569 !important;
+}
+
+.doc-sub {
+    color: #1673a5 !important;
+}
+
+.doc-desc,
+.doc-skills-list p,
+.doc-bullets {
+    color: #334155 !important;
+}
+
+.resume-paper p,
+.resume-paper li,
+.resume-paper strong,
+.resume-paper h1,
+.resume-paper h2,
+.resume-paper h3 {
+    opacity: 1 !important;
+}
+
+.resume-ctrl-btn.print-btn {
+    background: #38bdf8 !important;
+    color: #082f49 !important;
+}
+
+.resume-ctrl-btn.close-btn {
+    color: #ffffff !important;
+    background: #334155 !important;
+}
+
+@media(max-width:768px) {
+    .resume-paper {
+        padding: 24px 20px !important;
+    }
+
+    .doc-header {
+        flex-direction: column;
+    }
+
+    .doc-contacts {
+        margin-top: 12px;
+    }
+
+    .doc-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
