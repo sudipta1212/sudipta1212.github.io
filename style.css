@@ -3484,3 +3484,307 @@ a i {
     }
 
 }
+
+/* ==========================================
+   B.Sc. INDUSTRIAL TOUR REPORT CARDS
+   PROFESSIONAL ANIMATION DESIGN
+========================================== */
+
+.bsc-tour-report-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+
+    padding: 25px;
+    margin: 25px 0;
+
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(30, 41, 59, 0.92)
+    );
+
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+    animation: bscReportFadeUp 0.8s ease both;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/* Second card animation delay */
+
+.bsc-tour-card-second {
+    animation-delay: 0.15s;
+}
+
+
+/* Hover effect */
+
+.bsc-tour-report-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(56, 189, 248, 0.65);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.28),
+        0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+
+/* Animated top accent line */
+
+.bsc-tour-report-card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #818cf8,
+        #38bdf8
+    );
+
+    background-size: 200% 100%;
+
+    animation: bscReportGradient 4s linear infinite;
+}
+
+
+/* Information layout */
+
+.bsc-tour-report-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+
+/* Icon */
+
+.bsc-tour-report-icon {
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+
+    color: #38bdf8;
+
+    font-size: 24px;
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+
+.bsc-tour-report-card:hover .bsc-tour-report-icon {
+    transform: rotate(-5deg) scale(1.08);
+
+    background: rgba(56, 189, 248, 0.20);
+}
+
+
+/* Text */
+
+.bsc-tour-report-text {
+    min-width: 0;
+}
+
+
+.bsc-tour-label {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+
+    color: #38bdf8;
+}
+
+
+.bsc-tour-report-text h3 {
+    margin: 0 0 10px;
+
+    color: #f1f5f9;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+.bsc-tour-report-text p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* Button area */
+
+.bsc-tour-report-actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* PDF View button */
+
+.bsc-tour-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    text-decoration: none !important;
+
+    background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #0ea5e9
+    );
+
+    color: #0f172a !important;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    border: 1px solid rgba(56, 189, 248, 0.4);
+
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.bsc-tour-view-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 22px rgba(14, 165, 233, 0.35);
+
+    filter: brightness(1.08);
+}
+
+
+.bsc-tour-view-btn i {
+    font-size: 14px;
+}
+
+
+/* Entrance animation */
+
+@keyframes bscReportFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Gradient animation */
+
+@keyframes bscReportGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+
+    .bsc-tour-report-card {
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .bsc-tour-report-info {
+        gap: 13px;
+    }
+
+    .bsc-tour-report-icon {
+        width: 46px;
+        height: 46px;
+
+        font-size: 19px;
+        border-radius: 12px;
+    }
+
+    .bsc-tour-report-text h3 {
+        font-size: 17px;
+    }
+
+    .bsc-tour-report-text p {
+        font-size: 12px;
+    }
+
+    .bsc-tour-view-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+}
+
+
+/* Accessibility: reduce motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bsc-tour-report-card,
+    .bsc-tour-report-card::before,
+    .bsc-tour-report-icon,
+    .bsc-tour-view-btn {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
